@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>门店管理 - 托管行业数字化管理系统</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">托</div>
+        <span class="sidebar-title">精准托管平台</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="index.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-text">数据驾驶舱</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">基础管理</div>
+          <a href="stores.html" class="nav-item active">
+            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-text">门店管理</span>
+          </a>
+          <a href="classes.html" class="nav-item">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-text">班级管理</span>
+          </a>
+          <a href="teachers.html" class="nav-item">
+            <span class="nav-item-icon">👨‍🏫</span>
+            <span class="nav-item-text">教师管理</span>
+          </a>
+          <a href="students.html" class="nav-item">
+            <span class="nav-item-icon">👦</span>
+            <span class="nav-item-text">学生管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">日常运营</div>
+          <a href="attendance.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-text">签到管理</span>
+          </a>
+          <a href="homework.html" class="nav-item">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-text">作业管理</span>
+          </a>
+          <a href="meals.html" class="nav-item">
+            <span class="nav-item-icon">🍱</span>
+            <span class="nav-item-text">生活管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">成长追踪</div>
+          <a href="growth.html" class="nav-item">
+            <span class="nav-item-icon">📈</span>
+            <span class="nav-item-text">成长档案</span>
+          </a>
+          <a href="points.html" class="nav-item">
+            <span class="nav-item-icon">⭐</span>
+            <span class="nav-item-text">积分管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">系统设置</div>
+          <a href="roles.html" class="nav-item">
+            <span class="nav-item-icon">👥</span>
+            <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-text">系统配置</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="nav-item" onclick="window.location.href='../index.html'">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text">返回首页</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="header-left">
+          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="breadcrumb">
+            <span class="breadcrumb-item">基础管理</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">门店管理</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-action">🔔<span class="badge-dot"></span></div>
+          <div class="header-action">💬</div>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <div class="user-name">张管理</div>
+              <div class="user-role">超级管理员</div>
+            </div>
+            <div class="avatar">张</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="admin-content">
+        <div class="page-header flex justify-between items-center">
+          <div>
+            <h1 class="page-title">门店管理</h1>
+            <p class="page-subtitle">管理托管机构各门店信息</p>
+          </div>
+          <button class="btn btn-primary" onclick="openModal('addStore')">
+            + 新增门店
+          </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid mb-lg">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">门店总数</span>
+              <div class="stat-icon blue">🏢</div>
+            </div>
+            <div class="stat-value">3</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">运营中</span>
+              <div class="stat-icon green">✅</div>
+            </div>
+            <div class="stat-value">2</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">筹备中</span>
+              <div class="stat-icon orange">🚧</div>
+            </div>
+            <div class="stat-value">1</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">总学生数</span>
+              <div class="stat-icon blue">👦</div>
+            </div>
+            <div class="stat-value">256</div>
+          </div>
+        </div>
+
+        <!-- Store Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--spacing-md);">
+          <!-- Store 1 -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <div class="flex items-center gap-md">
+                <div class="stat-icon blue" style="width: 48px; height: 48px; font-size: 24px;">🏢</div>
+                <div>
+                  <h3 class="data-card-title">嵩山校区（总部）</h3>
+                  <span class="badge badge-success">运营中</span>
+                </div>
+              </div>
+            </div>
+            <div class="data-card-body" style="padding: var(--spacing-md);">
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">地址</span>
+                <span>郑州市中原区嵩山路168号</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">联系电话</span>
+                <span>0371-6666-8888</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">负责人</span>
+                <span>王校长</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">班级数</span>
+                <span>8个</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">学生数</span>
+                <span>156人</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">教师数</span>
+                <span>12人</span>
+              </div>
+              <div class="divider"></div>
+              <div class="flex gap-sm">
+                <button class="btn btn-secondary btn-sm flex-1">编辑</button>
+                <button class="btn btn-ghost btn-sm flex-1">查看详情</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Store 2 -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <div class="flex items-center gap-md">
+                <div class="stat-icon green" style="width: 48px; height: 48px; font-size: 24px;">🏢</div>
+                <div>
+                  <h3 class="data-card-title">金水校区</h3>
+                  <span class="badge badge-success">运营中</span>
+                </div>
+              </div>
+            </div>
+            <div class="data-card-body" style="padding: var(--spacing-md);">
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">地址</span>
+                <span>郑州市金水区经三路88号</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">联系电话</span>
+                <span>0371-6666-9999</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">负责人</span>
+                <span>李校长</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">班级数</span>
+                <span>4个</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">学生数</span>
+                <span>100人</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">教师数</span>
+                <span>6人</span>
+              </div>
+              <div class="divider"></div>
+              <div class="flex gap-sm">
+                <button class="btn btn-secondary btn-sm flex-1">编辑</button>
+                <button class="btn btn-ghost btn-sm flex-1">查看详情</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Store 3 -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <div class="flex items-center gap-md">
+                <div class="stat-icon orange" style="width: 48px; height: 48px; font-size: 24px;">🏗️</div>
+                <div>
+                  <h3 class="data-card-title">二七校区</h3>
+                  <span class="badge badge-warning">筹备中</span>
+                </div>
+              </div>
+            </div>
+            <div class="data-card-body" style="padding: var(--spacing-md);">
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">地址</span>
+                <span>郑州市二七区大学路200号</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">联系电话</span>
+                <span>待分配</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">负责人</span>
+                <span>待分配</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">预计开业</span>
+                <span>2026年3月</span>
+              </div>
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">装修进度</span>
+                <span>60%</span>
+              </div>
+              <div class="progress mt-sm">
+                <div class="progress-bar" style="width: 60%;"></div>
+              </div>
+              <div class="divider"></div>
+              <div class="flex gap-sm">
+                <button class="btn btn-secondary btn-sm flex-1">编辑</button>
+                <button class="btn btn-ghost btn-sm flex-1">查看详情</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Store Modal -->
+  <div class="modal-overlay" id="addStoreModal">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 class="modal-title">新增门店</h3>
+        <div class="modal-close" onclick="closeModal('addStore')">✕</div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">门店名称 <span class="text-error">*</span></label>
+          <input type="text" class="form-input" placeholder="请输入门店名称">
+        </div>
+        <div class="form-group">
+          <label class="form-label">门店地址 <span class="text-error">*</span></label>
+          <input type="text" class="form-input" placeholder="请输入详细地址">
+        </div>
+        <div class="flex gap-md">
+          <div class="form-group flex-1">
+            <label class="form-label">联系电话</label>
+            <input type="tel" class="form-input" placeholder="请输入联系电话">
+          </div>
+          <div class="form-group flex-1">
+            <label class="form-label">负责人</label>
+            <input type="text" class="form-input" placeholder="请输入负责人姓名">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">运营状态</label>
+          <select class="form-select">
+            <option value="preparing">筹备中</option>
+            <option value="operating">运营中</option>
+            <option value="suspended">暂停运营</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">资质证书</label>
+          <div style="border: 2px dashed var(--color-border); border-radius: var(--radius-md); padding: var(--spacing-lg); text-align: center; color: var(--color-text-placeholder); cursor: pointer;">
+            <div style="font-size: 32px; margin-bottom: var(--spacing-sm);">📄</div>
+            <div>点击或拖拽上传资质证书</div>
+            <div style="font-size: 12px; margin-top: 4px;">支持 JPG、PNG、PDF 格式</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('addStore')">取消</button>
+        <button class="btn btn-primary">确认添加</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    }
+
+    function openModal(name) {
+      document.getElementById(name + 'Modal').classList.add('open');
+    }
+
+    function closeModal(name) {
+      document.getElementById(name + 'Modal').classList.remove('open');
+    }
+
+    document.querySelectorAll('.modal-overlay').forEach(el => {
+      el.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>班级管理 - 托管行业数字化管理系统</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <style>
+    .class-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-card);
+      transition: all var(--transition-fast);
+    }
+    .class-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .class-header {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+    .class-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+    .class-name {
+      font-size: 18px;
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: 4px;
+    }
+    .class-meta {
+      font-size: var(--font-size-small);
+      color: var(--color-text-secondary);
+    }
+    .class-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-sm);
+      padding: var(--spacing-md) 0;
+      border-top: 1px solid var(--color-border-light);
+      border-bottom: 1px solid var(--color-border-light);
+      margin: var(--spacing-md) 0;
+    }
+    .class-stat {
+      text-align: center;
+    }
+    .class-stat-value {
+      font-size: 20px;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+    }
+    .class-stat-label {
+      font-size: var(--font-size-small);
+      color: var(--color-text-secondary);
+    }
+    .teacher-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+    }
+    .teacher-tag {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: 4px 10px;
+      background: var(--color-background);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-small);
+    }
+    .teacher-tag .avatar {
+      width: 20px;
+      height: 20px;
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">托</div>
+        <span class="sidebar-title">精准托管平台</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="index.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-text">数据驾驶舱</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">基础管理</div>
+          <a href="stores.html" class="nav-item">
+            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-text">门店管理</span>
+          </a>
+          <a href="classes.html" class="nav-item active">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-text">班级管理</span>
+          </a>
+          <a href="teachers.html" class="nav-item">
+            <span class="nav-item-icon">👨‍🏫</span>
+            <span class="nav-item-text">教师管理</span>
+          </a>
+          <a href="students.html" class="nav-item">
+            <span class="nav-item-icon">👦</span>
+            <span class="nav-item-text">学生管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">日常运营</div>
+          <a href="attendance.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-text">签到管理</span>
+          </a>
+          <a href="homework.html" class="nav-item">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-text">作业管理</span>
+          </a>
+          <a href="meals.html" class="nav-item">
+            <span class="nav-item-icon">🍱</span>
+            <span class="nav-item-text">生活管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">成长追踪</div>
+          <a href="growth.html" class="nav-item">
+            <span class="nav-item-icon">📈</span>
+            <span class="nav-item-text">成长档案</span>
+          </a>
+          <a href="points.html" class="nav-item">
+            <span class="nav-item-icon">⭐</span>
+            <span class="nav-item-text">积分管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">系统设置</div>
+          <a href="roles.html" class="nav-item">
+            <span class="nav-item-icon">👥</span>
+            <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-text">系统配置</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="nav-item" onclick="window.location.href='../index.html'">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text">返回首页</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="header-left">
+          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="breadcrumb">
+            <span class="breadcrumb-item">基础管理</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">班级管理</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-action">🔔<span class="badge-dot"></span></div>
+          <div class="header-action">💬</div>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <div class="user-name">张管理</div>
+              <div class="user-role">超级管理员</div>
+            </div>
+            <div class="avatar">张</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="admin-content">
+        <div class="page-header flex justify-between items-center">
+          <div>
+            <h1 class="page-title">班级管理</h1>
+            <p class="page-subtitle">管理各门店班级信息</p>
+          </div>
+          <button class="btn btn-primary" onclick="openModal('addClass')">
+            + 新增班级
+          </button>
+        </div>
+
+        <!-- Filter -->
+        <div class="data-card mb-lg">
+          <div class="flex items-center gap-md flex-wrap">
+            <div class="filter-item">
+              <label>门店</label>
+              <select>
+                <option value="">全部门店</option>
+                <option selected>嵩山校区</option>
+                <option>金水校区</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label>年级</label>
+              <select>
+                <option value="">全部年级</option>
+                <option>一年级</option>
+                <option>二年级</option>
+                <option>三年级</option>
+                <option>四年级</option>
+                <option>五年级</option>
+                <option>六年级</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label>状态</label>
+              <select>
+                <option value="">全部状态</option>
+                <option>招生中</option>
+                <option>已满员</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Class Cards Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--spacing-md);">
+          <!-- Class 1 -->
+          <div class="class-card">
+            <div class="class-header">
+              <div class="class-icon" style="background: rgba(24, 144, 255, 0.1); color: var(--color-primary);">📚</div>
+              <div>
+                <div class="class-name">一年级1班</div>
+                <div class="class-meta">嵩山校区 · 2025年9月创建</div>
+              </div>
+              <span class="badge badge-success ml-auto">招生中</span>
+            </div>
+            <div class="class-stats">
+              <div class="class-stat">
+                <div class="class-stat-value">22</div>
+                <div class="class-stat-label">学生数</div>
+              </div>
+              <div class="class-stat">
+                <div class="class-stat-value">25</div>
+                <div class="class-stat-label">上限</div>
+              </div>
+              <div class="class-stat">
+                <div class="class-stat-value">96%</div>
+                <div class="class-stat-label">出勤率</div>
+              </div>
+            </div>
+            <div class="mb-md">
+              <div class="text-secondary text-small mb-sm">教师配置</div>
+              <div class="teacher-list">
+                <span class="teacher-tag">
+                  <span class="avatar" style="background: var(--color-primary);">李</span>
+                  李老师（班主任）
+                </span>
+                <span class="teacher-tag">
+                  <span class="avatar" style="background: var(--color-success);">王</span>
+                  王老师
+                </span>
+              </div>
+            </div>
+            <div class="flex gap-sm">
+              <button class="btn btn-secondary btn-sm flex-1">编辑</button>
+              <button class="btn btn-ghost btn-sm flex-1">学生名单</button>
+            </div>
+          </div>
+
+          <!-- Class 2 -->
+          <div class="class-card">
+            <div class="class-header">
+              <div class="class-icon" style="background: rgba(82, 196, 26, 0.1); color: var(--color-success);">📚</div>
+              <div>
+                <div class="class-name">一年级2班</div>
+                <div class="class-meta">嵩山校区 · 2025年9月创建</div>
+              </div>
+              <span class="badge badge-warning ml-auto">已满员</span>
+            </div>
+            <div class="class-stats">
+              <div class="class-stat">
+                <div class="class-stat-value">24</div>
+                <div class="class-stat-label">学生数</div>
+              </div>
+              <div class="class-stat">
+                <div class="class-stat-value">24</div>
+                <div class="class-stat-label">上限</div>
+              </div>
+              <div class="class-stat">
+                <div class="class-stat-value">98%</div>
+                <div class="class-stat-label">出勤率</div>
+              </div>
+            </div>
+            <div class="mb-md">
+              <div class="text-secondary text-small mb-sm">教师配置</div>
+              <div class="teacher-list">
+                <span class="teacher-tag">
+                  <span class="avatar" style="background: var(--color-secondary);">张</span>
+                  张老师（班主任）
+                </span>
+                <span class="teacher-tag">
+                  <span class="avatar" style="background: #722ED1;">刘</span>
+                  刘老师
+                </span>
+              </div>
+            </div>
+            <div class="flex gap-sm">
+              <button class="btn btn-secondary btn-sm flex-1">编辑</button>
+              <button class="btn btn-ghost btn-sm flex-1">学生名单</button>
+            </div>
+          </div>
+
+          <!-- Class 3 -->
+          <div class="class-card">
+            <div class="class-header">
+              <div class="class-icon" style="background: rgba(255, 122, 69, 0.1); color: var(--color-secondary);">📚</div>
+              <div>
+                <div class="class-name">二年级1班</div>
+                <div class="class-meta">嵩山校区 · 2024年9月创建</div>
+              </div>
+              <span class="badge badge-success ml-auto">招生中</span>
+            </div>
+            <div class="class-stats">
+              <div class="class-stat">
+                <div class="class-stat-value">20</div>
+                <div class="class-stat-label">学生数</div>
+              </div>
+              <div class="class-stat">
+                <div class="class-stat-value">25</div>
+                <div class="class-stat-label">上限</div>
+              </div>
+              <div class="class-stat">
+                <div class="class-stat-value">95%</div>
+                <div class="class-stat-label">出勤率</div>
+              </div>
+            </div>
+            <div class="mb-md">
+              <div class="text-secondary text-small mb-sm">教师配置</div>
+              <div class="teacher-list">
+                <span class="teacher-tag">
+                  <span class="avatar" style="background: #13C2C2;">陈</span>
+                  陈老师（班主任）
+                </span>
+                <span class="teacher-tag">
+                  <span class="avatar" style="background: #EB2F96;">赵</span>
+                  赵老师
+                </span>
+              </div>
+            </div>
+            <div class="flex gap-sm">
+              <button class="btn btn-secondary btn-sm flex-1">编辑</button>
+              <button class="btn btn-ghost btn-sm flex-1">学生名单</button>
+            </div>
+          </div>
+
+          <!-- Class 4 -->
+          <div class="class-card">
+            <div class="class-header">
+              <div class="class-icon" style="background: rgba(114, 46, 209, 0.1); color: #722ED1;">📚</div>
+              <div>
+                <div class="class-name">二年级2班</div>
+                <div class="class-meta">嵩山校区 · 2024年9月创建</div>
+              </div>
+              <span class="badge badge-success ml-auto">招生中</span>
+            </div>
+            <div class="class-stats">
+              <div class="class-stat">
+                <div class="class-stat-value">22</div>
+                <div class="class-stat-label">学生数</div>
+              </div>
+              <div class="class-stat">
+                <div class="class-stat-value">25</div>
+                <div class="class-stat-label">上限</div>
+              </div>
+              <div class="class-stat">
+                <div class="class-stat-value">91%</div>
+                <div class="class-stat-label">出勤率</div>
+              </div>
+            </div>
+            <div class="mb-md">
+              <div class="text-secondary text-small mb-sm">教师配置</div>
+              <div class="teacher-list">
+                <span class="teacher-tag">
+                  <span class="avatar" style="background: #FA8C16;">孙</span>
+                  孙老师（班主任）
+                </span>
+                <span class="teacher-tag">
+                  <span class="avatar" style="background: #2F54EB;">周</span>
+                  周老师
+                </span>
+              </div>
+            </div>
+            <div class="flex gap-sm">
+              <button class="btn btn-secondary btn-sm flex-1">编辑</button>
+              <button class="btn btn-ghost btn-sm flex-1">学生名单</button>
+            </div>
+          </div>
+
+          <!-- Class 5 -->
+          <div class="class-card">
+            <div class="class-header">
+              <div class="class-icon" style="background: rgba(19, 194, 194, 0.1); color: #13C2C2;">📚</div>
+              <div>
+                <div class="class-name">三年级1班</div>
+                <div class="class-meta">嵩山校区 · 2023年9月创建</div>
+              </div>
+              <span class="badge badge-success ml-auto">招生中</span>
+            </div>
+            <div class="class-stats">
+              <div class="class-stat">
+                <div class="class-stat-value">21</div>
+                <div class="class-stat-label">学生数</div>
+              </div>
+              <div class="class-stat">
+                <div class="class-stat-value">25</div>
+                <div class="class-stat-label">上限</div>
+              </div>
+              <div class="class-stat">
+                <div class="class-stat-value">97%</div>
+                <div class="class-stat-label">出勤率</div>
+              </div>
+            </div>
+            <div class="mb-md">
+              <div class="text-secondary text-small mb-sm">教师配置</div>
+              <div class="teacher-list">
+                <span class="teacher-tag">
+                  <span class="avatar" style="background: #597EF7;">钱</span>
+                  钱老师（班主任）
+                </span>
+                <span class="teacher-tag">
+                  <span class="avatar" style="background: #73D13D;">吴</span>
+                  吴老师
+                </span>
+              </div>
+            </div>
+            <div class="flex gap-sm">
+              <button class="btn btn-secondary btn-sm flex-1">编辑</button>
+              <button class="btn btn-ghost btn-sm flex-1">学生名单</button>
+            </div>
+          </div>
+
+          <!-- Add New Class Card -->
+          <div class="class-card" style="border: 2px dashed var(--color-border); display: flex; align-items: center; justify-content: center; min-height: 280px; cursor: pointer;" onclick="openModal('addClass')">
+            <div class="text-center text-placeholder">
+              <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">➕</div>
+              <div>添加新班级</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Class Modal -->
+  <div class="modal-overlay" id="addClassModal">
+    <div class="modal" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="modal-title">新增班级</h3>
+        <div class="modal-close" onclick="closeModal('addClass')">✕</div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">所属门店 <span class="text-error">*</span></label>
+          <select class="form-select">
+            <option value="">请选择门店</option>
+            <option selected>嵩山校区</option>
+            <option>金水校区</option>
+          </select>
+        </div>
+        <div class="flex gap-md">
+          <div class="form-group flex-1">
+            <label class="form-label">年级 <span class="text-error">*</span></label>
+            <select class="form-select">
+              <option value="">请选择</option>
+              <option>一年级</option>
+              <option>二年级</option>
+              <option>三年级</option>
+              <option>四年级</option>
+              <option>五年级</option>
+              <option>六年级</option>
+            </select>
+          </div>
+          <div class="form-group flex-1">
+            <label class="form-label">班级序号 <span class="text-error">*</span></label>
+            <select class="form-select">
+              <option>1班</option>
+              <option>2班</option>
+              <option>3班</option>
+              <option>4班</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">学生上限</label>
+          <input type="number" class="form-input" value="25" min="10" max="40">
+        </div>
+        <div class="form-group">
+          <label class="form-label">班主任 <span class="text-error">*</span></label>
+          <select class="form-select">
+            <option value="">请选择班主任</option>
+            <option>李老师</option>
+            <option>王老师</option>
+            <option>张老师</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">配班老师</label>
+          <select class="form-select">
+            <option value="">请选择配班老师（可选）</option>
+            <option>刘老师</option>
+            <option>陈老师</option>
+            <option>赵老师</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('addClass')">取消</button>
+        <button class="btn btn-primary">确认创建</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    }
+
+    function openModal(name) {
+      document.getElementById(name + 'Modal').classList.add('open');
+    }
+
+    function closeModal(name) {
+      document.getElementById(name + 'Modal').classList.remove('open');
+    }
+
+    document.querySelectorAll('.modal-overlay').forEach(el => {
+      el.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

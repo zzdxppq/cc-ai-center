@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>权限管理 - 托管行业数字化管理系统</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">托</div>
+        <span class="sidebar-title">精准托管平台</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="index.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-text">数据驾驶舱</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">基础管理</div>
+          <a href="stores.html" class="nav-item">
+            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-text">门店管理</span>
+          </a>
+          <a href="classes.html" class="nav-item">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-text">班级管理</span>
+          </a>
+          <a href="teachers.html" class="nav-item">
+            <span class="nav-item-icon">👨‍🏫</span>
+            <span class="nav-item-text">教师管理</span>
+          </a>
+          <a href="students.html" class="nav-item">
+            <span class="nav-item-icon">👦</span>
+            <span class="nav-item-text">学生管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">日常运营</div>
+          <a href="attendance.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-text">签到管理</span>
+          </a>
+          <a href="homework.html" class="nav-item">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-text">作业管理</span>
+          </a>
+          <a href="meals.html" class="nav-item">
+            <span class="nav-item-icon">🍱</span>
+            <span class="nav-item-text">生活管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">成长追踪</div>
+          <a href="growth.html" class="nav-item">
+            <span class="nav-item-icon">📈</span>
+            <span class="nav-item-text">成长档案</span>
+          </a>
+          <a href="points.html" class="nav-item">
+            <span class="nav-item-icon">⭐</span>
+            <span class="nav-item-text">积分管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">系统设置</div>
+          <a href="roles.html" class="nav-item active">
+            <span class="nav-item-icon">👥</span>
+            <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-text">系统配置</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="nav-item" onclick="window.location.href='../index.html'">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text">返回首页</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="header-left">
+          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="breadcrumb">
+            <span class="breadcrumb-item">系统设置</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">权限管理</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-action">🔔<span class="badge-dot"></span></div>
+          <div class="header-action">💬</div>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <div class="user-name">张管理</div>
+              <div class="user-role">超级管理员</div>
+            </div>
+            <div class="avatar">张</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="admin-content">
+        <div class="page-header flex justify-between items-center">
+          <div>
+            <h1 class="page-title">权限管理</h1>
+            <p class="page-subtitle">管理系统角色和用户权限</p>
+          </div>
+          <button class="btn btn-primary" onclick="openModal('addRole')">
+            + 新增角色
+          </button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex gap-sm mb-lg">
+          <button class="btn btn-primary">👥 角色管理</button>
+          <button class="btn btn-secondary">👤 账号管理</button>
+          <button class="btn btn-secondary">📋 操作日志</button>
+        </div>
+
+        <!-- Role Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--spacing-md); margin-bottom: var(--spacing-lg);">
+          <!-- Super Admin -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <div class="flex items-center gap-sm">
+                <div class="stat-icon purple" style="width: 40px; height: 40px;">👑</div>
+                <div>
+                  <h3 class="data-card-title">超级管理员</h3>
+                  <span class="text-small text-secondary">拥有所有权限</span>
+                </div>
+              </div>
+              <span class="badge badge-primary">系统角色</span>
+            </div>
+            <div class="data-card-body">
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">账号数量</span>
+                <span>2人</span>
+              </div>
+              <div class="flex justify-between mb-md">
+                <span class="text-secondary">权限范围</span>
+                <span>全部权限</span>
+              </div>
+              <div class="flex flex-wrap gap-xs">
+                <span class="badge badge-gray">门店管理</span>
+                <span class="badge badge-gray">班级管理</span>
+                <span class="badge badge-gray">教师管理</span>
+                <span class="badge badge-gray">学生管理</span>
+                <span class="badge badge-gray">+12</span>
+              </div>
+            </div>
+            <div class="data-card-footer" style="border-top: 1px solid var(--color-border); padding-top: var(--spacing-md);">
+              <button class="btn btn-ghost btn-sm" disabled>系统角色不可编辑</button>
+            </div>
+          </div>
+
+          <!-- Store Manager -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <div class="flex items-center gap-sm">
+                <div class="stat-icon blue" style="width: 40px; height: 40px;">🏢</div>
+                <div>
+                  <h3 class="data-card-title">门店管理员</h3>
+                  <span class="text-small text-secondary">管理单个门店</span>
+                </div>
+              </div>
+              <span class="badge badge-success">启用</span>
+            </div>
+            <div class="data-card-body">
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">账号数量</span>
+                <span>2人</span>
+              </div>
+              <div class="flex justify-between mb-md">
+                <span class="text-secondary">权限范围</span>
+                <span>所属门店</span>
+              </div>
+              <div class="flex flex-wrap gap-xs">
+                <span class="badge badge-gray">班级管理</span>
+                <span class="badge badge-gray">教师管理</span>
+                <span class="badge badge-gray">学生管理</span>
+                <span class="badge badge-gray">签到管理</span>
+                <span class="badge badge-gray">+5</span>
+              </div>
+            </div>
+            <div class="data-card-footer" style="border-top: 1px solid var(--color-border); padding-top: var(--spacing-md);">
+              <div class="flex gap-sm">
+                <button class="btn btn-ghost btn-sm">编辑权限</button>
+                <button class="btn btn-ghost btn-sm">查看账号</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Head Teacher -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <div class="flex items-center gap-sm">
+                <div class="stat-icon green" style="width: 40px; height: 40px;">🎓</div>
+                <div>
+                  <h3 class="data-card-title">班主任</h3>
+                  <span class="text-small text-secondary">管理所属班级</span>
+                </div>
+              </div>
+              <span class="badge badge-success">启用</span>
+            </div>
+            <div class="data-card-body">
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">账号数量</span>
+                <span>12人</span>
+              </div>
+              <div class="flex justify-between mb-md">
+                <span class="text-secondary">权限范围</span>
+                <span>所属班级</span>
+              </div>
+              <div class="flex flex-wrap gap-xs">
+                <span class="badge badge-gray">学生管理</span>
+                <span class="badge badge-gray">签到管理</span>
+                <span class="badge badge-gray">作业管理</span>
+                <span class="badge badge-gray">成长记录</span>
+                <span class="badge badge-gray">+2</span>
+              </div>
+            </div>
+            <div class="data-card-footer" style="border-top: 1px solid var(--color-border); padding-top: var(--spacing-md);">
+              <div class="flex gap-sm">
+                <button class="btn btn-ghost btn-sm">编辑权限</button>
+                <button class="btn btn-ghost btn-sm">查看账号</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teacher -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <div class="flex items-center gap-sm">
+                <div class="stat-icon orange" style="width: 40px; height: 40px;">👨‍🏫</div>
+                <div>
+                  <h3 class="data-card-title">辅导老师</h3>
+                  <span class="text-small text-secondary">日常辅导工作</span>
+                </div>
+              </div>
+              <span class="badge badge-success">启用</span>
+            </div>
+            <div class="data-card-body">
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">账号数量</span>
+                <span>6人</span>
+              </div>
+              <div class="flex justify-between mb-md">
+                <span class="text-secondary">权限范围</span>
+                <span>指定班级</span>
+              </div>
+              <div class="flex flex-wrap gap-xs">
+                <span class="badge badge-gray">签到管理</span>
+                <span class="badge badge-gray">作业管理</span>
+                <span class="badge badge-gray">成长记录</span>
+                <span class="badge badge-gray">积分管理</span>
+              </div>
+            </div>
+            <div class="data-card-footer" style="border-top: 1px solid var(--color-border); padding-top: var(--spacing-md);">
+              <div class="flex gap-sm">
+                <button class="btn btn-ghost btn-sm">编辑权限</button>
+                <button class="btn btn-ghost btn-sm">查看账号</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Life Teacher -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <div class="flex items-center gap-sm">
+                <div class="stat-icon" style="width: 40px; height: 40px; background: #13C2C2;">🍱</div>
+                <div>
+                  <h3 class="data-card-title">生活老师</h3>
+                  <span class="text-small text-secondary">生活服务管理</span>
+                </div>
+              </div>
+              <span class="badge badge-success">启用</span>
+            </div>
+            <div class="data-card-body">
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">账号数量</span>
+                <span>4人</span>
+              </div>
+              <div class="flex justify-between mb-md">
+                <span class="text-secondary">权限范围</span>
+                <span>所属门店</span>
+              </div>
+              <div class="flex flex-wrap gap-xs">
+                <span class="badge badge-gray">签到查看</span>
+                <span class="badge badge-gray">餐饮管理</span>
+                <span class="badge badge-gray">午休管理</span>
+              </div>
+            </div>
+            <div class="data-card-footer" style="border-top: 1px solid var(--color-border); padding-top: var(--spacing-md);">
+              <div class="flex gap-sm">
+                <button class="btn btn-ghost btn-sm">编辑权限</button>
+                <button class="btn btn-ghost btn-sm">查看账号</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finance -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <div class="flex items-center gap-sm">
+                <div class="stat-icon" style="width: 40px; height: 40px; background: #722ED1;">💰</div>
+                <div>
+                  <h3 class="data-card-title">财务人员</h3>
+                  <span class="text-small text-secondary">财务相关操作</span>
+                </div>
+              </div>
+              <span class="badge badge-success">启用</span>
+            </div>
+            <div class="data-card-body">
+              <div class="flex justify-between mb-sm">
+                <span class="text-secondary">账号数量</span>
+                <span>2人</span>
+              </div>
+              <div class="flex justify-between mb-md">
+                <span class="text-secondary">权限范围</span>
+                <span>全部门店</span>
+              </div>
+              <div class="flex flex-wrap gap-xs">
+                <span class="badge badge-gray">缴费管理</span>
+                <span class="badge badge-gray">财务报表</span>
+                <span class="badge badge-gray">退费处理</span>
+              </div>
+            </div>
+            <div class="data-card-footer" style="border-top: 1px solid var(--color-border); padding-top: var(--spacing-md);">
+              <div class="flex gap-sm">
+                <button class="btn btn-ghost btn-sm">编辑权限</button>
+                <button class="btn btn-ghost btn-sm">查看账号</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account List -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <h3 class="data-card-title">账号列表</h3>
+            <div class="flex gap-sm">
+              <select class="form-select" style="width: 150px;">
+                <option value="">全部角色</option>
+                <option value="1">超级管理员</option>
+                <option value="2">门店管理员</option>
+                <option value="3">班主任</option>
+              </select>
+              <input type="text" class="form-input" placeholder="搜索账号" style="width: 150px;">
+              <button class="btn btn-primary btn-sm">+ 新增账号</button>
+            </div>
+          </div>
+          <div class="data-card-body" style="padding: 0;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>账号信息</th>
+                  <th>角色</th>
+                  <th>所属门店</th>
+                  <th>最后登录</th>
+                  <th>状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #722ED1;">张</div>
+                      <div>
+                        <div class="font-medium">张管理</div>
+                        <div class="text-small text-secondary">admin@tuoguan.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-primary">超级管理员</span></td>
+                  <td>全部</td>
+                  <td>2026-01-09 10:30</td>
+                  <td><span class="badge badge-success">在线</span></td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm" disabled>当前账号</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #1890FF;">王</div>
+                      <div>
+                        <div class="font-medium">王校长</div>
+                        <div class="text-small text-secondary">wang@tuoguan.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-secondary">门店管理员</span></td>
+                  <td>嵩山校区</td>
+                  <td>2026-01-09 09:15</td>
+                  <td><span class="badge badge-success">正常</span></td>
+                  <td>
+                    <div class="flex gap-xs">
+                      <button class="btn btn-ghost btn-sm">编辑</button>
+                      <button class="btn btn-ghost btn-sm">重置密码</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #52C41A;">李</div>
+                      <div>
+                        <div class="font-medium">李老师</div>
+                        <div class="text-small text-secondary">li@tuoguan.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-secondary">班主任</span></td>
+                  <td>嵩山校区</td>
+                  <td>2026-01-09 08:00</td>
+                  <td><span class="badge badge-success">正常</span></td>
+                  <td>
+                    <div class="flex gap-xs">
+                      <button class="btn btn-ghost btn-sm">编辑</button>
+                      <button class="btn btn-ghost btn-sm">重置密码</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="data-card-footer">
+            <div class="text-secondary">共 28 条记录</div>
+            <div class="pagination">
+              <button class="btn btn-ghost btn-sm" disabled>上一页</button>
+              <button class="btn btn-primary btn-sm">1</button>
+              <button class="btn btn-ghost btn-sm">2</button>
+              <button class="btn btn-ghost btn-sm">3</button>
+              <button class="btn btn-ghost btn-sm">下一页</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Role Modal -->
+  <div class="modal-overlay" id="addRoleModal">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 class="modal-title">新增角色</h3>
+        <div class="modal-close" onclick="closeModal('addRole')">✕</div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">角色名称 <span class="text-error">*</span></label>
+          <input type="text" class="form-input" placeholder="请输入角色名称">
+        </div>
+        <div class="form-group">
+          <label class="form-label">角色描述</label>
+          <textarea class="form-input" rows="3" placeholder="请输入角色描述"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">权限设置 <span class="text-error">*</span></label>
+          <div style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--spacing-md); max-height: 300px; overflow-y: auto;">
+            <div class="mb-md">
+              <div class="font-medium mb-sm">基础管理</div>
+              <div class="flex flex-wrap gap-sm">
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 门店管理
+                </label>
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 班级管理
+                </label>
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 教师管理
+                </label>
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 学生管理
+                </label>
+              </div>
+            </div>
+            <div class="mb-md">
+              <div class="font-medium mb-sm">日常运营</div>
+              <div class="flex flex-wrap gap-sm">
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 签到管理
+                </label>
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 作业管理
+                </label>
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 生活管理
+                </label>
+              </div>
+            </div>
+            <div class="mb-md">
+              <div class="font-medium mb-sm">成长追踪</div>
+              <div class="flex flex-wrap gap-sm">
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 成长档案
+                </label>
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 积分管理
+                </label>
+              </div>
+            </div>
+            <div>
+              <div class="font-medium mb-sm">系统设置</div>
+              <div class="flex flex-wrap gap-sm">
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 权限管理
+                </label>
+                <label class="flex items-center gap-xs">
+                  <input type="checkbox"> 系统配置
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('addRole')">取消</button>
+        <button class="btn btn-primary">确认添加</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    }
+
+    function openModal(name) {
+      document.getElementById(name + 'Modal').classList.add('open');
+    }
+
+    function closeModal(name) {
+      document.getElementById(name + 'Modal').classList.remove('open');
+    }
+
+    document.querySelectorAll('.modal-overlay').forEach(el => {
+      el.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

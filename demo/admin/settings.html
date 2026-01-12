@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>系统配置 - 托管行业数字化管理系统</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">托</div>
+        <span class="sidebar-title">精准托管平台</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="index.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-text">数据驾驶舱</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">基础管理</div>
+          <a href="stores.html" class="nav-item">
+            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-text">门店管理</span>
+          </a>
+          <a href="classes.html" class="nav-item">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-text">班级管理</span>
+          </a>
+          <a href="teachers.html" class="nav-item">
+            <span class="nav-item-icon">👨‍🏫</span>
+            <span class="nav-item-text">教师管理</span>
+          </a>
+          <a href="students.html" class="nav-item">
+            <span class="nav-item-icon">👦</span>
+            <span class="nav-item-text">学生管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">日常运营</div>
+          <a href="attendance.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-text">签到管理</span>
+          </a>
+          <a href="homework.html" class="nav-item">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-text">作业管理</span>
+          </a>
+          <a href="meals.html" class="nav-item">
+            <span class="nav-item-icon">🍱</span>
+            <span class="nav-item-text">生活管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">成长追踪</div>
+          <a href="growth.html" class="nav-item">
+            <span class="nav-item-icon">📈</span>
+            <span class="nav-item-text">成长档案</span>
+          </a>
+          <a href="points.html" class="nav-item">
+            <span class="nav-item-icon">⭐</span>
+            <span class="nav-item-text">积分管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">系统设置</div>
+          <a href="roles.html" class="nav-item">
+            <span class="nav-item-icon">👥</span>
+            <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="settings.html" class="nav-item active">
+            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-text">系统配置</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="nav-item" onclick="window.location.href='../index.html'">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text">返回首页</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="header-left">
+          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="breadcrumb">
+            <span class="breadcrumb-item">系统设置</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">系统配置</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-action">🔔<span class="badge-dot"></span></div>
+          <div class="header-action">💬</div>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <div class="user-name">张管理</div>
+              <div class="user-role">超级管理员</div>
+            </div>
+            <div class="avatar">张</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="admin-content">
+        <div class="page-header">
+          <h1 class="page-title">系统配置</h1>
+          <p class="page-subtitle">配置系统基础信息和功能设置</p>
+        </div>
+
+        <!-- Settings Tabs -->
+        <div class="flex gap-lg">
+          <!-- Settings Nav -->
+          <div class="data-card" style="width: 240px; flex-shrink: 0;">
+            <div class="data-card-body" style="padding: 0;">
+              <div class="list">
+                <div class="list-item" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 500;">
+                  🏢 机构信息
+                </div>
+                <div class="list-item">
+                  ⏰ 运营时间
+                </div>
+                <div class="list-item">
+                  🔔 通知设置
+                </div>
+                <div class="list-item">
+                  📱 小程序设置
+                </div>
+                <div class="list-item">
+                  💳 支付设置
+                </div>
+                <div class="list-item">
+                  🔐 安全设置
+                </div>
+                <div class="list-item">
+                  💾 数据备份
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings Content -->
+          <div class="flex-1">
+            <!-- Basic Info -->
+            <div class="data-card mb-lg">
+              <div class="data-card-header">
+                <h3 class="data-card-title">机构基本信息</h3>
+                <button class="btn btn-ghost btn-sm">编辑</button>
+              </div>
+              <div class="data-card-body">
+                <div class="form-group">
+                  <label class="form-label">机构名称</label>
+                  <input type="text" class="form-input" value="精准托管教育中心" disabled>
+                </div>
+                <div class="flex gap-md">
+                  <div class="form-group flex-1">
+                    <label class="form-label">联系电话</label>
+                    <input type="tel" class="form-input" value="0371-6666-8888" disabled>
+                  </div>
+                  <div class="form-group flex-1">
+                    <label class="form-label">客服电话</label>
+                    <input type="tel" class="form-input" value="400-888-9999" disabled>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">机构地址</label>
+                  <input type="text" class="form-input" value="河南省郑州市中原区嵩山路168号" disabled>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">机构简介</label>
+                  <textarea class="form-input" rows="3" disabled>精准托管教育中心成立于2020年，是一家专注于中小学课后托管服务的教育机构。我们致力于为孩子提供安全、优质的托管环境，帮助家长解决接送难题。</textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">机构Logo</label>
+                  <div class="flex items-center gap-md">
+                    <div style="width: 80px; height: 80px; background: var(--color-primary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: bold;">托</div>
+                    <button class="btn btn-secondary btn-sm" disabled>更换Logo</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Operating Hours -->
+            <div class="data-card mb-lg">
+              <div class="data-card-header">
+                <h3 class="data-card-title">运营时间设置</h3>
+                <button class="btn btn-ghost btn-sm">编辑</button>
+              </div>
+              <div class="data-card-body">
+                <div class="flex gap-md mb-md">
+                  <div class="form-group flex-1">
+                    <label class="form-label">工作日开始时间</label>
+                    <input type="time" class="form-input" value="15:30" disabled>
+                  </div>
+                  <div class="form-group flex-1">
+                    <label class="form-label">工作日结束时间</label>
+                    <input type="time" class="form-input" value="19:30" disabled>
+                  </div>
+                </div>
+                <div class="flex gap-md mb-md">
+                  <div class="form-group flex-1">
+                    <label class="form-label">周末开始时间</label>
+                    <input type="time" class="form-input" value="08:00" disabled>
+                  </div>
+                  <div class="form-group flex-1">
+                    <label class="form-label">周末结束时间</label>
+                    <input type="time" class="form-input" value="18:00" disabled>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">签到时间设置</label>
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md);">
+                    <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                      <div class="text-secondary text-small mb-xs">签到开始</div>
+                      <div class="font-medium">15:00</div>
+                    </div>
+                    <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                      <div class="text-secondary text-small mb-xs">正常签到截止</div>
+                      <div class="font-medium">16:00</div>
+                    </div>
+                    <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                      <div class="text-secondary text-small mb-xs">迟到截止</div>
+                      <div class="font-medium">16:30</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="data-card mb-lg">
+              <div class="data-card-header">
+                <h3 class="data-card-title">通知设置</h3>
+              </div>
+              <div class="data-card-body">
+                <div class="flex justify-between items-center mb-md" style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                  <div>
+                    <div class="font-medium">签到提醒</div>
+                    <div class="text-small text-secondary">学生签到/签退时通知家长</div>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="flex justify-between items-center mb-md" style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                  <div>
+                    <div class="font-medium">作业完成提醒</div>
+                    <div class="text-small text-secondary">学生完成作业时通知家长</div>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="flex justify-between items-center mb-md" style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                  <div>
+                    <div class="font-medium">缴费提醒</div>
+                    <div class="text-small text-secondary">费用到期前7天提醒家长</div>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="flex justify-between items-center" style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                  <div>
+                    <div class="font-medium">成长记录推送</div>
+                    <div class="text-small text-secondary">每日成长记录推送给家长</div>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- System Info -->
+            <div class="data-card">
+              <div class="data-card-header">
+                <h3 class="data-card-title">系统信息</h3>
+              </div>
+              <div class="data-card-body">
+                <div class="flex justify-between mb-sm">
+                  <span class="text-secondary">系统版本</span>
+                  <span>V2.5.0</span>
+                </div>
+                <div class="flex justify-between mb-sm">
+                  <span class="text-secondary">最后更新</span>
+                  <span>2026-01-05</span>
+                </div>
+                <div class="flex justify-between mb-sm">
+                  <span class="text-secondary">服务状态</span>
+                  <span class="badge badge-success">正常运行</span>
+                </div>
+                <div class="flex justify-between mb-sm">
+                  <span class="text-secondary">数据库状态</span>
+                  <span class="badge badge-success">正常</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-secondary">存储空间</span>
+                  <div class="flex items-center gap-sm">
+                    <div class="progress" style="width: 100px;">
+                      <div class="progress-bar" style="width: 35%;"></div>
+                    </div>
+                    <span>35% / 100GB</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Switch styles */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: var(--color-primary);
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+  </style>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    }
+  </script>
+</body>
+</html>

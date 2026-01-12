@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生活管理 - 托管行业数字化管理系统</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">托</div>
+        <span class="sidebar-title">精准托管平台</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="index.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-text">数据驾驶舱</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">基础管理</div>
+          <a href="stores.html" class="nav-item">
+            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-text">门店管理</span>
+          </a>
+          <a href="classes.html" class="nav-item">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-text">班级管理</span>
+          </a>
+          <a href="teachers.html" class="nav-item">
+            <span class="nav-item-icon">👨‍🏫</span>
+            <span class="nav-item-text">教师管理</span>
+          </a>
+          <a href="students.html" class="nav-item">
+            <span class="nav-item-icon">👦</span>
+            <span class="nav-item-text">学生管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">日常运营</div>
+          <a href="attendance.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-text">签到管理</span>
+          </a>
+          <a href="homework.html" class="nav-item">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-text">作业管理</span>
+          </a>
+          <a href="meals.html" class="nav-item active">
+            <span class="nav-item-icon">🍱</span>
+            <span class="nav-item-text">生活管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">成长追踪</div>
+          <a href="growth.html" class="nav-item">
+            <span class="nav-item-icon">📈</span>
+            <span class="nav-item-text">成长档案</span>
+          </a>
+          <a href="points.html" class="nav-item">
+            <span class="nav-item-icon">⭐</span>
+            <span class="nav-item-text">积分管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">系统设置</div>
+          <a href="roles.html" class="nav-item">
+            <span class="nav-item-icon">👥</span>
+            <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-text">系统配置</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="nav-item" onclick="window.location.href='../index.html'">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text">返回首页</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="header-left">
+          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="breadcrumb">
+            <span class="breadcrumb-item">日常运营</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">生活管理</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-action">🔔<span class="badge-dot"></span></div>
+          <div class="header-action">💬</div>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <div class="user-name">张管理</div>
+              <div class="user-role">超级管理员</div>
+            </div>
+            <div class="avatar">张</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="admin-content">
+        <div class="page-header flex justify-between items-center">
+          <div>
+            <h1 class="page-title">生活管理</h1>
+            <p class="page-subtitle">管理学生用餐、午休等日常生活</p>
+          </div>
+          <button class="btn btn-primary" onclick="openModal('addMenu')">
+            + 添加菜单
+          </button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex gap-sm mb-lg">
+          <button class="btn btn-primary">🍱 餐饮管理</button>
+          <button class="btn btn-secondary">😴 午休管理</button>
+          <button class="btn btn-secondary">🏃 活动管理</button>
+        </div>
+
+        <!-- Today's Menu -->
+        <div class="data-card mb-lg">
+          <div class="data-card-header">
+            <h3 class="data-card-title">今日菜单 - 2026年1月9日</h3>
+            <button class="btn btn-ghost btn-sm">编辑菜单</button>
+          </div>
+          <div class="data-card-body">
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--spacing-md);">
+              <!-- Lunch -->
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                <div class="flex items-center gap-sm mb-md">
+                  <div class="stat-icon orange" style="width: 40px; height: 40px;">🍱</div>
+                  <div>
+                    <div class="font-medium">午餐</div>
+                    <div class="text-small text-secondary">11:30 - 12:30</div>
+                  </div>
+                </div>
+                <div class="mb-sm">
+                  <span class="text-secondary">主食：</span>
+                  <span>米饭/馒头</span>
+                </div>
+                <div class="mb-sm">
+                  <span class="text-secondary">荤菜：</span>
+                  <span>红烧排骨、蒜香鸡翅</span>
+                </div>
+                <div class="mb-sm">
+                  <span class="text-secondary">素菜：</span>
+                  <span>清炒西兰花、番茄炒蛋</span>
+                </div>
+                <div class="mb-sm">
+                  <span class="text-secondary">汤品：</span>
+                  <span>紫菜蛋花汤</span>
+                </div>
+                <div>
+                  <span class="text-secondary">水果：</span>
+                  <span>苹果/橙子</span>
+                </div>
+              </div>
+
+              <!-- Afternoon Snack -->
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                <div class="flex items-center gap-sm mb-md">
+                  <div class="stat-icon green" style="width: 40px; height: 40px;">🥛</div>
+                  <div>
+                    <div class="font-medium">下午茶点</div>
+                    <div class="text-small text-secondary">15:00 - 15:30</div>
+                  </div>
+                </div>
+                <div class="mb-sm">
+                  <span class="text-secondary">点心：</span>
+                  <span>蛋糕/饼干</span>
+                </div>
+                <div class="mb-sm">
+                  <span class="text-secondary">饮品：</span>
+                  <span>牛奶/豆浆</span>
+                </div>
+                <div>
+                  <span class="text-secondary">水果：</span>
+                  <span>香蕉</span>
+                </div>
+              </div>
+
+              <!-- Dinner -->
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                <div class="flex items-center gap-sm mb-md">
+                  <div class="stat-icon blue" style="width: 40px; height: 40px;">🍲</div>
+                  <div>
+                    <div class="font-medium">晚餐</div>
+                    <div class="text-small text-secondary">17:30 - 18:30</div>
+                  </div>
+                </div>
+                <div class="mb-sm">
+                  <span class="text-secondary">主食：</span>
+                  <span>面条/米饭</span>
+                </div>
+                <div class="mb-sm">
+                  <span class="text-secondary">荤菜：</span>
+                  <span>糖醋里脊、清蒸鱼</span>
+                </div>
+                <div class="mb-sm">
+                  <span class="text-secondary">素菜：</span>
+                  <span>蒜蓉青菜、土豆丝</span>
+                </div>
+                <div>
+                  <span class="text-secondary">汤品：</span>
+                  <span>冬瓜排骨汤</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid mb-lg">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">今日用餐人数</span>
+              <div class="stat-icon blue">👥</div>
+            </div>
+            <div class="stat-value">248</div>
+            <div class="stat-trend up">较昨日 +12</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">特殊饮食</span>
+              <div class="stat-icon orange">⚠️</div>
+            </div>
+            <div class="stat-value">8</div>
+            <div class="stat-trend">过敏/忌口</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">午休人数</span>
+              <div class="stat-icon green">😴</div>
+            </div>
+            <div class="stat-value">220</div>
+            <div class="stat-trend">12:30-14:00</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">本周满意度</span>
+              <div class="stat-icon purple">⭐</div>
+            </div>
+            <div class="stat-value">96%</div>
+            <div class="stat-trend up">+2%</div>
+          </div>
+        </div>
+
+        <!-- Special Diet Students -->
+        <div class="data-card mb-lg">
+          <div class="data-card-header">
+            <h3 class="data-card-title">特殊饮食学生</h3>
+            <button class="btn btn-ghost btn-sm">+ 添加</button>
+          </div>
+          <div class="data-card-body" style="padding: 0;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>学生信息</th>
+                  <th>班级</th>
+                  <th>类型</th>
+                  <th>详情</th>
+                  <th>备注</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #FF7A45;">王</div>
+                      <span class="font-medium">王小红</span>
+                    </div>
+                  </td>
+                  <td>一年级1班</td>
+                  <td><span class="badge badge-error">过敏</span></td>
+                  <td>海鲜过敏</td>
+                  <td>禁食所有海鲜类食品</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">编辑</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #52C41A;">张</div>
+                      <span class="font-medium">张小刚</span>
+                    </div>
+                  </td>
+                  <td>一年级2班</td>
+                  <td><span class="badge badge-warning">忌口</span></td>
+                  <td>不吃辣</td>
+                  <td>所有菜品不加辣椒</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">编辑</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #722ED1;">刘</div>
+                      <span class="font-medium">刘小美</span>
+                    </div>
+                  </td>
+                  <td>二年级1班</td>
+                  <td><span class="badge badge-error">过敏</span></td>
+                  <td>花生过敏</td>
+                  <td>禁食含花生及花生油食品</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">编辑</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #1890FF;">李</div>
+                      <span class="font-medium">李小龙</span>
+                    </div>
+                  </td>
+                  <td>二年级2班</td>
+                  <td><span class="badge badge-primary">素食</span></td>
+                  <td>纯素食</td>
+                  <td>家庭信仰，不食用任何肉类</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">编辑</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Week Menu -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <h3 class="data-card-title">本周菜单安排</h3>
+            <div class="flex gap-sm">
+              <button class="btn btn-ghost btn-sm">‹ 上周</button>
+              <span class="font-medium">1月6日 - 1月10日</span>
+              <button class="btn btn-ghost btn-sm">下周 ›</button>
+            </div>
+          </div>
+          <div class="data-card-body" style="padding: 0;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>午餐</th>
+                  <th>下午茶点</th>
+                  <th>晚餐</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="font-medium">周一</div>
+                    <div class="text-small text-secondary">1月6日</div>
+                  </td>
+                  <td>红烧肉、炒青菜、蛋花汤</td>
+                  <td>牛奶、蛋糕</td>
+                  <td>番茄牛腩、土豆丝</td>
+                  <td><span class="badge badge-gray">已结束</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="font-medium">周二</div>
+                    <div class="text-small text-secondary">1月7日</div>
+                  </td>
+                  <td>糖醋排骨、西兰花、紫菜汤</td>
+                  <td>豆浆、饼干</td>
+                  <td>清蒸鱼、蒜蓉菜心</td>
+                  <td><span class="badge badge-gray">已结束</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="font-medium">周三</div>
+                    <div class="text-small text-secondary">1月8日</div>
+                  </td>
+                  <td>宫保鸡丁、炒豆角、冬瓜汤</td>
+                  <td>酸奶、面包</td>
+                  <td>红烧排骨、凉拌黄瓜</td>
+                  <td><span class="badge badge-gray">已结束</span></td>
+                </tr>
+                <tr style="background: var(--color-primary-light);">
+                  <td>
+                    <div class="font-medium">周四</div>
+                    <div class="text-small text-secondary">1月9日</div>
+                  </td>
+                  <td>红烧排骨、蒜香鸡翅、番茄炒蛋</td>
+                  <td>牛奶、蛋糕</td>
+                  <td>糖醋里脊、清蒸鱼</td>
+                  <td><span class="badge badge-success">进行中</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="font-medium">周五</div>
+                    <div class="text-small text-secondary">1月10日</div>
+                  </td>
+                  <td>咖喱鸡、炒时蔬、玉米汤</td>
+                  <td>豆浆、水果</td>
+                  <td>炸酱面、凉拌豆腐</td>
+                  <td><span class="badge badge-secondary">待开始</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Menu Modal -->
+  <div class="modal-overlay" id="addMenuModal">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 class="modal-title">添加菜单</h3>
+        <div class="modal-close" onclick="closeModal('addMenu')">✕</div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">日期 <span class="text-error">*</span></label>
+          <input type="date" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">餐次 <span class="text-error">*</span></label>
+          <select class="form-select">
+            <option value="">请选择</option>
+            <option value="lunch">午餐</option>
+            <option value="snack">下午茶点</option>
+            <option value="dinner">晚餐</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">主食</label>
+          <input type="text" class="form-input" placeholder="请输入主食">
+        </div>
+        <div class="form-group">
+          <label class="form-label">荤菜</label>
+          <input type="text" class="form-input" placeholder="请输入荤菜，多个用逗号分隔">
+        </div>
+        <div class="form-group">
+          <label class="form-label">素菜</label>
+          <input type="text" class="form-input" placeholder="请输入素菜，多个用逗号分隔">
+        </div>
+        <div class="form-group">
+          <label class="form-label">汤品/饮品</label>
+          <input type="text" class="form-input" placeholder="请输入汤品或饮品">
+        </div>
+        <div class="form-group">
+          <label class="form-label">水果</label>
+          <input type="text" class="form-input" placeholder="请输入水果">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('addMenu')">取消</button>
+        <button class="btn btn-primary">确认添加</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    }
+
+    function openModal(name) {
+      document.getElementById(name + 'Modal').classList.add('open');
+    }
+
+    function closeModal(name) {
+      document.getElementById(name + 'Modal').classList.remove('open');
+    }
+
+    document.querySelectorAll('.modal-overlay').forEach(el => {
+      el.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成长档案 - 托管行业数字化管理系统</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">托</div>
+        <span class="sidebar-title">精准托管平台</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="index.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-text">数据驾驶舱</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">基础管理</div>
+          <a href="stores.html" class="nav-item">
+            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-text">门店管理</span>
+          </a>
+          <a href="classes.html" class="nav-item">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-text">班级管理</span>
+          </a>
+          <a href="teachers.html" class="nav-item">
+            <span class="nav-item-icon">👨‍🏫</span>
+            <span class="nav-item-text">教师管理</span>
+          </a>
+          <a href="students.html" class="nav-item">
+            <span class="nav-item-icon">👦</span>
+            <span class="nav-item-text">学生管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">日常运营</div>
+          <a href="attendance.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-text">签到管理</span>
+          </a>
+          <a href="homework.html" class="nav-item">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-text">作业管理</span>
+          </a>
+          <a href="meals.html" class="nav-item">
+            <span class="nav-item-icon">🍱</span>
+            <span class="nav-item-text">生活管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">成长追踪</div>
+          <a href="growth.html" class="nav-item active">
+            <span class="nav-item-icon">📈</span>
+            <span class="nav-item-text">成长档案</span>
+          </a>
+          <a href="points.html" class="nav-item">
+            <span class="nav-item-icon">⭐</span>
+            <span class="nav-item-text">积分管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">系统设置</div>
+          <a href="roles.html" class="nav-item">
+            <span class="nav-item-icon">👥</span>
+            <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-text">系统配置</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="nav-item" onclick="window.location.href='../index.html'">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text">返回首页</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="header-left">
+          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="breadcrumb">
+            <span class="breadcrumb-item">成长追踪</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">成长档案</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-action">🔔<span class="badge-dot"></span></div>
+          <div class="header-action">💬</div>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <div class="user-name">张管理</div>
+              <div class="user-role">超级管理员</div>
+            </div>
+            <div class="avatar">张</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="admin-content">
+        <div class="page-header flex justify-between items-center">
+          <div>
+            <h1 class="page-title">成长档案</h1>
+            <p class="page-subtitle">记录和追踪学生成长轨迹</p>
+          </div>
+          <div class="flex gap-sm">
+            <button class="btn btn-secondary">📊 生成报告</button>
+            <button class="btn btn-primary">+ 添加记录</button>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid mb-lg">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">本月记录数</span>
+              <div class="stat-icon blue">📝</div>
+            </div>
+            <div class="stat-value">1,256</div>
+            <div class="stat-trend up">+18% 较上月</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">优秀评价</span>
+              <div class="stat-icon green">🌟</div>
+            </div>
+            <div class="stat-value">856</div>
+            <div class="stat-trend">占比 68%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">进步学生</span>
+              <div class="stat-icon orange">📈</div>
+            </div>
+            <div class="stat-value">45</div>
+            <div class="stat-trend up">本月新增</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">成长报告</span>
+              <div class="stat-icon purple">📋</div>
+            </div>
+            <div class="stat-value">12</div>
+            <div class="stat-trend">待发送</div>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar mb-md">
+          <div class="flex gap-md flex-wrap">
+            <select class="form-select" style="width: 150px;">
+              <option value="">全部门店</option>
+              <option value="1">嵩山校区</option>
+              <option value="2">金水校区</option>
+            </select>
+            <select class="form-select" style="width: 150px;">
+              <option value="">全部班级</option>
+              <option value="1">一年级1班</option>
+              <option value="2">一年级2班</option>
+            </select>
+            <select class="form-select" style="width: 150px;">
+              <option value="">记录类型</option>
+              <option value="academic">学业表现</option>
+              <option value="behavior">行为习惯</option>
+              <option value="social">社交能力</option>
+              <option value="physical">体能发展</option>
+            </select>
+            <div class="search-box">
+              <input type="text" class="form-input" placeholder="搜索学生姓名">
+            </div>
+          </div>
+        </div>
+
+        <!-- Growth Records -->
+        <div class="flex gap-lg">
+          <!-- Student List -->
+          <div class="data-card" style="width: 320px; flex-shrink: 0;">
+            <div class="data-card-header">
+              <h3 class="data-card-title">学生列表</h3>
+              <span class="text-secondary">256人</span>
+            </div>
+            <div class="data-card-body" style="padding: 0; max-height: 600px; overflow-y: auto;">
+              <div class="list">
+                <div class="list-item flex items-center gap-sm" style="background: var(--color-primary-light);">
+                  <div class="avatar" style="background: #1890FF;">李</div>
+                  <div class="flex-1">
+                    <div class="font-medium">李小明</div>
+                    <div class="text-small text-secondary">一年级1班</div>
+                  </div>
+                  <span class="badge badge-success">优秀</span>
+                </div>
+                <div class="list-item flex items-center gap-sm">
+                  <div class="avatar" style="background: #FF7A45;">王</div>
+                  <div class="flex-1">
+                    <div class="font-medium">王小红</div>
+                    <div class="text-small text-secondary">一年级1班</div>
+                  </div>
+                  <span class="badge badge-primary">良好</span>
+                </div>
+                <div class="list-item flex items-center gap-sm">
+                  <div class="avatar" style="background: #52C41A;">张</div>
+                  <div class="flex-1">
+                    <div class="font-medium">张小刚</div>
+                    <div class="text-small text-secondary">一年级1班</div>
+                  </div>
+                  <span class="badge badge-warning">进步中</span>
+                </div>
+                <div class="list-item flex items-center gap-sm">
+                  <div class="avatar" style="background: #722ED1;">刘</div>
+                  <div class="flex-1">
+                    <div class="font-medium">刘小美</div>
+                    <div class="text-small text-secondary">一年级1班</div>
+                  </div>
+                  <span class="badge badge-success">优秀</span>
+                </div>
+                <div class="list-item flex items-center gap-sm">
+                  <div class="avatar" style="background: #13C2C2;">陈</div>
+                  <div class="flex-1">
+                    <div class="font-medium">陈小伟</div>
+                    <div class="text-small text-secondary">一年级1班</div>
+                  </div>
+                  <span class="badge badge-secondary">一般</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Growth Detail -->
+          <div class="flex-1">
+            <!-- Student Profile -->
+            <div class="data-card mb-md">
+              <div class="data-card-body">
+                <div class="flex items-center gap-lg">
+                  <div class="avatar" style="width: 80px; height: 80px; font-size: 32px; background: #1890FF;">李</div>
+                  <div class="flex-1">
+                    <h2 style="margin: 0 0 8px 0;">李小明</h2>
+                    <div class="flex gap-md text-secondary">
+                      <span>一年级1班</span>
+                      <span>·</span>
+                      <span>7岁</span>
+                      <span>·</span>
+                      <span>学号: 20250101</span>
+                    </div>
+                    <div class="flex gap-sm mt-sm">
+                      <span class="badge badge-success">学习标兵</span>
+                      <span class="badge badge-primary">进步之星</span>
+                      <span class="badge badge-warning">乐于助人</span>
+                    </div>
+                  </div>
+                  <div class="flex gap-sm">
+                    <button class="btn btn-secondary">查看档案</button>
+                    <button class="btn btn-primary">生成报告</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Growth Dimensions -->
+            <div class="stats-grid mb-md" style="grid-template-columns: repeat(4, 1fr);">
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                <div style="font-size: 24px; margin-bottom: 4px;">📚</div>
+                <div class="text-secondary text-small">学业表现</div>
+                <div class="font-medium" style="color: var(--color-success);">优秀</div>
+              </div>
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                <div style="font-size: 24px; margin-bottom: 4px;">🎯</div>
+                <div class="text-secondary text-small">行为习惯</div>
+                <div class="font-medium" style="color: var(--color-success);">优秀</div>
+              </div>
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                <div style="font-size: 24px; margin-bottom: 4px;">🤝</div>
+                <div class="text-secondary text-small">社交能力</div>
+                <div class="font-medium" style="color: var(--color-primary);">良好</div>
+              </div>
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                <div style="font-size: 24px; margin-bottom: 4px;">🏃</div>
+                <div class="text-secondary text-small">体能发展</div>
+                <div class="font-medium" style="color: var(--color-primary);">良好</div>
+              </div>
+            </div>
+
+            <!-- Recent Records -->
+            <div class="data-card">
+              <div class="data-card-header">
+                <h3 class="data-card-title">成长记录</h3>
+                <div class="flex gap-sm">
+                  <button class="btn btn-ghost btn-sm active">全部</button>
+                  <button class="btn btn-ghost btn-sm">学业</button>
+                  <button class="btn btn-ghost btn-sm">行为</button>
+                  <button class="btn btn-ghost btn-sm">社交</button>
+                </div>
+              </div>
+              <div class="data-card-body" style="padding: 0;">
+                <div class="timeline" style="padding: var(--spacing-md);">
+                  <div class="timeline-item" style="display: flex; gap: var(--spacing-md); padding-bottom: var(--spacing-md); border-left: 2px solid var(--color-border); margin-left: 8px; padding-left: var(--spacing-md);">
+                    <div style="width: 16px; height: 16px; background: var(--color-success); border-radius: 50%; margin-left: -25px; flex-shrink: 0;"></div>
+                    <div class="flex-1">
+                      <div class="flex justify-between mb-xs">
+                        <span class="font-medium">数学测验获得满分</span>
+                        <span class="text-secondary text-small">2026-01-09</span>
+                      </div>
+                      <div class="text-secondary mb-sm">今天的数学小测验，小明表现非常出色，全班唯一的满分！计算准确，思路清晰，继续保持！</div>
+                      <div class="flex gap-xs">
+                        <span class="badge badge-success">学业表现</span>
+                        <span class="badge badge-primary">+10积分</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="timeline-item" style="display: flex; gap: var(--spacing-md); padding-bottom: var(--spacing-md); border-left: 2px solid var(--color-border); margin-left: 8px; padding-left: var(--spacing-md);">
+                    <div style="width: 16px; height: 16px; background: var(--color-primary); border-radius: 50%; margin-left: -25px; flex-shrink: 0;"></div>
+                    <div class="flex-1">
+                      <div class="flex justify-between mb-xs">
+                        <span class="font-medium">主动帮助同学</span>
+                        <span class="text-secondary text-small">2026-01-08</span>
+                      </div>
+                      <div class="text-secondary mb-sm">午休时主动帮助王小红整理书包，乐于助人的品质值得表扬！</div>
+                      <div class="flex gap-xs">
+                        <span class="badge badge-warning">社交能力</span>
+                        <span class="badge badge-primary">+5积分</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="timeline-item" style="display: flex; gap: var(--spacing-md); padding-bottom: var(--spacing-md); border-left: 2px solid var(--color-border); margin-left: 8px; padding-left: var(--spacing-md);">
+                    <div style="width: 16px; height: 16px; background: var(--color-success); border-radius: 50%; margin-left: -25px; flex-shrink: 0;"></div>
+                    <div class="flex-1">
+                      <div class="flex justify-between mb-xs">
+                        <span class="font-medium">作业完成质量高</span>
+                        <span class="text-secondary text-small">2026-01-07</span>
+                      </div>
+                      <div class="text-secondary mb-sm">语文作业书写工整，字迹优美，内容完整，被评为优秀作业展示。</div>
+                      <div class="flex gap-xs">
+                        <span class="badge badge-success">学业表现</span>
+                        <span class="badge badge-primary">+8积分</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="data-card-footer">
+                <button class="btn btn-ghost btn-sm">查看更多记录</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    }
+  </script>
+</body>
+</html>

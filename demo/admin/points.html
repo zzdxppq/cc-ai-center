@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>积分管理 - 托管行业数字化管理系统</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">托</div>
+        <span class="sidebar-title">精准托管平台</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="index.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-text">数据驾驶舱</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">基础管理</div>
+          <a href="stores.html" class="nav-item">
+            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-text">门店管理</span>
+          </a>
+          <a href="classes.html" class="nav-item">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-text">班级管理</span>
+          </a>
+          <a href="teachers.html" class="nav-item">
+            <span class="nav-item-icon">👨‍🏫</span>
+            <span class="nav-item-text">教师管理</span>
+          </a>
+          <a href="students.html" class="nav-item">
+            <span class="nav-item-icon">👦</span>
+            <span class="nav-item-text">学生管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">日常运营</div>
+          <a href="attendance.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-text">签到管理</span>
+          </a>
+          <a href="homework.html" class="nav-item">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-text">作业管理</span>
+          </a>
+          <a href="meals.html" class="nav-item">
+            <span class="nav-item-icon">🍱</span>
+            <span class="nav-item-text">生活管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">成长追踪</div>
+          <a href="growth.html" class="nav-item">
+            <span class="nav-item-icon">📈</span>
+            <span class="nav-item-text">成长档案</span>
+          </a>
+          <a href="points.html" class="nav-item active">
+            <span class="nav-item-icon">⭐</span>
+            <span class="nav-item-text">积分管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">系统设置</div>
+          <a href="roles.html" class="nav-item">
+            <span class="nav-item-icon">👥</span>
+            <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-text">系统配置</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="nav-item" onclick="window.location.href='../index.html'">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text">返回首页</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="header-left">
+          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="breadcrumb">
+            <span class="breadcrumb-item">成长追踪</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">积分管理</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-action">🔔<span class="badge-dot"></span></div>
+          <div class="header-action">💬</div>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <div class="user-name">张管理</div>
+              <div class="user-role">超级管理员</div>
+            </div>
+            <div class="avatar">张</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="admin-content">
+        <div class="page-header flex justify-between items-center">
+          <div>
+            <h1 class="page-title">积分管理</h1>
+            <p class="page-subtitle">管理学生积分和积分商城</p>
+          </div>
+          <div class="flex gap-sm">
+            <button class="btn btn-secondary">🎁 商城管理</button>
+            <button class="btn btn-primary">+ 批量奖励</button>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid mb-lg">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">本月发放积分</span>
+              <div class="stat-icon blue">⭐</div>
+            </div>
+            <div class="stat-value">12,580</div>
+            <div class="stat-trend up">+15% 较上月</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">本月兑换积分</span>
+              <div class="stat-icon green">🎁</div>
+            </div>
+            <div class="stat-value">8,450</div>
+            <div class="stat-trend">兑换率 67%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">积分余额总计</span>
+              <div class="stat-icon orange">💰</div>
+            </div>
+            <div class="stat-value">45,820</div>
+            <div class="stat-trend">全校学生</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">待兑换订单</span>
+              <div class="stat-icon purple">📦</div>
+            </div>
+            <div class="stat-value">23</div>
+            <div class="stat-trend down">需处理</div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex gap-sm mb-lg">
+          <button class="btn btn-primary">⭐ 积分记录</button>
+          <button class="btn btn-secondary">🏆 积分排行</button>
+          <button class="btn btn-secondary">🎁 兑换管理</button>
+          <button class="btn btn-secondary">⚙️ 规则设置</button>
+        </div>
+
+        <!-- Points Rules -->
+        <div class="data-card mb-lg">
+          <div class="data-card-header">
+            <h3 class="data-card-title">积分规则</h3>
+            <button class="btn btn-ghost btn-sm">编辑规则</button>
+          </div>
+          <div class="data-card-body">
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--spacing-md);">
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                <div class="flex items-center gap-sm mb-sm">
+                  <span style="font-size: 20px;">📝</span>
+                  <span class="font-medium">完成作业</span>
+                </div>
+                <div class="text-primary font-medium">+5 积分/次</div>
+              </div>
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                <div class="flex items-center gap-sm mb-sm">
+                  <span style="font-size: 20px;">🌟</span>
+                  <span class="font-medium">优秀作业</span>
+                </div>
+                <div class="text-primary font-medium">+10 积分/次</div>
+              </div>
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                <div class="flex items-center gap-sm mb-sm">
+                  <span style="font-size: 20px;">✅</span>
+                  <span class="font-medium">全勤奖励</span>
+                </div>
+                <div class="text-primary font-medium">+20 积分/周</div>
+              </div>
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                <div class="flex items-center gap-sm mb-sm">
+                  <span style="font-size: 20px;">🤝</span>
+                  <span class="font-medium">乐于助人</span>
+                </div>
+                <div class="text-primary font-medium">+5 积分/次</div>
+              </div>
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                <div class="flex items-center gap-sm mb-sm">
+                  <span style="font-size: 20px;">🎯</span>
+                  <span class="font-medium">课堂表现</span>
+                </div>
+                <div class="text-primary font-medium">+3 积分/次</div>
+              </div>
+              <div style="padding: var(--spacing-md); background: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                <div class="flex items-center gap-sm mb-sm">
+                  <span style="font-size: 20px;">🏆</span>
+                  <span class="font-medium">考试进步</span>
+                </div>
+                <div class="text-primary font-medium">+15 积分/次</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Points Records -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <h3 class="data-card-title">积分记录</h3>
+            <div class="flex gap-sm">
+              <select class="form-select" style="width: 150px;">
+                <option value="">全部班级</option>
+                <option value="1">一年级1班</option>
+                <option value="2">一年级2班</option>
+              </select>
+              <select class="form-select" style="width: 120px;">
+                <option value="">全部类型</option>
+                <option value="earn">获得</option>
+                <option value="spend">消费</option>
+              </select>
+              <input type="text" class="form-input" placeholder="搜索学生" style="width: 150px;">
+            </div>
+          </div>
+          <div class="data-card-body" style="padding: 0;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>学生信息</th>
+                  <th>班级</th>
+                  <th>积分变动</th>
+                  <th>类型</th>
+                  <th>原因</th>
+                  <th>操作人</th>
+                  <th>时间</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #1890FF;">李</div>
+                      <div>
+                        <div class="font-medium">李小明</div>
+                        <div class="text-small text-secondary">余额: 120</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>一年级1班</td>
+                  <td><span class="text-success font-medium">+10</span></td>
+                  <td><span class="badge badge-success">获得</span></td>
+                  <td>数学测验满分</td>
+                  <td>李老师</td>
+                  <td>2026-01-09 14:30</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #FF7A45;">王</div>
+                      <div>
+                        <div class="font-medium">王小红</div>
+                        <div class="text-small text-secondary">余额: 85</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>一年级1班</td>
+                  <td><span class="text-error font-medium">-50</span></td>
+                  <td><span class="badge badge-error">消费</span></td>
+                  <td>兑换文具套装</td>
+                  <td>系统</td>
+                  <td>2026-01-09 12:15</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #52C41A;">张</div>
+                      <div>
+                        <div class="font-medium">张小刚</div>
+                        <div class="text-small text-secondary">余额: 65</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>一年级1班</td>
+                  <td><span class="text-success font-medium">+5</span></td>
+                  <td><span class="badge badge-success">获得</span></td>
+                  <td>完成作业</td>
+                  <td>李老师</td>
+                  <td>2026-01-09 11:00</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #722ED1;">刘</div>
+                      <div>
+                        <div class="font-medium">刘小美</div>
+                        <div class="text-small text-secondary">余额: 150</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>一年级1班</td>
+                  <td><span class="text-success font-medium">+20</span></td>
+                  <td><span class="badge badge-success">获得</span></td>
+                  <td>本周全勤</td>
+                  <td>系统</td>
+                  <td>2026-01-09 08:00</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #13C2C2;">陈</div>
+                      <div>
+                        <div class="font-medium">陈小伟</div>
+                        <div class="text-small text-secondary">余额: 45</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>一年级1班</td>
+                  <td><span class="text-success font-medium">+5</span></td>
+                  <td><span class="badge badge-success">获得</span></td>
+                  <td>帮助同学</td>
+                  <td>王老师</td>
+                  <td>2026-01-08 16:20</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="data-card-footer">
+            <div class="text-secondary">共 256 条记录</div>
+            <div class="pagination">
+              <button class="btn btn-ghost btn-sm" disabled>上一页</button>
+              <button class="btn btn-primary btn-sm">1</button>
+              <button class="btn btn-ghost btn-sm">2</button>
+              <button class="btn btn-ghost btn-sm">3</button>
+              <button class="btn btn-ghost btn-sm">...</button>
+              <button class="btn btn-ghost btn-sm">26</button>
+              <button class="btn btn-ghost btn-sm">下一页</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    }
+  </script>
+</body>
+</html>
