@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>首页 - 家长端</title>
+  <link rel="stylesheet" href="../css/mobile.css">
+</head>
+<body class="mobile-preview">
+  <div class="mobile-container">
+    <!-- Navbar -->
+    <nav class="mobile-navbar" style="background: transparent; border: none; position: absolute; width: 100%; z-index: 10;">
+      <span class="navbar-title" style="color: white;">首页</span>
+      <span class="navbar-action" style="color: white;">🔔</span>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="mobile-page" style="padding-top: 0;">
+      <!-- Status Card -->
+      <div class="status-card" style="padding-top: 60px; border-radius: 0 0 var(--radius-lg) var(--radius-lg);">
+        <div class="status-card-header">
+          <div class="status-avatar">👦</div>
+          <div class="status-info">
+            <h3>李小明</h3>
+            <div class="status-badge">
+              已签到 · 在托中
+            </div>
+          </div>
+        </div>
+        <div class="status-card-body">
+          <div class="status-item">
+            <div class="status-item-value">15:32</div>
+            <div class="status-item-label">签到时间</div>
+          </div>
+          <div class="status-item">
+            <div class="status-item-value">92</div>
+            <div class="status-item-label">今日作业</div>
+          </div>
+          <div class="status-item">
+            <div class="status-item-value">⭐</div>
+            <div class="status-item-label">表现优秀</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions" style="margin-top: var(--spacing-md);">
+        <a href="homework.html" class="quick-action-item">
+          <div class="quick-action-icon blue">📝</div>
+          <span class="quick-action-label">今日作业</span>
+        </a>
+        <a href="growth.html" class="quick-action-item">
+          <div class="quick-action-icon green">📊</div>
+          <span class="quick-action-label">成长档案</span>
+        </a>
+        <a href="messages.html" class="quick-action-item">
+          <div class="quick-action-icon orange">
+            💬
+            <span class="badge-dot">2</span>
+          </div>
+          <span class="quick-action-label">消息</span>
+        </a>
+        <a href="#" class="quick-action-item">
+          <div class="quick-action-icon purple">💰</div>
+          <span class="quick-action-label">缴费</span>
+        </a>
+      </div>
+
+      <!-- Today's Summary -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">今日动态</h3>
+          <span class="section-more">查看更多 ›</span>
+        </div>
+        <div class="card" style="padding: 0;">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-icon checkin">✅</div>
+              <div class="timeline-content">
+                <div class="timeline-title">下午签到</div>
+                <div class="timeline-desc">小明已安全到达托管中心</div>
+                <div class="timeline-time">15:32</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon meal">🍱</div>
+              <div class="timeline-content">
+                <div class="timeline-title">午餐情况</div>
+                <div class="timeline-desc">吃饭很棒，吃了一碗米饭和青菜炒肉</div>
+                <div class="timeline-time">12:30</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon homework">📝</div>
+              <div class="timeline-content">
+                <div class="timeline-title">作业批改完成</div>
+                <div class="timeline-desc">数学作业：92分，书写工整，计算准确</div>
+                <div class="timeline-time">16:45</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon evaluation">⭐</div>
+              <div class="timeline-content">
+                <div class="timeline-title">老师评价</div>
+                <div class="timeline-desc">今天表现很棒，上课认真听讲，积极举手发言</div>
+                <div class="timeline-time">17:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Homework Preview -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">今日作业</h3>
+          <a href="homework.html" class="section-more">全部作业 ›</a>
+        </div>
+        <div class="homework-list" style="padding: 0;">
+          <div class="homework-card">
+            <div class="homework-header">
+              <div class="homework-subject">
+                <div class="subject-icon math">📐</div>
+                <div class="subject-info">
+                  <h4>数学</h4>
+                  <span>李老师 · 已批改</span>
+                </div>
+              </div>
+              <div class="homework-score">92</div>
+            </div>
+            <div class="homework-footer">
+              <span class="homework-comment">书写工整，计算准确</span>
+              <span class="homework-time">16:45</span>
+            </div>
+          </div>
+
+          <div class="homework-card">
+            <div class="homework-header">
+              <div class="homework-subject">
+                <div class="subject-icon chinese">📖</div>
+                <div class="subject-info">
+                  <h4>语文</h4>
+                  <span>王老师 · 批改中</span>
+                </div>
+              </div>
+              <div class="homework-score" style="color: var(--color-text-placeholder);">--</div>
+            </div>
+            <div class="homework-footer">
+              <span class="homework-comment">等待批改...</span>
+              <span class="homework-time">15:50提交</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teacher Message -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">班级通知</h3>
+          <a href="messages.html" class="section-more">更多 ›</a>
+        </div>
+        <div class="card">
+          <div class="flex items-start gap-md">
+            <div class="avatar" style="background: var(--color-primary);">李</div>
+            <div class="flex-1">
+              <div class="flex justify-between mb-xs">
+                <span class="font-medium">李老师</span>
+                <span class="text-small text-placeholder">今天 14:30</span>
+              </div>
+              <p class="text-secondary m-0" style="font-size: 14px;">
+                各位家长好！明天是周五，请记得给孩子带好周末需要的物品。本周作业完成情况整体很好，继续加油！
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <nav class="mobile-tabbar">
+      <a href="index.html" class="tabbar-item active">
+        <span class="tabbar-icon">🏠</span>
+        <span class="tabbar-label">首页</span>
+      </a>
+      <a href="homework.html" class="tabbar-item">
+        <span class="tabbar-icon">📝</span>
+        <span class="tabbar-label">作业</span>
+      </a>
+      <a href="growth.html" class="tabbar-item">
+        <span class="tabbar-icon">📊</span>
+        <span class="tabbar-label">成长</span>
+      </a>
+      <a href="messages.html" class="tabbar-item">
+        <span class="tabbar-icon">💬</span>
+        <span class="tabbar-label">消息</span>
+        <span class="tabbar-badge">2</span>
+      </a>
+      <a href="profile.html" class="tabbar-item">
+        <span class="tabbar-icon">👤</span>
+        <span class="tabbar-label">我的</span>
+      </a>
+    </nav>
+  </div>
+</body>
+</html>

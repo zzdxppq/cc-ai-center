@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>作业情况 - 家长端</title>
+  <link rel="stylesheet" href="../css/mobile.css">
+  <style>
+    .subject-filter {
+      display: flex;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-md);
+      background: var(--color-white);
+      border-bottom: 1px solid var(--color-border-light);
+      overflow-x: auto;
+    }
+    .filter-chip {
+      padding: var(--spacing-xs) var(--spacing-md);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-body);
+      white-space: nowrap;
+      cursor: pointer;
+      background: var(--color-background);
+      color: var(--color-text-secondary);
+      border: 1px solid transparent;
+      transition: all var(--transition-fast);
+    }
+    .filter-chip.active {
+      background: rgba(24, 144, 255, 0.1);
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    .mistake-card {
+      background: rgba(255, 77, 79, 0.05);
+      border: 1px solid rgba(255, 77, 79, 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md);
+      margin: var(--spacing-md);
+    }
+    .mistake-header {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-error);
+      font-weight: var(--font-weight-medium);
+    }
+  </style>
+</head>
+<body class="mobile-preview">
+  <div class="mobile-container">
+    <!-- Navbar -->
+    <nav class="mobile-navbar">
+      <a href="index.html" class="navbar-back">‹ 返回</a>
+      <span class="navbar-title">作业情况</span>
+      <span class="navbar-action">📚</span>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="mobile-page">
+      <!-- Subject Filter -->
+      <div class="subject-filter">
+        <div class="filter-chip active">全部</div>
+        <div class="filter-chip">数学</div>
+        <div class="filter-chip">语文</div>
+        <div class="filter-chip">英语</div>
+        <div class="filter-chip">错题本</div>
+      </div>
+
+      <!-- Stats Summary -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-sm); padding: var(--spacing-md);">
+        <div class="card text-center">
+          <div style="font-size: 24px; font-weight: 600; color: var(--color-primary);">91.5</div>
+          <div class="text-small text-secondary">平均分</div>
+        </div>
+        <div class="card text-center">
+          <div style="font-size: 24px; font-weight: 600; color: var(--color-success);">18</div>
+          <div class="text-small text-secondary">本月作业</div>
+        </div>
+        <div class="card text-center">
+          <div style="font-size: 24px; font-weight: 600; color: var(--color-error);">5</div>
+          <div class="text-small text-secondary">错题数</div>
+        </div>
+      </div>
+
+      <!-- Homework List -->
+      <div class="page-section" style="padding-top: 0;">
+        <div class="section-header">
+          <h3 class="section-title">今日作业</h3>
+        </div>
+        <div class="homework-list" style="padding: 0;">
+          <div class="homework-card">
+            <div class="homework-header">
+              <div class="homework-subject">
+                <div class="subject-icon math">📐</div>
+                <div class="subject-info">
+                  <h4>数学</h4>
+                  <span>李老师 · 已批改</span>
+                </div>
+              </div>
+              <div class="homework-score">92</div>
+            </div>
+            <div class="homework-preview">
+              <div style="padding: 20px; text-align: center; color: var(--color-text-secondary);">
+                📄 点击查看作业详情
+              </div>
+            </div>
+            <div class="homework-footer">
+              <span class="homework-comment">书写工整，计算准确。第3题需要注意审题。</span>
+              <span class="homework-time">16:45</span>
+            </div>
+          </div>
+
+          <div class="homework-card">
+            <div class="homework-header">
+              <div class="homework-subject">
+                <div class="subject-icon chinese">📖</div>
+                <div class="subject-info">
+                  <h4>语文</h4>
+                  <span>王老师 · 批改中</span>
+                </div>
+              </div>
+              <div class="homework-score" style="color: var(--color-text-placeholder);">--</div>
+            </div>
+            <div class="homework-preview">
+              <div style="padding: 20px; text-align: center; color: var(--color-text-placeholder);">
+                ⏳ 等待老师批改
+              </div>
+            </div>
+            <div class="homework-footer">
+              <span class="homework-comment">已提交，等待批改</span>
+              <span class="homework-time">15:50 提交</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mistake Book -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">错题本</h3>
+          <span class="section-more">全部错题 ›</span>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-header">
+            <span>❌</span>
+            <span>今日新增错题</span>
+          </div>
+          <div style="background: var(--color-white); border-radius: var(--radius-sm); padding: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+            <div class="flex justify-between mb-sm">
+              <span class="badge badge-primary">数学</span>
+              <span class="text-small text-placeholder">第3题</span>
+            </div>
+            <p class="text-secondary m-0" style="font-size: 14px;">
+              <strong>题目：</strong>25 + 38 = ?<br>
+              <strong style="color: var(--color-error);">错误答案：</strong>53<br>
+              <strong style="color: var(--color-success);">正确答案：</strong>63<br>
+              <strong>错因分析：</strong>进位计算错误
+            </p>
+          </div>
+          <button class="btn btn-sm btn-ghost" style="width: 100%;">
+            📚 查看全部错题 (5道)
+          </button>
+        </div>
+      </div>
+
+      <!-- Historical Homework -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">历史作业</h3>
+        </div>
+        <div class="homework-list" style="padding: 0;">
+          <div class="homework-card">
+            <div class="homework-header">
+              <div class="homework-subject">
+                <div class="subject-icon english">🔤</div>
+                <div class="subject-info">
+                  <h4>英语</h4>
+                  <span>刘老师 · 1月8日</span>
+                </div>
+              </div>
+              <div class="homework-score">95</div>
+            </div>
+            <div class="homework-footer">
+              <span class="homework-comment">单词拼写正确，语法掌握好</span>
+              <span class="homework-time">昨天</span>
+            </div>
+          </div>
+
+          <div class="homework-card">
+            <div class="homework-header">
+              <div class="homework-subject">
+                <div class="subject-icon math">📐</div>
+                <div class="subject-info">
+                  <h4>数学</h4>
+                  <span>李老师 · 1月8日</span>
+                </div>
+              </div>
+              <div class="homework-score">88</div>
+            </div>
+            <div class="homework-footer">
+              <span class="homework-comment">应用题理解有进步</span>
+              <span class="homework-time">昨天</span>
+            </div>
+          </div>
+
+          <div class="homework-card">
+            <div class="homework-header">
+              <div class="homework-subject">
+                <div class="subject-icon chinese">📖</div>
+                <div class="subject-info">
+                  <h4>语文</h4>
+                  <span>王老师 · 1月7日</span>
+                </div>
+              </div>
+              <div class="homework-score">90</div>
+            </div>
+            <div class="homework-footer">
+              <span class="homework-comment">阅读理解能力提升</span>
+              <span class="homework-time">前天</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <nav class="mobile-tabbar">
+      <a href="index.html" class="tabbar-item">
+        <span class="tabbar-icon">🏠</span>
+        <span class="tabbar-label">首页</span>
+      </a>
+      <a href="homework.html" class="tabbar-item active">
+        <span class="tabbar-icon">📝</span>
+        <span class="tabbar-label">作业</span>
+      </a>
+      <a href="growth.html" class="tabbar-item">
+        <span class="tabbar-icon">📊</span>
+        <span class="tabbar-label">成长</span>
+      </a>
+      <a href="messages.html" class="tabbar-item">
+        <span class="tabbar-icon">💬</span>
+        <span class="tabbar-label">消息</span>
+      </a>
+      <a href="profile.html" class="tabbar-item">
+        <span class="tabbar-icon">👤</span>
+        <span class="tabbar-label">我的</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    // Filter chip click
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', function() {
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

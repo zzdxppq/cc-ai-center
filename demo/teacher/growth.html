@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>成长记录 - 教师端</title>
+  <link rel="stylesheet" href="../css/mobile.css">
+</head>
+<body class="mobile-preview">
+  <div class="mobile-container">
+    <!-- Navbar -->
+    <nav class="mobile-navbar">
+      <a href="index.html" class="navbar-back">‹ 返回</a>
+      <span class="navbar-title">成长记录</span>
+      <span class="navbar-action">📅</span>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="mobile-page">
+      <!-- Date Selector -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: var(--spacing-md); padding: var(--spacing-md); background: var(--color-white);">
+        <button class="btn btn-sm btn-ghost">‹</button>
+        <span class="font-medium">2026年1月9日</span>
+        <button class="btn btn-sm btn-ghost">›</button>
+      </div>
+
+      <!-- Student List for Growth -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">一年级1班</h3>
+          <span class="text-secondary">22名学生</span>
+        </div>
+
+        <div class="card" style="padding: 0;">
+          <div class="list">
+            <div class="list-item flex items-center gap-md">
+              <div class="avatar" style="background: #1890FF;">李</div>
+              <div class="flex-1">
+                <div class="font-medium">李小明</div>
+                <div class="text-small text-secondary">今日已记录 3 条</div>
+              </div>
+              <span class="badge badge-success">已完成</span>
+            </div>
+
+            <div class="list-item flex items-center gap-md">
+              <div class="avatar" style="background: #FF7A45;">王</div>
+              <div class="flex-1">
+                <div class="font-medium">王小红</div>
+                <div class="text-small text-secondary">今日已记录 2 条</div>
+              </div>
+              <span class="badge badge-warning">待完善</span>
+            </div>
+
+            <div class="list-item flex items-center gap-md">
+              <div class="avatar" style="background: #52C41A;">张</div>
+              <div class="flex-1">
+                <div class="font-medium">张小刚</div>
+                <div class="text-small text-secondary">请假中</div>
+              </div>
+              <span class="badge badge-gray">请假</span>
+            </div>
+
+            <div class="list-item flex items-center gap-md">
+              <div class="avatar" style="background: #722ED1;">刘</div>
+              <div class="flex-1">
+                <div class="font-medium">刘小美</div>
+                <div class="text-small text-secondary">今日已记录 3 条</div>
+              </div>
+              <span class="badge badge-success">已完成</span>
+            </div>
+
+            <div class="list-item flex items-center gap-md">
+              <div class="avatar" style="background: #13C2C2;">陈</div>
+              <div class="flex-1">
+                <div class="font-medium">陈小伟</div>
+                <div class="text-small text-secondary">今日未记录</div>
+              </div>
+              <span class="badge badge-error">待记录</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Evaluation -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">快捷评价</h3>
+        </div>
+        <div class="card">
+          <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-sm);">
+            <span class="tag" style="cursor: pointer;">👍 表现优秀</span>
+            <span class="tag" style="cursor: pointer;">📖 认真听讲</span>
+            <span class="tag" style="cursor: pointer;">🙋 积极发言</span>
+            <span class="tag" style="cursor: pointer;">🤝 乐于助人</span>
+            <span class="tag" style="cursor: pointer;">✨ 进步明显</span>
+            <span class="tag" style="cursor: pointer;">💪 继续加油</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAB -->
+    <div class="fab" onclick="addRecord()">+</div>
+
+    <!-- Tab Bar -->
+    <nav class="mobile-tabbar">
+      <a href="index.html" class="tabbar-item">
+        <span class="tabbar-icon">🏠</span>
+        <span class="tabbar-label">工作台</span>
+      </a>
+      <a href="attendance.html" class="tabbar-item">
+        <span class="tabbar-icon">✅</span>
+        <span class="tabbar-label">签到</span>
+      </a>
+      <a href="homework.html" class="tabbar-item">
+        <span class="tabbar-icon">📝</span>
+        <span class="tabbar-label">作业</span>
+      </a>
+      <a href="growth.html" class="tabbar-item active">
+        <span class="tabbar-icon">📊</span>
+        <span class="tabbar-label">成长</span>
+      </a>
+      <a href="profile.html" class="tabbar-item">
+        <span class="tabbar-icon">👤</span>
+        <span class="tabbar-label">我的</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    function addRecord() {
+      alert('添加成长记录\n\n功能演示：\n1. 选择学生\n2. 选择记录类型（评价/照片/视频）\n3. 填写内容\n4. 保存并同步给家长');
+    }
+  </script>
+</body>
+</html>

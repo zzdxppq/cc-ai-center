@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>消息 - 家长端</title>
+  <link rel="stylesheet" href="../css/mobile.css">
+</head>
+<body class="mobile-preview">
+  <div class="mobile-container">
+    <!-- Navbar -->
+    <nav class="mobile-navbar">
+      <span class="navbar-title">消息</span>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="mobile-page">
+      <!-- Message Categories -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-sm); padding: var(--spacing-md); background: var(--color-white);">
+        <div class="quick-action-item">
+          <div class="quick-action-icon blue" style="width: 44px; height: 44px;">
+            📢
+            <span class="badge-dot">1</span>
+          </div>
+          <span class="quick-action-label">班级通知</span>
+        </div>
+        <div class="quick-action-item">
+          <div class="quick-action-icon green" style="width: 44px; height: 44px;">📊</div>
+          <span class="quick-action-label">成长报告</span>
+        </div>
+        <div class="quick-action-item">
+          <div class="quick-action-icon orange" style="width: 44px; height: 44px;">
+            💰
+            <span class="badge-dot">1</span>
+          </div>
+          <span class="quick-action-label">缴费提醒</span>
+        </div>
+        <div class="quick-action-item">
+          <div class="quick-action-icon purple" style="width: 44px; height: 44px;">⚠️</div>
+          <span class="quick-action-label">异常提醒</span>
+        </div>
+      </div>
+
+      <!-- Message List -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">最近消息</h3>
+        </div>
+        <div class="message-list">
+          <div class="message-item message-unread">
+            <div class="message-avatar" style="background: var(--color-primary);">李</div>
+            <div class="message-content">
+              <div class="message-header">
+                <span class="message-sender">李老师</span>
+                <span class="message-time">14:30</span>
+              </div>
+              <div class="message-preview">各位家长好！明天是周五，请记得给孩子带好周末需要的物品...</div>
+            </div>
+          </div>
+
+          <div class="message-item message-unread">
+            <div class="message-avatar" style="background: var(--color-secondary);">💰</div>
+            <div class="message-content">
+              <div class="message-header">
+                <span class="message-sender">缴费提醒</span>
+                <span class="message-time">10:00</span>
+              </div>
+              <div class="message-preview">您的托管费用将于1月15日到期，请及时续费...</div>
+            </div>
+          </div>
+
+          <div class="message-item">
+            <div class="message-avatar" style="background: var(--color-success);">📊</div>
+            <div class="message-content">
+              <div class="message-header">
+                <span class="message-sender">成长报告</span>
+                <span class="message-time">昨天</span>
+              </div>
+              <div class="message-preview">李小明12月成长报告已生成，点击查看详情</div>
+            </div>
+          </div>
+
+          <div class="message-item">
+            <div class="message-avatar" style="background: var(--color-primary);">李</div>
+            <div class="message-content">
+              <div class="message-header">
+                <span class="message-sender">李老师</span>
+                <span class="message-time">1月7日</span>
+              </div>
+              <div class="message-preview">小明今天表现很棒，数学测验得了95分！</div>
+            </div>
+          </div>
+
+          <div class="message-item">
+            <div class="message-avatar" style="background: #722ED1;">📢</div>
+            <div class="message-content">
+              <div class="message-header">
+                <span class="message-sender">系统通知</span>
+                <span class="message-time">1月5日</span>
+              </div>
+              <div class="message-preview">元旦放假通知：1月1日-1月3日放假，1月4日正常托管</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <nav class="mobile-tabbar">
+      <a href="index.html" class="tabbar-item">
+        <span class="tabbar-icon">🏠</span>
+        <span class="tabbar-label">首页</span>
+      </a>
+      <a href="homework.html" class="tabbar-item">
+        <span class="tabbar-icon">📝</span>
+        <span class="tabbar-label">作业</span>
+      </a>
+      <a href="growth.html" class="tabbar-item">
+        <span class="tabbar-icon">📊</span>
+        <span class="tabbar-label">成长</span>
+      </a>
+      <a href="messages.html" class="tabbar-item active">
+        <span class="tabbar-icon">💬</span>
+        <span class="tabbar-label">消息</span>
+      </a>
+      <a href="profile.html" class="tabbar-item">
+        <span class="tabbar-icon">👤</span>
+        <span class="tabbar-label">我的</span>
+      </a>
+    </nav>
+  </div>
+</body>
+</html>

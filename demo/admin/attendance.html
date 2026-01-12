@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>签到管理 - 托管行业数字化管理系统</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <style>
+    .attendance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: var(--spacing-sm);
+    }
+    .attendance-cell {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-white);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .attendance-cell:hover {
+      border-color: var(--color-primary);
+    }
+    .attendance-cell.checked {
+      background: rgba(82, 196, 26, 0.1);
+      border-color: var(--color-success);
+    }
+    .attendance-cell.absent {
+      background: rgba(255, 77, 79, 0.1);
+      border-color: var(--color-error);
+    }
+    .attendance-cell.late {
+      background: rgba(250, 173, 20, 0.1);
+      border-color: var(--color-warning);
+    }
+    .cell-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .cell-name {
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      padding: 0 4px;
+    }
+    .cell-status {
+      font-size: 10px;
+      color: var(--color-text-secondary);
+    }
+    .attendance-cell.checked .cell-status { color: var(--color-success); }
+    .attendance-cell.absent .cell-status { color: var(--color-error); }
+    .attendance-cell.late .cell-status { color: var(--color-warning); }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">托</div>
+        <span class="sidebar-title">精准托管平台</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="index.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-text">数据驾驶舱</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">基础管理</div>
+          <a href="stores.html" class="nav-item">
+            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-text">门店管理</span>
+          </a>
+          <a href="classes.html" class="nav-item">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-text">班级管理</span>
+          </a>
+          <a href="teachers.html" class="nav-item">
+            <span class="nav-item-icon">👨‍🏫</span>
+            <span class="nav-item-text">教师管理</span>
+          </a>
+          <a href="students.html" class="nav-item">
+            <span class="nav-item-icon">👦</span>
+            <span class="nav-item-text">学生管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">日常运营</div>
+          <a href="attendance.html" class="nav-item active">
+            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-text">签到管理</span>
+            <span class="nav-item-badge">3</span>
+          </a>
+          <a href="homework.html" class="nav-item">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-text">作业管理</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-item-icon">🍱</span>
+            <span class="nav-item-text">生活管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">成长追踪</div>
+          <a href="#" class="nav-item">
+            <span class="nav-item-icon">📈</span>
+            <span class="nav-item-text">成长档案</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-item-icon">⭐</span>
+            <span class="nav-item-text">积分管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">系统设置</div>
+          <a href="#" class="nav-item">
+            <span class="nav-item-icon">👥</span>
+            <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-text">系统配置</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="nav-item" onclick="window.location.href='../index.html'">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text">返回首页</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="header-left">
+          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="breadcrumb">
+            <span class="breadcrumb-item">日常运营</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">签到管理</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-action">🔔<span class="badge-dot"></span></div>
+          <div class="header-action">💬</div>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <div class="user-name">张管理</div>
+              <div class="user-role">超级管理员</div>
+            </div>
+            <div class="avatar">张</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="admin-content">
+        <div class="page-header flex justify-between items-center">
+          <div>
+            <h1 class="page-title">签到管理</h1>
+            <p class="page-subtitle">查看和管理学生每日签到签退情况</p>
+          </div>
+          <button class="btn btn-primary">导出报表</button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs mb-lg">
+          <div class="tab-item active">今日签到</div>
+          <div class="tab-item">历史记录</div>
+          <div class="tab-item">签到统计</div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid mb-lg">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">应到人数</span>
+              <div class="stat-icon blue">👦</div>
+            </div>
+            <div class="stat-value">256</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">已签到</span>
+              <div class="stat-icon green">✅</div>
+            </div>
+            <div class="stat-value">247</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">请假</span>
+              <div class="stat-icon orange">📝</div>
+            </div>
+            <div class="stat-value">6</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">缺勤</span>
+              <div class="stat-icon red">❌</div>
+            </div>
+            <div class="stat-value">3</div>
+          </div>
+        </div>
+
+        <!-- Class Attendance Cards -->
+        <div class="data-card mb-lg">
+          <div class="data-card-header">
+            <h3 class="data-card-title">一年级1班</h3>
+            <div class="flex items-center gap-md">
+              <span class="text-secondary">班主任：李老师</span>
+              <span class="badge badge-success">22/22 全勤</span>
+            </div>
+          </div>
+          <div class="data-card-body" style="padding: var(--spacing-md);">
+            <div class="attendance-grid">
+              <div class="attendance-cell checked">
+                <div class="cell-avatar">李</div>
+                <div class="cell-name">李小明</div>
+                <div class="cell-status">15:32</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #FF7A45;">王</div>
+                <div class="cell-name">王小红</div>
+                <div class="cell-status">15:28</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #52C41A;">张</div>
+                <div class="cell-name">张小刚</div>
+                <div class="cell-status">15:35</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #722ED1;">刘</div>
+                <div class="cell-name">刘小美</div>
+                <div class="cell-status">15:30</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #13C2C2;">陈</div>
+                <div class="cell-name">陈小伟</div>
+                <div class="cell-status">15:33</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #EB2F96;">赵</div>
+                <div class="cell-name">赵小芳</div>
+                <div class="cell-status">15:29</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #FA8C16;">黄</div>
+                <div class="cell-name">黄小龙</div>
+                <div class="cell-status">15:31</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #2F54EB;">周</div>
+                <div class="cell-name">周小燕</div>
+                <div class="cell-status">15:34</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-card mb-lg">
+          <div class="data-card-header">
+            <h3 class="data-card-title">二年级2班</h3>
+            <div class="flex items-center gap-md">
+              <span class="text-secondary">班主任：张老师</span>
+              <span class="badge badge-error">20/22 有缺勤</span>
+            </div>
+          </div>
+          <div class="data-card-body" style="padding: var(--spacing-md);">
+            <div class="attendance-grid">
+              <div class="attendance-cell checked">
+                <div class="cell-avatar">吴</div>
+                <div class="cell-name">吴小华</div>
+                <div class="cell-status">15:32</div>
+              </div>
+              <div class="attendance-cell absent">
+                <div class="cell-avatar" style="background: #999;">郑</div>
+                <div class="cell-name">郑小明</div>
+                <div class="cell-status">缺勤</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #52C41A;">孙</div>
+                <div class="cell-name">孙小丽</div>
+                <div class="cell-status">15:35</div>
+              </div>
+              <div class="attendance-cell late">
+                <div class="cell-avatar" style="background: #FAAD14;">马</div>
+                <div class="cell-name">马小强</div>
+                <div class="cell-status">16:05</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #13C2C2;">朱</div>
+                <div class="cell-name">朱小琳</div>
+                <div class="cell-status">15:33</div>
+              </div>
+              <div class="attendance-cell absent">
+                <div class="cell-avatar" style="background: #999;">胡</div>
+                <div class="cell-name">胡小军</div>
+                <div class="cell-status">请假</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #FA8C16;">林</div>
+                <div class="cell-name">林小娟</div>
+                <div class="cell-status">15:31</div>
+              </div>
+              <div class="attendance-cell checked">
+                <div class="cell-avatar" style="background: #2F54EB;">徐</div>
+                <div class="cell-name">徐小峰</div>
+                <div class="cell-status">15:34</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Attendance Alerts -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <h3 class="data-card-title">异常签到提醒</h3>
+            <span class="badge badge-error">3条待处理</span>
+          </div>
+          <div class="data-card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>学生</th>
+                  <th>班级</th>
+                  <th>异常类型</th>
+                  <th>详情</th>
+                  <th>时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar avatar-sm" style="background: #999;">郑</div>
+                      <span>郑小明</span>
+                    </div>
+                  </td>
+                  <td>二年级2班</td>
+                  <td><span class="badge badge-error">缺勤</span></td>
+                  <td>未到校，家长未请假</td>
+                  <td>今日</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">联系家长</button>
+                    <button class="btn btn-ghost btn-sm">标记请假</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar avatar-sm" style="background: #FAAD14;">马</div>
+                      <span>马小强</span>
+                    </div>
+                  </td>
+                  <td>二年级2班</td>
+                  <td><span class="badge badge-warning">迟到</span></td>
+                  <td>签到时间 16:05，迟到35分钟</td>
+                  <td>今日 16:05</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">查看详情</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar avatar-sm" style="background: #52C41A;">张</div>
+                      <span>张小刚</span>
+                    </div>
+                  </td>
+                  <td>二年级1班</td>
+                  <td><span class="badge badge-warning">连续请假</span></td>
+                  <td>已连续请假3天</td>
+                  <td>2026-01-07 起</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">联系家长</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    }
+
+    // Tab switching
+    document.querySelectorAll('.tab-item').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

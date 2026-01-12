@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>成长档案 - 家长端</title>
+  <link rel="stylesheet" href="../css/mobile.css">
+</head>
+<body class="mobile-preview">
+  <div class="mobile-container">
+    <!-- Navbar -->
+    <nav class="mobile-navbar">
+      <a href="index.html" class="navbar-back">‹ 返回</a>
+      <span class="navbar-title">成长档案</span>
+      <span class="navbar-action" onclick="showShareSheet()">↗</span>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="mobile-page">
+      <!-- Calendar Header -->
+      <div class="calendar-header">
+        <button class="calendar-nav-btn" onclick="prevMonth()">‹</button>
+        <span class="calendar-month">2026年1月</span>
+        <button class="calendar-nav-btn" onclick="nextMonth()">›</button>
+      </div>
+
+      <!-- Calendar Grid -->
+      <div class="calendar-grid">
+        <div class="calendar-weekdays">
+          <span>日</span>
+          <span>一</span>
+          <span>二</span>
+          <span>三</span>
+          <span>四</span>
+          <span>五</span>
+          <span>六</span>
+        </div>
+        <div class="calendar-days">
+          <div class="calendar-day other-month">28</div>
+          <div class="calendar-day other-month">29</div>
+          <div class="calendar-day other-month">30</div>
+          <div class="calendar-day other-month">31</div>
+          <div class="calendar-day has-data">1</div>
+          <div class="calendar-day has-data">2</div>
+          <div class="calendar-day">3</div>
+          <div class="calendar-day">4</div>
+          <div class="calendar-day has-data">5</div>
+          <div class="calendar-day has-data">6</div>
+          <div class="calendar-day has-data">7</div>
+          <div class="calendar-day has-data">8</div>
+          <div class="calendar-day today has-data">9</div>
+          <div class="calendar-day">10</div>
+          <div class="calendar-day">11</div>
+          <div class="calendar-day">12</div>
+          <div class="calendar-day">13</div>
+          <div class="calendar-day">14</div>
+          <div class="calendar-day">15</div>
+          <div class="calendar-day">16</div>
+          <div class="calendar-day">17</div>
+          <div class="calendar-day">18</div>
+          <div class="calendar-day">19</div>
+          <div class="calendar-day">20</div>
+          <div class="calendar-day">21</div>
+          <div class="calendar-day">22</div>
+          <div class="calendar-day">23</div>
+          <div class="calendar-day">24</div>
+          <div class="calendar-day">25</div>
+          <div class="calendar-day">26</div>
+          <div class="calendar-day">27</div>
+          <div class="calendar-day">28</div>
+          <div class="calendar-day">29</div>
+          <div class="calendar-day">30</div>
+          <div class="calendar-day">31</div>
+        </div>
+      </div>
+
+      <!-- Growth Summary -->
+      <div class="growth-summary">
+        <div class="growth-date">
+          <div class="growth-date-day">9</div>
+          <div class="growth-date-label">2026年1月 · 周四</div>
+        </div>
+        <div class="growth-stats">
+          <div class="growth-stat">
+            <div class="growth-stat-value">✓</div>
+            <div class="growth-stat-label">出勤</div>
+          </div>
+          <div class="growth-stat">
+            <div class="growth-stat-value">92</div>
+            <div class="growth-stat-label">作业</div>
+          </div>
+          <div class="growth-stat">
+            <div class="growth-stat-value">A</div>
+            <div class="growth-stat-label">表现</div>
+          </div>
+          <div class="growth-stat">
+            <div class="growth-stat-value">+5</div>
+            <div class="growth-stat-label">积分</div>
+          </div>
+        </div>
+        <div class="growth-content">
+          <div class="growth-section">
+            <div class="growth-section-title">
+              <span>✅</span>
+              <span>出勤记录</span>
+            </div>
+            <div class="growth-section-content">
+              签到时间：15:32<br>
+              签退时间：--（在托中）
+            </div>
+          </div>
+
+          <div class="growth-section">
+            <div class="growth-section-title">
+              <span>🍱</span>
+              <span>生活记录</span>
+            </div>
+            <div class="growth-section-content">
+              <strong>午餐：</strong>吃饭很棒，吃了一碗米饭和青菜炒肉<br>
+              <strong>午休：</strong>午休表现好，睡眠时长1.5小时
+            </div>
+          </div>
+
+          <div class="growth-section">
+            <div class="growth-section-title">
+              <span>📝</span>
+              <span>作业情况</span>
+            </div>
+            <div class="growth-section-content">
+              <strong>数学：</strong>92分 - 书写工整，计算准确<br>
+              <strong>语文：</strong>批改中...
+            </div>
+          </div>
+
+          <div class="growth-section">
+            <div class="growth-section-title">
+              <span>⭐</span>
+              <span>老师评价</span>
+            </div>
+            <div class="growth-section-content">
+              今天表现很棒！上课认真听讲，积极举手发言，和同学相处融洽。数学作业完成得很好，继续保持！
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monthly Summary Button -->
+      <div class="page-section">
+        <button class="btn btn-block btn-secondary" onclick="showMonthlySummary()">
+          📊 查看1月成长报告
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <nav class="mobile-tabbar">
+      <a href="index.html" class="tabbar-item">
+        <span class="tabbar-icon">🏠</span>
+        <span class="tabbar-label">首页</span>
+      </a>
+      <a href="homework.html" class="tabbar-item">
+        <span class="tabbar-icon">📝</span>
+        <span class="tabbar-label">作业</span>
+      </a>
+      <a href="growth.html" class="tabbar-item active">
+        <span class="tabbar-icon">📊</span>
+        <span class="tabbar-label">成长</span>
+      </a>
+      <a href="messages.html" class="tabbar-item">
+        <span class="tabbar-icon">💬</span>
+        <span class="tabbar-label">消息</span>
+      </a>
+      <a href="profile.html" class="tabbar-item">
+        <span class="tabbar-icon">👤</span>
+        <span class="tabbar-label">我的</span>
+      </a>
+    </nav>
+
+    <!-- Share FAB -->
+    <div class="fab" onclick="showShareSheet()">↗</div>
+
+    <!-- Share Action Sheet -->
+    <div class="action-sheet-overlay" id="shareSheet">
+      <div class="action-sheet">
+        <div class="action-sheet-header">
+          <div class="action-sheet-title">分享成长记录</div>
+        </div>
+        <div class="action-sheet-item" onclick="shareToWechat()">
+          <span style="margin-right: 8px;">💬</span> 分享给微信好友
+        </div>
+        <div class="action-sheet-item" onclick="shareToMoments()">
+          <span style="margin-right: 8px;">🌐</span> 分享到朋友圈
+        </div>
+        <div class="action-sheet-item" onclick="exportPDF()">
+          <span style="margin-right: 8px;">📄</span> 导出PDF
+        </div>
+        <div class="action-sheet-item" onclick="saveImage()">
+          <span style="margin-right: 8px;">🖼️</span> 保存为图片
+        </div>
+        <div class="action-sheet-cancel" onclick="hideShareSheet()">取消</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Calendar day click
+    document.querySelectorAll('.calendar-day').forEach(day => {
+      day.addEventListener('click', function() {
+        document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('today'));
+        this.classList.add('today');
+      });
+    });
+
+    function prevMonth() {
+      document.querySelector('.calendar-month').textContent = '2025年12月';
+    }
+
+    function nextMonth() {
+      document.querySelector('.calendar-month').textContent = '2026年2月';
+    }
+
+    function showShareSheet() {
+      document.getElementById('shareSheet').classList.add('open');
+    }
+
+    function hideShareSheet() {
+      document.getElementById('shareSheet').classList.remove('open');
+    }
+
+    function shareToWechat() {
+      alert('分享功能演示：\n\n正在生成分享卡片...\n即将打开微信分享');
+      hideShareSheet();
+    }
+
+    function shareToMoments() {
+      alert('分享功能演示：\n\n正在生成分享图片...\n即将打开朋友圈');
+      hideShareSheet();
+    }
+
+    function exportPDF() {
+      alert('导出功能演示：\n\n正在生成PDF文档...\n包含本月完整成长记录');
+      hideShareSheet();
+    }
+
+    function saveImage() {
+      alert('保存功能演示：\n\n正在生成成长记录图片...\n将保存到相册');
+      hideShareSheet();
+    }
+
+    function showMonthlySummary() {
+      alert('月度报告演示：\n\n📊 2026年1月成长报告\n\n出勤天数：9/9 天\n作业平均分：91.5 分\n获得积分：+45\n老师评价：表现优秀\n\n报告将包含详细的统计图表和分析');
+    }
+
+    // Close sheet on overlay click
+    document.getElementById('shareSheet').addEventListener('click', function(e) {
+      if (e.target === this) {
+        hideShareSheet();
+      }
+    });
+  </script>
+</body>
+</html>

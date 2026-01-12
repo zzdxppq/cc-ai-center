@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>签到点名 - 教师端</title>
+  <link rel="stylesheet" href="../css/mobile.css">
+  <style>
+    .mode-switch {
+      display: flex;
+      background: var(--color-background);
+      border-radius: var(--radius-full);
+      padding: 4px;
+      margin: var(--spacing-md);
+    }
+    .mode-switch-item {
+      flex: 1;
+      text-align: center;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-body);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .mode-switch-item.active {
+      background: var(--color-white);
+      box-shadow: var(--shadow-sm);
+      color: var(--color-primary);
+      font-weight: var(--font-weight-medium);
+    }
+    .attendance-summary {
+      display: flex;
+      justify-content: space-around;
+      padding: var(--spacing-md);
+      background: var(--color-white);
+      margin: 0 var(--spacing-md) var(--spacing-md);
+      border-radius: var(--radius-md);
+    }
+    .summary-item {
+      text-align: center;
+    }
+    .summary-value {
+      font-size: 24px;
+      font-weight: var(--font-weight-semibold);
+    }
+    .summary-label {
+      font-size: var(--font-size-small);
+      color: var(--color-text-secondary);
+    }
+    .batch-actions {
+      position: fixed;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 343px;
+      display: flex;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-md);
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      z-index: 50;
+    }
+    .batch-actions .btn {
+      flex: 1;
+    }
+  </style>
+</head>
+<body class="mobile-preview">
+  <div class="mobile-container">
+    <!-- Navbar -->
+    <nav class="mobile-navbar">
+      <a href="index.html" class="navbar-back">‹ 返回</a>
+      <span class="navbar-title">签到点名</span>
+      <span class="navbar-action">📋</span>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="mobile-page" style="padding-bottom: 140px;">
+      <!-- Mode Switch -->
+      <div class="mode-switch">
+        <div class="mode-switch-item active" onclick="switchMode('manual')">手动点名</div>
+        <div class="mode-switch-item" onclick="switchMode('photo')">拍照点名</div>
+      </div>
+
+      <!-- Summary -->
+      <div class="attendance-summary">
+        <div class="summary-item">
+          <div class="summary-value">22</div>
+          <div class="summary-label">应到</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value" style="color: var(--color-success);">19</div>
+          <div class="summary-label">已到</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value" style="color: var(--color-text-placeholder);">3</div>
+          <div class="summary-label">未到</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value" style="color: var(--color-error);">0</div>
+          <div class="summary-label">缺勤</div>
+        </div>
+      </div>
+
+      <!-- Student Grid -->
+      <div class="page-section" style="padding-top: 0;">
+        <div class="section-header">
+          <h3 class="section-title">一年级1班</h3>
+          <span class="badge badge-primary">下午签到</span>
+        </div>
+        <div class="student-grid">
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar">李</div>
+            <div class="student-name">李小明</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #FF7A45;">王</div>
+            <div class="student-name">王小红</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #52C41A;">张</div>
+            <div class="student-name">张小刚</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #722ED1;">刘</div>
+            <div class="student-name">刘小美</div>
+            <div class="student-status pending">未签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #13C2C2;">陈</div>
+            <div class="student-name">陈小伟</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #EB2F96;">赵</div>
+            <div class="student-name">赵小芳</div>
+            <div class="student-status pending">未签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #FA8C16;">黄</div>
+            <div class="student-name">黄小龙</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #2F54EB;">周</div>
+            <div class="student-name">周小燕</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #597EF7;">吴</div>
+            <div class="student-name">吴小华</div>
+            <div class="student-status pending">未签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #73D13D;">郑</div>
+            <div class="student-name">郑小琳</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #FF85C0;">孙</div>
+            <div class="student-name">孙小丽</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #FFC53D;">钱</div>
+            <div class="student-name">钱小明</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #36CFC9;">冯</div>
+            <div class="student-name">冯小杰</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #B37FEB;">韩</div>
+            <div class="student-name">韩小梅</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #FF9C6E;">杨</div>
+            <div class="student-name">杨小鹏</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #69C0FF;">何</div>
+            <div class="student-name">何小雪</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #95DE64;">田</div>
+            <div class="student-name">田小军</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #FF7875;">高</div>
+            <div class="student-name">高小燕</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #5CDBD3;">林</div>
+            <div class="student-name">林小豪</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #D3ADF7;">罗</div>
+            <div class="student-name">罗小英</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #FFD666;">谢</div>
+            <div class="student-name">谢小文</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+          <div class="student-card selected" onclick="toggleStudent(this)">
+            <div class="student-avatar" style="background: #87E8DE;">邓</div>
+            <div class="student-name">邓小强</div>
+            <div class="student-status checked">已签到</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Batch Actions -->
+    <div class="batch-actions">
+      <button class="btn btn-secondary" onclick="markAbsent()">标记缺勤</button>
+      <button class="btn btn-primary" onclick="confirmAttendance()">确认签到</button>
+    </div>
+
+    <!-- Tab Bar -->
+    <nav class="mobile-tabbar">
+      <a href="index.html" class="tabbar-item">
+        <span class="tabbar-icon">🏠</span>
+        <span class="tabbar-label">工作台</span>
+      </a>
+      <a href="attendance.html" class="tabbar-item active">
+        <span class="tabbar-icon">✅</span>
+        <span class="tabbar-label">签到</span>
+      </a>
+      <a href="homework.html" class="tabbar-item">
+        <span class="tabbar-icon">📝</span>
+        <span class="tabbar-label">作业</span>
+      </a>
+      <a href="growth.html" class="tabbar-item">
+        <span class="tabbar-icon">📊</span>
+        <span class="tabbar-label">成长</span>
+      </a>
+      <a href="profile.html" class="tabbar-item">
+        <span class="tabbar-icon">👤</span>
+        <span class="tabbar-label">我的</span>
+      </a>
+    </nav>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">签到成功！已通知家长</div>
+  </div>
+
+  <script>
+    function switchMode(mode) {
+      document.querySelectorAll('.mode-switch-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      if (mode === 'photo') {
+        alert('相机功能演示：\n\n1. 拍摄学生合照\n2. AI自动识别人脸\n3. 匹配学生信息\n4. 自动完成签到');
+      }
+    }
+
+    function toggleStudent(card) {
+      card.classList.toggle('selected');
+      const status = card.querySelector('.student-status');
+      if (card.classList.contains('selected')) {
+        status.textContent = '已签到';
+        status.className = 'student-status checked';
+      } else {
+        status.textContent = '未签到';
+        status.className = 'student-status pending';
+      }
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const total = document.querySelectorAll('.student-card').length;
+      const checked = document.querySelectorAll('.student-card.selected').length;
+      const unchecked = total - checked;
+
+      document.querySelectorAll('.summary-value')[1].textContent = checked;
+      document.querySelectorAll('.summary-value')[2].textContent = unchecked;
+    }
+
+    function markAbsent() {
+      const unchecked = document.querySelectorAll('.student-card:not(.selected)');
+      if (unchecked.length === 0) {
+        alert('没有未签到的学生');
+        return;
+      }
+      unchecked.forEach(card => {
+        card.classList.add('absent');
+        const status = card.querySelector('.student-status');
+        status.textContent = '缺勤';
+        status.className = 'student-status absent';
+      });
+    }
+
+    function confirmAttendance() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

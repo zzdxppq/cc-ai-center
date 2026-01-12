@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学生管理 - 托管行业数字化管理系统</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">托</div>
+        <span class="sidebar-title">精准托管平台</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="index.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-text">数据驾驶舱</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">基础管理</div>
+          <a href="stores.html" class="nav-item">
+            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-text">门店管理</span>
+          </a>
+          <a href="classes.html" class="nav-item">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-text">班级管理</span>
+          </a>
+          <a href="teachers.html" class="nav-item">
+            <span class="nav-item-icon">👨‍🏫</span>
+            <span class="nav-item-text">教师管理</span>
+          </a>
+          <a href="students.html" class="nav-item active">
+            <span class="nav-item-icon">👦</span>
+            <span class="nav-item-text">学生管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">日常运营</div>
+          <a href="attendance.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-text">签到管理</span>
+            <span class="nav-item-badge">3</span>
+          </a>
+          <a href="homework.html" class="nav-item">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-text">作业管理</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-item-icon">🍱</span>
+            <span class="nav-item-text">生活管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">成长追踪</div>
+          <a href="#" class="nav-item">
+            <span class="nav-item-icon">📈</span>
+            <span class="nav-item-text">成长档案</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-item-icon">⭐</span>
+            <span class="nav-item-text">积分管理</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">系统设置</div>
+          <a href="#" class="nav-item">
+            <span class="nav-item-icon">👥</span>
+            <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-text">系统配置</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="nav-item" onclick="window.location.href='../index.html'">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text">返回首页</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="header-left">
+          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="breadcrumb">
+            <span class="breadcrumb-item">基础管理</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">学生管理</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-action">🔔<span class="badge-dot"></span></div>
+          <div class="header-action">💬</div>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <div class="user-name">张管理</div>
+              <div class="user-role">超级管理员</div>
+            </div>
+            <div class="avatar">张</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="admin-content">
+        <div class="page-header flex justify-between items-center">
+          <div>
+            <h1 class="page-title">学生管理</h1>
+            <p class="page-subtitle">管理所有在托学生信息</p>
+          </div>
+          <button class="btn btn-primary" onclick="openModal('addStudent')">
+            + 新增学生
+          </button>
+        </div>
+
+        <!-- Data Card -->
+        <div class="data-card">
+          <!-- Filter Bar -->
+          <div class="filter-bar">
+            <div class="filter-item">
+              <label>班级</label>
+              <select>
+                <option value="">全部班级</option>
+                <option>一年级1班</option>
+                <option>一年级2班</option>
+                <option>二年级1班</option>
+                <option>二年级2班</option>
+                <option>三年级1班</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label>状态</label>
+              <select>
+                <option value="">全部状态</option>
+                <option>在托</option>
+                <option>请假</option>
+                <option>退托</option>
+              </select>
+            </div>
+            <div class="search-input">
+              <span>🔍</span>
+              <input type="text" placeholder="搜索学生姓名/手机号">
+            </div>
+            <button class="btn btn-secondary ml-auto">导出</button>
+          </div>
+
+          <!-- Table -->
+          <div class="data-card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="width: 40px;">
+                    <input type="checkbox">
+                  </th>
+                  <th>学生信息</th>
+                  <th>年级/班级</th>
+                  <th>家长</th>
+                  <th>联系电话</th>
+                  <th>过敏史</th>
+                  <th>状态</th>
+                  <th>入托时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #1890FF;">李</div>
+                      <div>
+                        <div class="font-medium">李小明</div>
+                        <div class="text-small text-secondary">7岁 · 男</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>一年级1班</td>
+                  <td>李先生</td>
+                  <td>138****1234</td>
+                  <td><span class="badge badge-error">花生过敏</span></td>
+                  <td><span class="badge badge-success">在托</span></td>
+                  <td>2025-09-01</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm" onclick="openDrawer()">详情</button>
+                    <button class="btn btn-ghost btn-sm">编辑</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #FF7A45;">王</div>
+                      <div>
+                        <div class="font-medium">王小红</div>
+                        <div class="text-small text-secondary">7岁 · 女</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>一年级1班</td>
+                  <td>王女士</td>
+                  <td>139****5678</td>
+                  <td><span class="text-placeholder">无</span></td>
+                  <td><span class="badge badge-success">在托</span></td>
+                  <td>2025-09-01</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">详情</button>
+                    <button class="btn btn-ghost btn-sm">编辑</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #52C41A;">张</div>
+                      <div>
+                        <div class="font-medium">张小刚</div>
+                        <div class="text-small text-secondary">8岁 · 男</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>二年级1班</td>
+                  <td>张先生</td>
+                  <td>137****9012</td>
+                  <td><span class="badge badge-warning">牛奶不耐受</span></td>
+                  <td><span class="badge badge-warning">请假</span></td>
+                  <td>2024-09-01</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">详情</button>
+                    <button class="btn btn-ghost btn-sm">编辑</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #722ED1;">刘</div>
+                      <div>
+                        <div class="font-medium">刘小美</div>
+                        <div class="text-small text-secondary">8岁 · 女</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>二年级2班</td>
+                  <td>刘女士</td>
+                  <td>136****3456</td>
+                  <td><span class="text-placeholder">无</span></td>
+                  <td><span class="badge badge-success">在托</span></td>
+                  <td>2024-09-01</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">详情</button>
+                    <button class="btn btn-ghost btn-sm">编辑</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <div class="avatar" style="background: #13C2C2;">陈</div>
+                      <div>
+                        <div class="font-medium">陈小伟</div>
+                        <div class="text-small text-secondary">9岁 · 男</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>三年级1班</td>
+                  <td>陈先生</td>
+                  <td>135****7890</td>
+                  <td><span class="text-placeholder">无</span></td>
+                  <td><span class="badge badge-success">在托</span></td>
+                  <td>2023-09-01</td>
+                  <td>
+                    <button class="btn btn-ghost btn-sm">详情</button>
+                    <button class="btn btn-ghost btn-sm">编辑</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Footer -->
+          <div class="data-card-footer">
+            <div class="pagination-info">
+              共 256 条记录，第 1/26 页
+            </div>
+            <div class="pagination">
+              <button class="pagination-btn" disabled>‹</button>
+              <button class="pagination-btn active">1</button>
+              <button class="pagination-btn">2</button>
+              <button class="pagination-btn">3</button>
+              <button class="pagination-btn">...</button>
+              <button class="pagination-btn">26</button>
+              <button class="pagination-btn">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Student Modal -->
+  <div class="modal-overlay" id="addStudentModal">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 class="modal-title">新增学生</h3>
+        <div class="modal-close" onclick="closeModal('addStudent')">✕</div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">学生姓名 <span class="text-error">*</span></label>
+          <input type="text" class="form-input" placeholder="请输入学生姓名">
+        </div>
+        <div class="flex gap-md">
+          <div class="form-group flex-1">
+            <label class="form-label">性别 <span class="text-error">*</span></label>
+            <select class="form-select">
+              <option value="">请选择</option>
+              <option>男</option>
+              <option>女</option>
+            </select>
+          </div>
+          <div class="form-group flex-1">
+            <label class="form-label">出生日期 <span class="text-error">*</span></label>
+            <input type="date" class="form-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">所属班级 <span class="text-error">*</span></label>
+          <select class="form-select">
+            <option value="">请选择班级</option>
+            <option>一年级1班</option>
+            <option>一年级2班</option>
+            <option>二年级1班</option>
+            <option>二年级2班</option>
+          </select>
+        </div>
+        <div class="divider"></div>
+        <h4 class="mb-md">家长信息</h4>
+        <div class="flex gap-md">
+          <div class="form-group flex-1">
+            <label class="form-label">家长姓名 <span class="text-error">*</span></label>
+            <input type="text" class="form-input" placeholder="请输入家长姓名">
+          </div>
+          <div class="form-group flex-1">
+            <label class="form-label">联系电话 <span class="text-error">*</span></label>
+            <input type="tel" class="form-input" placeholder="请输入手机号">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">紧急联系人</label>
+          <input type="text" class="form-input" placeholder="请输入紧急联系人及电话">
+        </div>
+        <div class="divider"></div>
+        <div class="form-group">
+          <label class="form-label">过敏史</label>
+          <textarea class="form-textarea" placeholder="如有过敏史请详细说明，如：花生过敏、牛奶不耐受等" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('addStudent')">取消</button>
+        <button class="btn btn-primary">确认添加</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Detail Drawer -->
+  <div class="drawer-overlay" id="studentDrawer">
+    <div class="drawer">
+      <div class="drawer-header">
+        <h3 class="modal-title">学生详情</h3>
+        <div class="modal-close" onclick="closeDrawer()">✕</div>
+      </div>
+      <div class="drawer-body">
+        <div class="text-center mb-lg">
+          <div class="avatar avatar-xl" style="margin: 0 auto var(--spacing-md); background: #1890FF;">李</div>
+          <h3>李小明</h3>
+          <p class="text-secondary">一年级1班 · 7岁 · 男</p>
+          <span class="badge badge-success">在托</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <h4 class="mb-md">基本信息</h4>
+        <div class="flex justify-between mb-sm">
+          <span class="text-secondary">学生编号</span>
+          <span>STU20250001</span>
+        </div>
+        <div class="flex justify-between mb-sm">
+          <span class="text-secondary">出生日期</span>
+          <span>2018-05-15</span>
+        </div>
+        <div class="flex justify-between mb-sm">
+          <span class="text-secondary">入托时间</span>
+          <span>2025-09-01</span>
+        </div>
+        <div class="flex justify-between mb-sm">
+          <span class="text-secondary">过敏史</span>
+          <span class="text-error">花生过敏</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <h4 class="mb-md">家长信息</h4>
+        <div class="flex justify-between mb-sm">
+          <span class="text-secondary">主要家长</span>
+          <span>李先生（父亲）</span>
+        </div>
+        <div class="flex justify-between mb-sm">
+          <span class="text-secondary">联系电话</span>
+          <span>138****1234</span>
+        </div>
+        <div class="flex justify-between mb-sm">
+          <span class="text-secondary">紧急联系人</span>
+          <span>李女士（母亲）137****5678</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <h4 class="mb-md">本月统计</h4>
+        <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="stat-card" style="padding: var(--spacing-md);">
+            <div class="stat-label">出勤天数</div>
+            <div class="stat-value" style="font-size: 24px;">18/20</div>
+          </div>
+          <div class="stat-card" style="padding: var(--spacing-md);">
+            <div class="stat-label">作业完成率</div>
+            <div class="stat-value" style="font-size: 24px;">95%</div>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-footer flex gap-sm">
+        <button class="btn btn-secondary flex-1">查看成长档案</button>
+        <button class="btn btn-primary flex-1">编辑信息</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    }
+
+    function openModal(name) {
+      document.getElementById(name + 'Modal').classList.add('open');
+    }
+
+    function closeModal(name) {
+      document.getElementById(name + 'Modal').classList.remove('open');
+    }
+
+    function openDrawer() {
+      document.getElementById('studentDrawer').classList.add('open');
+    }
+
+    function closeDrawer() {
+      document.getElementById('studentDrawer').classList.remove('open');
+    }
+
+    // Close modal/drawer when clicking overlay
+    document.querySelectorAll('.modal-overlay, .drawer-overlay').forEach(el => {
+      el.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

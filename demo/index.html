@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>托管行业数字化管理系统 - 演示站点</title>
+  <link rel="stylesheet" href="css/base.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .demo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--spacing-xl);
+    }
+
+    .demo-header {
+      text-align: center;
+      color: white;
+      padding: var(--spacing-xxl) 0;
+    }
+
+    .demo-logo {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacing-lg);
+      font-size: 36px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    .demo-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: var(--spacing-md);
+      color: white;
+    }
+
+    .demo-subtitle {
+      font-size: 18px;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-xl);
+    }
+
+    .demo-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .demo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .card-preview {
+      height: 200px;
+      background: var(--color-background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-preview.admin {
+      background: linear-gradient(135deg, #001529 0%, #003366 100%);
+    }
+
+    .card-preview.teacher {
+      background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%);
+    }
+
+    .card-preview.parent {
+      background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+    }
+
+    .preview-icon {
+      font-size: 64px;
+      opacity: 0.3;
+    }
+
+    .preview-label {
+      position: absolute;
+      bottom: var(--spacing-md);
+      left: var(--spacing-md);
+      color: white;
+      font-size: 14px;
+      background: rgba(0,0,0,0.3);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    .card-content {
+      padding: var(--spacing-lg);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-text-primary);
+    }
+
+    .card-desc {
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.6;
+    }
+
+    .card-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-xs);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .feature-tag {
+      background: var(--color-background);
+      color: var(--color-text-secondary);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: var(--spacing-sm);
+    }
+
+    .card-actions .btn {
+      flex: 1;
+    }
+
+    .demo-footer {
+      text-align: center;
+      color: rgba(255,255,255,0.8);
+      padding: var(--spacing-xxl) 0 var(--spacing-xl);
+      font-size: 14px;
+    }
+
+    .demo-footer a {
+      color: white;
+    }
+
+    .tech-stack {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+    }
+
+    .tech-item {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      padding: var(--spacing-xs) var(--spacing-md);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .demo-title {
+        font-size: 28px;
+      }
+
+      .demo-subtitle {
+        font-size: 16px;
+      }
+
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <header class="demo-header">
+      <div class="demo-logo">🏫</div>
+      <h1 class="demo-title">托管行业数字化管理系统</h1>
+      <p class="demo-subtitle">
+        精准托管数字化平台演示站点<br>
+        覆盖生活照料、学业辅导、素质拓展、成长追踪、家校共育、机构运营、政府监管七大场景
+      </p>
+      <div class="tech-stack">
+        <span class="tech-item">Vue 3</span>
+        <span class="tech-item">微信小程序</span>
+        <span class="tech-item">Spring Cloud</span>
+        <span class="tech-item">MySQL</span>
+        <span class="tech-item">Redis</span>
+      </div>
+    </header>
+
+    <div class="demo-grid">
+      <!-- Admin Web -->
+      <div class="demo-card">
+        <div class="card-preview admin">
+          <span class="preview-icon">📊</span>
+          <span class="preview-label">Web 响应式</span>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">机构管理后台</h2>
+          <p class="card-desc">
+            面向托管机构管理员，提供数据驾驶舱、基础管理、日常运营、成长追踪等功能模块。
+          </p>
+          <div class="card-features">
+            <span class="feature-tag">数据驾驶舱</span>
+            <span class="feature-tag">学生管理</span>
+            <span class="feature-tag">签到统计</span>
+            <span class="feature-tag">作业管理</span>
+            <span class="feature-tag">报表导出</span>
+          </div>
+          <div class="card-actions">
+            <a href="admin/index.html" class="btn btn-primary">进入演示</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teacher Mini Program -->
+      <div class="demo-card">
+        <div class="card-preview teacher">
+          <span class="preview-icon">👨‍🏫</span>
+          <span class="preview-label">微信小程序 H5</span>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">教师端小程序</h2>
+          <p class="card-desc">
+            面向托管教师，提供签到点名、作业批改、成长记录、消息通知等日常工作功能。
+          </p>
+          <div class="card-features">
+            <span class="feature-tag">签到点名</span>
+            <span class="feature-tag">拍照点名</span>
+            <span class="feature-tag">AI批改</span>
+            <span class="feature-tag">成长记录</span>
+            <span class="feature-tag">消息通知</span>
+          </div>
+          <div class="card-actions">
+            <a href="teacher/index.html" class="btn btn-primary">进入演示</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parent Mini Program -->
+      <div class="demo-card">
+        <div class="card-preview parent">
+          <span class="preview-icon">👨‍👩‍👦</span>
+          <span class="preview-label">微信小程序 H5</span>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">家长端小程序</h2>
+          <p class="card-desc">
+            面向学生家长，实时查看孩子在托状态、作业情况、成长档案，与老师便捷沟通。
+          </p>
+          <div class="card-features">
+            <span class="feature-tag">实时状态</span>
+            <span class="feature-tag">作业查看</span>
+            <span class="feature-tag">成长档案</span>
+            <span class="feature-tag">错题本</span>
+            <span class="feature-tag">在线缴费</span>
+          </div>
+          <div class="card-actions">
+            <a href="parent/index.html" class="btn btn-primary">进入演示</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="demo-footer">
+      <p>
+        本演示基于 <a href="../docs/prd.md">PRD文档</a> 和
+        <a href="../docs/front-end-spec.md">UI/UX规格文档</a> 设计
+      </p>
+      <p style="margin-top: var(--spacing-sm); opacity: 0.7;">
+        cc-ai-center · 精准托管数字化平台 · 静态演示版本
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>我的 - 家长端</title>
+  <link rel="stylesheet" href="../css/mobile.css">
+</head>
+<body class="mobile-preview">
+  <div class="mobile-container">
+    <!-- Page Content -->
+    <div class="mobile-page" style="padding-top: 0;">
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <div class="profile-avatar">👨</div>
+        <h2 class="profile-name">李先生</h2>
+        <p class="profile-role">李小明的家长</p>
+      </div>
+
+      <!-- Child Info Card -->
+      <div class="card" style="margin: var(--spacing-md); margin-top: calc(var(--spacing-md) * -1);">
+        <div class="flex items-center gap-md">
+          <div class="avatar avatar-lg" style="background: var(--color-primary);">明</div>
+          <div class="flex-1">
+            <div class="font-medium">李小明</div>
+            <div class="text-small text-secondary">一年级1班 · 7岁</div>
+          </div>
+          <button class="btn btn-sm btn-ghost">切换孩子</button>
+        </div>
+      </div>
+
+      <!-- Menu -->
+      <div class="profile-menu">
+        <div class="profile-menu-item">
+          <div class="profile-menu-left">
+            <div class="profile-menu-icon blue">👤</div>
+            <span>孩子信息</span>
+          </div>
+          <span class="profile-menu-arrow">›</span>
+        </div>
+        <div class="profile-menu-item">
+          <div class="profile-menu-left">
+            <div class="profile-menu-icon green">💰</div>
+            <span>缴费记录</span>
+          </div>
+          <span class="profile-menu-arrow">›</span>
+        </div>
+        <div class="profile-menu-item">
+          <div class="profile-menu-left">
+            <div class="profile-menu-icon orange">⭐</div>
+            <span>积分商城</span>
+          </div>
+          <div class="flex items-center gap-xs">
+            <span class="badge badge-primary">120积分</span>
+            <span class="profile-menu-arrow">›</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-menu">
+        <div class="profile-menu-item">
+          <div class="profile-menu-left">
+            <div class="profile-menu-icon gray">🔔</div>
+            <span>通知设置</span>
+          </div>
+          <span class="profile-menu-arrow">›</span>
+        </div>
+        <div class="profile-menu-item">
+          <div class="profile-menu-left">
+            <div class="profile-menu-icon gray">🔒</div>
+            <span>隐私设置</span>
+          </div>
+          <span class="profile-menu-arrow">›</span>
+        </div>
+        <div class="profile-menu-item">
+          <div class="profile-menu-left">
+            <div class="profile-menu-icon gray">❓</div>
+            <span>帮助与反馈</span>
+          </div>
+          <span class="profile-menu-arrow">›</span>
+        </div>
+        <div class="profile-menu-item">
+          <div class="profile-menu-left">
+            <div class="profile-menu-icon gray">ℹ️</div>
+            <span>关于我们</span>
+          </div>
+          <span class="profile-menu-arrow">›</span>
+        </div>
+      </div>
+
+      <div style="padding: var(--spacing-lg);">
+        <button class="btn btn-block btn-secondary" onclick="logout()">退出登录</button>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <nav class="mobile-tabbar">
+      <a href="index.html" class="tabbar-item">
+        <span class="tabbar-icon">🏠</span>
+        <span class="tabbar-label">首页</span>
+      </a>
+      <a href="homework.html" class="tabbar-item">
+        <span class="tabbar-icon">📝</span>
+        <span class="tabbar-label">作业</span>
+      </a>
+      <a href="growth.html" class="tabbar-item">
+        <span class="tabbar-icon">📊</span>
+        <span class="tabbar-label">成长</span>
+      </a>
+      <a href="messages.html" class="tabbar-item">
+        <span class="tabbar-icon">💬</span>
+        <span class="tabbar-label">消息</span>
+      </a>
+      <a href="profile.html" class="tabbar-item active">
+        <span class="tabbar-icon">👤</span>
+        <span class="tabbar-label">我的</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    function logout() {
+      if (confirm('确定要退出登录吗？')) {
+        window.location.href = '../index.html';
+      }
+    }
+  </script>
+</body>
+</html>
