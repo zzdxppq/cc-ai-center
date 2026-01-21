@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>作业批改 - 教师端</title>
+  <title>AI批改 - 教师端</title>
   <link rel="stylesheet" href="../css/mobile.css">
   <style>
     .subject-tabs {
@@ -28,87 +28,47 @@
       background: var(--color-primary);
       color: var(--color-white);
     }
-    .homework-student-card {
-      background: var(--color-white);
-      margin: var(--spacing-md);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    .homework-student-header {
-      display: flex;
+    .ai-badge {
+      display: inline-flex;
       align-items: center;
-      gap: var(--spacing-md);
-      padding: var(--spacing-md);
-      border-bottom: 1px solid var(--color-border-light);
-    }
-    .homework-image-area {
-      background: var(--color-background);
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: var(--spacing-sm);
-      color: var(--color-text-placeholder);
-      cursor: pointer;
-    }
-    .homework-image-area.has-image {
-      background: #f0f0f0;
-      position: relative;
-    }
-    .homework-image-area img {
-      max-width: 100%;
-      display: block;
-    }
-    .ai-suggestion {
-      background: rgba(24, 144, 255, 0.05);
-      border-left: 3px solid var(--color-primary);
-      padding: var(--spacing-md);
-      margin: var(--spacing-md);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    }
-    .ai-suggestion-header {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-sm);
-      color: var(--color-primary);
-      font-weight: var(--font-weight-medium);
-    }
-    .score-input {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-md);
-      padding: var(--spacing-md);
-      background: var(--color-white);
-    }
-    .score-input input {
-      width: 80px;
-      padding: var(--spacing-sm);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
-      font-size: 20px;
-      font-weight: var(--font-weight-semibold);
-      text-align: center;
-    }
-    .comment-templates {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-xs);
-      padding: 0 var(--spacing-md);
-      margin-bottom: var(--spacing-md);
-    }
-    .comment-template {
-      padding: var(--spacing-xs) var(--spacing-sm);
-      background: var(--color-background);
-      border-radius: var(--radius-full);
-      font-size: var(--font-size-small);
-      color: var(--color-text-secondary);
-      cursor: pointer;
-    }
-    .comment-template:hover {
+      gap: 4px;
+      padding: 2px 8px;
       background: rgba(24, 144, 255, 0.1);
       color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 11px;
+    }
+    .homework-item {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+    .homework-preview-img {
+      width: 100%;
+      height: 150px;
+      background: var(--color-background);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-placeholder);
+      margin-bottom: var(--spacing-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .ai-result-overlay {
+      position: absolute;
+      top: var(--spacing-sm);
+      right: var(--spacing-sm);
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
   </style>
 </head>
@@ -117,147 +77,168 @@
     <!-- Navbar -->
     <nav class="mobile-navbar">
       <a href="index.html" class="navbar-back">‹ 返回</a>
-      <span class="navbar-title">作业批改</span>
-      <span class="navbar-action">📋</span>
+      <span class="navbar-title">AI批改</span>
+      <span class="navbar-action">📷</span>
     </nav>
 
+    <!-- Subject Tabs -->
+    <div class="subject-tabs">
+      <div class="subject-tab active">全部</div>
+      <div class="subject-tab">数学 (8)</div>
+      <div class="subject-tab">语文 (6)</div>
+      <div class="subject-tab">英语 (4)</div>
+    </div>
+
     <!-- Page Content -->
-    <div class="mobile-page">
-      <!-- Subject Tabs -->
-      <div class="subject-tabs">
-        <div class="subject-tab active">数学</div>
-        <div class="subject-tab">语文</div>
-        <div class="subject-tab">英语</div>
-        <div class="subject-tab">科学</div>
-      </div>
-
-      <!-- Progress -->
-      <div style="padding: var(--spacing-md); background: var(--color-white); border-bottom: 1px solid var(--color-border-light);">
-        <div class="flex justify-between mb-sm">
-          <span class="text-secondary">批改进度</span>
-          <span class="font-medium">14/22</span>
+    <div class="mobile-page" style="padding-bottom: 140px;">
+      <!-- AI Feature Info -->
+      <div style="background: linear-gradient(135deg, #1890FF 0%, #40a9ff 100%); padding: var(--spacing-md); margin: var(--spacing-md); border-radius: var(--radius-md); color: white;">
+        <div class="flex items-center gap-sm mb-sm">
+          <span style="font-size: 20px;">🤖</span>
+          <span class="font-medium">AI智能识别</span>
         </div>
-        <div class="progress">
-          <div class="progress-bar" style="width: 64%;"></div>
+        <div style="font-size: 13px; opacity: 0.9;">
+          拍照上传作业，AI自动识别数学/英语客观题对错，您确认后记录成绩
         </div>
       </div>
 
-      <!-- Current Homework -->
-      <div class="homework-student-card">
-        <div class="homework-student-header">
-          <div class="avatar" style="background: #722ED1;">刘</div>
-          <div class="flex-1">
-            <div class="font-medium">刘小美</div>
-            <div class="text-small text-secondary">一年级1班 · 数学作业</div>
-          </div>
-          <span class="badge badge-warning">待批改</span>
+      <!-- Stats -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-sm); padding: 0 var(--spacing-md); margin-bottom: var(--spacing-md);">
+        <div class="card text-center" style="padding: var(--spacing-sm);">
+          <div style="font-size: 20px; font-weight: 600; color: var(--color-warning);">8</div>
+          <div class="text-small text-secondary">待批改</div>
         </div>
-
-        <!-- Homework Image -->
-        <div class="homework-image-area has-image" onclick="uploadImage()">
-          <div style="padding: 20px; text-align: center;">
-            <div style="font-size: 48px; margin-bottom: 8px;">📄</div>
-            <div style="color: var(--color-text-secondary);">作业图片预览区</div>
-            <div style="font-size: 12px; color: var(--color-text-placeholder); margin-top: 8px;">
-              点击查看大图或重新上传
-            </div>
-          </div>
+        <div class="card text-center" style="padding: var(--spacing-sm);">
+          <div style="font-size: 20px; font-weight: 600; color: var(--color-success);">14</div>
+          <div class="text-small text-secondary">已批改</div>
         </div>
-
-        <!-- AI Suggestion -->
-        <div class="ai-suggestion">
-          <div class="ai-suggestion-header">
-            <span>🤖</span>
-            <span>AI 批改建议</span>
-          </div>
-          <div class="text-secondary" style="font-size: 14px;">
-            已识别 10 道题目：<br>
-            ✅ 正确: 8 道<br>
-            ❌ 错误: 2 道 (第3题、第7题)<br>
-            <strong style="color: var(--color-primary);">建议得分: 80分</strong>
-          </div>
-          <div style="margin-top: var(--spacing-sm);">
-            <button class="btn btn-sm btn-primary">采用AI建议</button>
-            <button class="btn btn-sm btn-secondary">手动批改</button>
-          </div>
-        </div>
-
-        <!-- Score Input -->
-        <div class="score-input">
-          <span class="text-secondary">得分</span>
-          <input type="number" value="80" min="0" max="100">
-          <span class="text-secondary">/ 100</span>
-        </div>
-
-        <!-- Comment Templates -->
-        <div style="padding: var(--spacing-md) var(--spacing-md) 0;">
-          <div class="text-secondary text-small mb-sm">快捷评语</div>
-        </div>
-        <div class="comment-templates">
-          <span class="comment-template" onclick="addComment(this)">书写工整</span>
-          <span class="comment-template" onclick="addComment(this)">计算准确</span>
-          <span class="comment-template" onclick="addComment(this)">继续加油</span>
-          <span class="comment-template" onclick="addComment(this)">注意审题</span>
-          <span class="comment-template" onclick="addComment(this)">进步明显</span>
-          <span class="comment-template" onclick="addComment(this)">多多练习</span>
-        </div>
-
-        <!-- Comment Input -->
-        <div style="padding: 0 var(--spacing-md) var(--spacing-md);">
-          <textarea class="form-textarea" id="commentInput" placeholder="添加评语..." rows="3">书写工整，计算准确。第3题和第7题需要注意审题，继续加油！</textarea>
-        </div>
-
-        <!-- Actions -->
-        <div style="display: flex; gap: var(--spacing-sm); padding: var(--spacing-md); border-top: 1px solid var(--color-border-light);">
-          <button class="btn btn-secondary flex-1">上一个</button>
-          <button class="btn btn-primary flex-1" onclick="submitHomework()">提交并下一个</button>
+        <div class="card text-center" style="padding: var(--spacing-sm);">
+          <div style="font-size: 20px; font-weight: 600; color: var(--color-primary);">94%</div>
+          <div class="text-small text-secondary">AI识别率</div>
         </div>
       </div>
 
       <!-- Homework List -->
-      <div class="page-section">
-        <div class="section-header">
-          <h3 class="section-title">待批改列表</h3>
-          <span class="text-secondary">8人待批改</span>
+      <div style="padding: 0 var(--spacing-md);">
+        <div class="section-header" style="margin-bottom: var(--spacing-sm);">
+          <h3 class="section-title">待批改作业</h3>
+          <span class="section-more">筛选 ›</span>
         </div>
-        <div class="card" style="padding: 0;">
-          <div class="list">
-            <div class="list-item flex items-center gap-md" style="background: rgba(24, 144, 255, 0.05);">
-              <div class="avatar avatar-sm" style="background: #722ED1;">刘</div>
-              <div class="flex-1">
-                <div class="font-medium">刘小美</div>
-                <div class="text-small text-secondary">15:30 提交</div>
+
+        <!-- Homework Item 1 -->
+        <div class="homework-item">
+          <div class="flex items-center justify-between mb-sm">
+            <div class="flex items-center gap-sm">
+              <div class="avatar avatar-sm">张</div>
+              <div>
+                <div class="font-medium">张小明</div>
+                <div class="text-small text-secondary">一年级1班</div>
               </div>
-              <span class="badge badge-primary">当前</span>
             </div>
-            <div class="list-item flex items-center gap-md">
-              <div class="avatar avatar-sm" style="background: #EB2F96;">赵</div>
-              <div class="flex-1">
-                <div class="font-medium">赵小芳</div>
-                <div class="text-small text-secondary">15:28 提交</div>
+            <span class="ai-badge">🤖 AI已识别</span>
+          </div>
+          <div class="homework-preview-img">
+            <span>📄 数学作业照片</span>
+            <div class="ai-result-overlay">
+              <span>🤖</span>
+              <span>8/10 正确</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="badge badge-primary">数学</span>
+              <span class="text-small text-secondary" style="margin-left: 8px;">10分钟前上传</span>
+            </div>
+            <button class="btn btn-primary btn-sm">确认批改</button>
+          </div>
+        </div>
+
+        <!-- Homework Item 2 -->
+        <div class="homework-item">
+          <div class="flex items-center justify-between mb-sm">
+            <div class="flex items-center gap-sm">
+              <div class="avatar avatar-sm">王</div>
+              <div>
+                <div class="font-medium">王小红</div>
+                <div class="text-small text-secondary">一年级1班</div>
               </div>
-              <span class="badge badge-warning">待批</span>
             </div>
-            <div class="list-item flex items-center gap-md">
-              <div class="avatar avatar-sm" style="background: #597EF7;">吴</div>
-              <div class="flex-1">
-                <div class="font-medium">吴小华</div>
-                <div class="text-small text-secondary">15:25 提交</div>
+            <span class="ai-badge">🤖 AI已识别</span>
+          </div>
+          <div class="homework-preview-img">
+            <span>📄 英语作业照片</span>
+            <div class="ai-result-overlay">
+              <span>🤖</span>
+              <span>9/10 正确</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="badge badge-success">英语</span>
+              <span class="text-small text-secondary" style="margin-left: 8px;">15分钟前上传</span>
+            </div>
+            <button class="btn btn-primary btn-sm">确认批改</button>
+          </div>
+        </div>
+
+        <!-- Homework Item 3 - Processing -->
+        <div class="homework-item">
+          <div class="flex items-center justify-between mb-sm">
+            <div class="flex items-center gap-sm">
+              <div class="avatar avatar-sm">李</div>
+              <div>
+                <div class="font-medium">李小华</div>
+                <div class="text-small text-secondary">一年级1班</div>
               </div>
-              <span class="badge badge-warning">待批</span>
             </div>
-            <div class="list-item flex items-center gap-md">
-              <div class="avatar avatar-sm" style="background: #FF7875;">高</div>
-              <div class="flex-1">
-                <div class="font-medium">高小燕</div>
-                <div class="text-small text-secondary">15:22 提交</div>
+            <span class="ai-badge" style="background: rgba(250, 173, 20, 0.1); color: var(--color-warning);">⏳ AI识别中</span>
+          </div>
+          <div class="homework-preview-img">
+            <span>📄 数学作业照片</span>
+            <div class="ai-result-overlay" style="background: rgba(250, 173, 20, 0.9);">
+              <span>⏳</span>
+              <span>识别中...</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="badge badge-primary">数学</span>
+              <span class="text-small text-secondary" style="margin-left: 8px;">刚刚上传</span>
+            </div>
+            <button class="btn btn-secondary btn-sm" disabled>等待识别</button>
+          </div>
+        </div>
+
+        <!-- Completed Section -->
+        <div class="section-header" style="margin: var(--spacing-lg) 0 var(--spacing-sm);">
+          <h3 class="section-title">已批改</h3>
+          <span class="section-more">查看全部 ›</span>
+        </div>
+
+        <div class="homework-item" style="opacity: 0.7;">
+          <div class="flex items-center justify-between mb-sm">
+            <div class="flex items-center gap-sm">
+              <div class="avatar avatar-sm">赵</div>
+              <div>
+                <div class="font-medium">赵小军</div>
+                <div class="text-small text-secondary">一年级1班</div>
               </div>
-              <span class="badge badge-warning">待批</span>
             </div>
+            <span class="badge badge-success">已批改</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="badge badge-primary">数学</span>
+              <span style="margin-left: 8px; font-weight: 600; color: var(--color-success);">92分</span>
+            </div>
+            <button class="btn btn-ghost btn-sm">查看详情</button>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Upload FAB -->
+    <div class="fab" style="bottom: 140px;">📷</div>
 
     <!-- Tab Bar -->
     <nav class="mobile-tabbar">
@@ -273,48 +254,15 @@
         <span class="tabbar-icon">📝</span>
         <span class="tabbar-label">作业</span>
       </a>
-      <a href="growth.html" class="tabbar-item">
-        <span class="tabbar-icon">📊</span>
-        <span class="tabbar-label">成长</span>
+      <a href="interest-class.html" class="tabbar-item">
+        <span class="tabbar-icon">🎨</span>
+        <span class="tabbar-label">兴趣班</span>
       </a>
       <a href="profile.html" class="tabbar-item">
         <span class="tabbar-icon">👤</span>
         <span class="tabbar-label">我的</span>
       </a>
     </nav>
-
-    <!-- Toast -->
-    <div class="toast" id="toast">批改已提交</div>
   </div>
-
-  <script>
-    // Tab switching
-    document.querySelectorAll('.subject-tab').forEach(tab => {
-      tab.addEventListener('click', function() {
-        document.querySelectorAll('.subject-tab').forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
-
-    function addComment(el) {
-      const input = document.getElementById('commentInput');
-      const comment = el.textContent;
-      if (!input.value.includes(comment)) {
-        input.value = input.value ? input.value + '，' + comment : comment;
-      }
-    }
-
-    function uploadImage() {
-      alert('相机/相册功能演示：\n\n1. 拍摄作业照片\n2. 从相册选择\n3. AI自动识别答案\n4. 生成批改建议');
-    }
-
-    function submitHomework() {
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2000);
-    }
-  </script>
 </body>
 </html>

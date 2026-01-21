@@ -46,23 +46,29 @@
       <!-- Quick Actions -->
       <div class="quick-actions" style="margin-top: var(--spacing-md);">
         <a href="homework.html" class="quick-action-item">
-          <div class="quick-action-icon blue">📝</div>
+          <div class="quick-action-icon blue">
+            📝
+            <span class="badge-dot">2</span>
+          </div>
           <span class="quick-action-label">今日作业</span>
+        </a>
+        <a href="interest-class.html" class="quick-action-item">
+          <div class="quick-action-icon orange">
+            🎨
+            <span class="badge-dot">1</span>
+          </div>
+          <span class="quick-action-label">兴趣班</span>
         </a>
         <a href="growth.html" class="quick-action-item">
           <div class="quick-action-icon green">📊</div>
           <span class="quick-action-label">成长档案</span>
         </a>
         <a href="messages.html" class="quick-action-item">
-          <div class="quick-action-icon orange">
+          <div class="quick-action-icon purple">
             💬
             <span class="badge-dot">2</span>
           </div>
           <span class="quick-action-label">消息</span>
-        </a>
-        <a href="#" class="quick-action-item">
-          <div class="quick-action-icon purple">💰</div>
-          <span class="quick-action-label">缴费</span>
         </a>
       </div>
 
@@ -83,19 +89,27 @@
               </div>
             </div>
             <div class="timeline-item">
+              <div class="timeline-icon homework">🤖</div>
+              <div class="timeline-content">
+                <div class="timeline-title">作业AI批改完成</div>
+                <div class="timeline-desc">数学作业：92分，AI识别8/10题正确，老师已确认</div>
+                <div class="timeline-time">16:45</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon evaluation">🎨</div>
+              <div class="timeline-content">
+                <div class="timeline-title">绘画班反馈</div>
+                <div class="timeline-desc">今日课程：水彩画基础，表现很棒，色彩运用进步明显</div>
+                <div class="timeline-time">17:15</div>
+              </div>
+            </div>
+            <div class="timeline-item">
               <div class="timeline-icon meal">🍱</div>
               <div class="timeline-content">
                 <div class="timeline-title">午餐情况</div>
                 <div class="timeline-desc">吃饭很棒，吃了一碗米饭和青菜炒肉</div>
                 <div class="timeline-time">12:30</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-icon homework">📝</div>
-              <div class="timeline-content">
-                <div class="timeline-title">作业批改完成</div>
-                <div class="timeline-desc">数学作业：92分，书写工整，计算准确</div>
-                <div class="timeline-time">16:45</div>
               </div>
             </div>
             <div class="timeline-item">
@@ -123,7 +137,10 @@
                 <div class="subject-icon math">📐</div>
                 <div class="subject-info">
                   <h4>数学</h4>
-                  <span>李老师 · 已批改</span>
+                  <span style="display: flex; align-items: center; gap: 4px;">
+                    李老师 · 已批改
+                    <span style="background: rgba(24, 144, 255, 0.1); color: var(--color-primary); font-size: 10px; padding: 1px 4px; border-radius: 4px;">🤖 AI</span>
+                  </span>
                 </div>
               </div>
               <div class="homework-score">92</div>
@@ -135,19 +152,40 @@
           </div>
 
           <div class="homework-card">
-            <div class="homework-header">
-              <div class="homework-subject">
-                <div class="subject-icon chinese">📖</div>
-                <div class="subject-info">
-                  <h4>语文</h4>
-                  <span>王老师 · 批改中</span>
-                </div>
+            <div class="homework-subject">
+              <div class="subject-icon chinese">📖</div>
+              <div class="subject-info">
+                <h4>语文</h4>
+                <span>王老师 · 批改中</span>
               </div>
-              <div class="homework-score" style="color: var(--color-text-placeholder);">--</div>
             </div>
             <div class="homework-footer">
               <span class="homework-comment">等待批改...</span>
               <span class="homework-time">15:50提交</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interest Class Feedback -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">兴趣班反馈</h3>
+          <a href="interest-class.html" class="section-more">查看全部 ›</a>
+        </div>
+        <div class="card">
+          <div class="flex items-start gap-md">
+            <div style="width: 48px; height: 48px; background: rgba(24, 144, 255, 0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">🎨</div>
+            <div class="flex-1">
+              <div class="flex justify-between items-center mb-xs">
+                <span class="font-medium">绘画班</span>
+                <span class="badge badge-success">已签到</span>
+              </div>
+              <div class="text-small text-secondary mb-sm">陈老师 · 今日16:00-17:00</div>
+              <div style="background: var(--color-background-light); border-radius: var(--radius-sm); padding: var(--spacing-sm);">
+                <div class="text-small text-secondary mb-xs">老师评价：</div>
+                <p class="m-0" style="font-size: 13px;">今日学习水彩画基础技法，小明色彩感觉很好，画面构图有创意，继续加油！</p>
+              </div>
             </div>
           </div>
         </div>
@@ -186,14 +224,13 @@
         <span class="tabbar-icon">📝</span>
         <span class="tabbar-label">作业</span>
       </a>
+      <a href="interest-class.html" class="tabbar-item">
+        <span class="tabbar-icon">🎨</span>
+        <span class="tabbar-label">兴趣班</span>
+      </a>
       <a href="growth.html" class="tabbar-item">
         <span class="tabbar-icon">📊</span>
         <span class="tabbar-label">成长</span>
-      </a>
-      <a href="messages.html" class="tabbar-item">
-        <span class="tabbar-icon">💬</span>
-        <span class="tabbar-label">消息</span>
-        <span class="tabbar-badge">2</span>
       </a>
       <a href="profile.html" class="tabbar-item">
         <span class="tabbar-icon">👤</span>

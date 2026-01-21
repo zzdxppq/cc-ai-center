@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>作业管理 - 托管行业数字化管理系统</title>
+  <title>作业管理 - 机构管理后台</title>
   <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
   <div class="admin-layout">
     <!-- Sidebar -->
-    <aside class="admin-sidebar" id="sidebar">
+    <aside class="admin-sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo">托</div>
-        <span class="sidebar-title">精准托管平台</span>
+        <div class="sidebar-logo">🏫</div>
+        <span class="sidebar-title">精准托管</span>
       </div>
-
       <nav class="sidebar-nav">
         <div class="nav-group">
           <a href="index.html" class="nav-item">
@@ -22,11 +21,10 @@
             <span class="nav-item-text">数据驾驶舱</span>
           </a>
         </div>
-
         <div class="nav-group">
           <div class="nav-group-title">基础管理</div>
           <a href="stores.html" class="nav-item">
-            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-icon">🏪</span>
             <span class="nav-item-text">门店管理</span>
           </a>
           <a href="classes.html" class="nav-item">
@@ -42,7 +40,6 @@
             <span class="nav-item-text">学生管理</span>
           </a>
         </div>
-
         <div class="nav-group">
           <div class="nav-group-title">日常运营</div>
           <a href="attendance.html" class="nav-item">
@@ -55,10 +52,13 @@
           </a>
           <a href="meals.html" class="nav-item">
             <span class="nav-item-icon">🍱</span>
-            <span class="nav-item-text">生活管理</span>
+            <span class="nav-item-text">餐谱管理</span>
+          </a>
+          <a href="interest-classes.html" class="nav-item">
+            <span class="nav-item-icon">🎨</span>
+            <span class="nav-item-text">兴趣班管理</span>
           </a>
         </div>
-
         <div class="nav-group">
           <div class="nav-group-title">成长追踪</div>
           <a href="growth.html" class="nav-item">
@@ -70,34 +70,29 @@
             <span class="nav-item-text">积分管理</span>
           </a>
         </div>
-
         <div class="nav-group">
           <div class="nav-group-title">系统设置</div>
           <a href="roles.html" class="nav-item">
-            <span class="nav-item-icon">👥</span>
+            <span class="nav-item-icon">🔐</span>
             <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="branding.html" class="nav-item">
+            <span class="nav-item-icon">🎨</span>
+            <span class="nav-item-text">品牌定制</span>
           </a>
           <a href="settings.html" class="nav-item">
             <span class="nav-item-icon">⚙️</span>
-            <span class="nav-item-text">系统配置</span>
+            <span class="nav-item-text">系统设置</span>
           </a>
         </div>
       </nav>
-
-      <div class="sidebar-footer">
-        <div class="nav-item" onclick="window.location.href='../index.html'">
-          <span class="nav-item-icon">🏠</span>
-          <span class="nav-item-text">返回首页</span>
-        </div>
-      </div>
     </aside>
 
     <!-- Main Content -->
     <main class="admin-main">
-      <!-- Header -->
       <header class="admin-header">
         <div class="header-left">
-          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="toggle-sidebar">☰</div>
           <div class="breadcrumb">
             <span class="breadcrumb-item">日常运营</span>
             <span class="breadcrumb-separator">/</span>
@@ -105,132 +100,112 @@
           </div>
         </div>
         <div class="header-right">
-          <div class="header-action">🔔<span class="badge-dot"></span></div>
-          <div class="header-action">💬</div>
+          <div class="header-action">🔔</div>
           <div class="user-dropdown">
             <div class="user-info">
               <div class="user-name">张管理</div>
               <div class="user-role">超级管理员</div>
             </div>
-            <div class="avatar">张</div>
+            <div class="avatar avatar-sm">张</div>
           </div>
         </div>
       </header>
 
-      <!-- Page Content -->
       <div class="admin-content">
-        <div class="page-header flex justify-between items-center">
+        <div class="page-header">
+          <h1 class="page-title">作业管理</h1>
+          <p class="page-subtitle">AI智能识别批改，支持数学/英语客观题自动判对错</p>
+        </div>
+
+        <div class="alert alert-info" style="margin-bottom: var(--spacing-lg);">
+          <span>🤖</span>
           <div>
-            <h1 class="page-title">作业管理</h1>
-            <p class="page-subtitle">查看和管理学生作业完成情况</p>
-          </div>
-          <div class="flex gap-sm">
-            <button class="btn btn-secondary">📊 导出报表</button>
-            <button class="btn btn-primary">+ 发布作业</button>
+            <strong>AI批改功能说明：</strong>教师拍照上传作业后，系统自动识别数学计算题、英语选择/填空题的对错，生成AI批改建议，教师线下批改后在系统中记录最终成绩。
           </div>
         </div>
 
-        <!-- Date Selector -->
-        <div class="data-card mb-md">
-          <div class="data-card-body">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-md">
-                <button class="btn btn-ghost">‹ 前一天</button>
-                <span class="font-medium" style="font-size: 18px;">2026年1月9日 星期四</span>
-                <button class="btn btn-ghost">后一天 ›</button>
-              </div>
-              <div class="flex gap-sm">
-                <button class="btn btn-secondary btn-sm active">日视图</button>
-                <button class="btn btn-ghost btn-sm">周视图</button>
-                <button class="btn btn-ghost btn-sm">月视图</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stats -->
-        <div class="stats-grid mb-lg">
+        <div class="stats-grid" style="margin-bottom: var(--spacing-lg);">
           <div class="stat-card">
             <div class="stat-card-header">
               <span class="stat-label">今日作业数</span>
               <div class="stat-icon blue">📝</div>
             </div>
             <div class="stat-value">156</div>
-            <div class="stat-trend up">已发布 12 个班级</div>
           </div>
           <div class="stat-card">
             <div class="stat-card-header">
-              <span class="stat-label">已完成</span>
+              <span class="stat-label">已批改</span>
               <div class="stat-icon green">✅</div>
             </div>
-            <div class="stat-value">128</div>
-            <div class="stat-trend up">完成率 82%</div>
+            <div class="stat-value">138</div>
           </div>
           <div class="stat-card">
             <div class="stat-card-header">
-              <span class="stat-label">进行中</span>
+              <span class="stat-label">待批改</span>
               <div class="stat-icon orange">⏳</div>
             </div>
-            <div class="stat-value">20</div>
-            <div class="stat-trend">需督促跟进</div>
+            <div class="stat-value">18</div>
           </div>
           <div class="stat-card">
             <div class="stat-card-header">
-              <span class="stat-label">未开始</span>
-              <div class="stat-icon red">⚠️</div>
+              <span class="stat-label">AI识别率</span>
+              <div class="stat-icon red">🤖</div>
             </div>
-            <div class="stat-value">8</div>
-            <div class="stat-trend down">需重点关注</div>
+            <div class="stat-value">94.2%</div>
           </div>
         </div>
 
-        <!-- Filter Bar -->
-        <div class="filter-bar mb-md">
-          <div class="flex gap-md flex-wrap">
-            <select class="form-select" style="width: 150px;">
-              <option value="">全部门店</option>
-              <option value="1" selected>嵩山校区</option>
-              <option value="2">金水校区</option>
-            </select>
-            <select class="form-select" style="width: 150px;">
-              <option value="">全部年级</option>
-              <option value="1">一年级</option>
-              <option value="2">二年级</option>
-              <option value="3">三年级</option>
-            </select>
-            <select class="form-select" style="width: 150px;">
-              <option value="">全部班级</option>
-              <option value="1">一年级1班</option>
-              <option value="2">一年级2班</option>
-            </select>
-            <select class="form-select" style="width: 150px;">
-              <option value="">全部状态</option>
-              <option value="completed">已完成</option>
-              <option value="in_progress">进行中</option>
-              <option value="not_started">未开始</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Homework Table -->
         <div class="data-card">
           <div class="data-card-header">
-            <h3 class="data-card-title">作业完成情况</h3>
-            <div class="flex gap-sm">
-              <button class="btn btn-ghost btn-sm">批量提醒</button>
+            <h3 class="data-card-title">作业记录</h3>
+            <div class="data-card-actions">
+              <button class="btn btn-secondary btn-sm">导出报表</button>
             </div>
           </div>
-          <div class="data-card-body" style="padding: 0;">
-            <table class="data-table">
+
+          <div class="filter-bar">
+            <div class="filter-item">
+              <label>日期：</label>
+              <input type="date" value="2026-01-21">
+            </div>
+            <div class="filter-item">
+              <label>班级：</label>
+              <select>
+                <option>全部班级</option>
+                <option>一年级1班</option>
+                <option>二年级1班</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label>科目：</label>
+              <select>
+                <option>全部科目</option>
+                <option>数学</option>
+                <option>语文</option>
+                <option>英语</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label>状态：</label>
+              <select>
+                <option>全部</option>
+                <option>待批改</option>
+                <option>已批改</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table class="table">
               <thead>
                 <tr>
-                  <th>学生信息</th>
+                  <th>学生</th>
                   <th>班级</th>
-                  <th>语文</th>
-                  <th>数学</th>
-                  <th>英语</th>
-                  <th>完成进度</th>
-                  <th>教师评价</th>
+                  <th>科目</th>
+                  <th>AI识别</th>
+                  <th>最终成绩</th>
+                  <th>批改教师</th>
+                  <th>状态</th>
                   <th>操作</th>
                 </tr>
               </thead>
@@ -238,235 +213,107 @@
                 <tr>
                   <td>
                     <div class="flex items-center gap-sm">
-                      <div class="avatar" style="background: #1890FF;">李</div>
-                      <div>
-                        <div class="font-medium">李小明</div>
-                        <div class="text-small text-secondary">学号: 20250101</div>
-                      </div>
+                      <div class="avatar avatar-sm">张</div>
+                      <span>张小明</span>
                     </div>
                   </td>
                   <td>一年级1班</td>
-                  <td><span class="badge badge-success">✓ 已完成</span></td>
-                  <td><span class="badge badge-success">✓ 已完成</span></td>
-                  <td><span class="badge badge-success">✓ 已完成</span></td>
+                  <td><span class="badge badge-primary">数学</span></td>
                   <td>
-                    <div class="flex items-center gap-sm">
-                      <div class="progress" style="width: 80px;">
-                        <div class="progress-bar" style="width: 100%;"></div>
-                      </div>
-                      <span class="text-success">100%</span>
+                    <div class="flex items-center gap-xs">
+                      <span>🤖</span>
+                      <span style="color: var(--color-success);">8/10 正确</span>
                     </div>
                   </td>
-                  <td><span class="badge badge-primary">优秀</span></td>
-                  <td>
-                    <button class="btn btn-ghost btn-sm">查看详情</button>
-                  </td>
+                  <td><strong style="color: var(--color-success);">92</strong></td>
+                  <td>李老师</td>
+                  <td><span class="badge badge-success">已批改</span></td>
+                  <td><button class="btn btn-ghost btn-sm">查看详情</button></td>
                 </tr>
                 <tr>
                   <td>
                     <div class="flex items-center gap-sm">
-                      <div class="avatar" style="background: #FF7A45;">王</div>
-                      <div>
-                        <div class="font-medium">王小红</div>
-                        <div class="text-small text-secondary">学号: 20250102</div>
-                      </div>
+                      <div class="avatar avatar-sm">王</div>
+                      <span>王小红</span>
                     </div>
                   </td>
                   <td>一年级1班</td>
-                  <td><span class="badge badge-success">✓ 已完成</span></td>
-                  <td><span class="badge badge-warning">进行中</span></td>
-                  <td><span class="badge badge-success">✓ 已完成</span></td>
+                  <td><span class="badge badge-success">英语</span></td>
                   <td>
-                    <div class="flex items-center gap-sm">
-                      <div class="progress" style="width: 80px;">
-                        <div class="progress-bar" style="width: 66%;"></div>
-                      </div>
-                      <span class="text-warning">66%</span>
+                    <div class="flex items-center gap-xs">
+                      <span>🤖</span>
+                      <span style="color: var(--color-success);">9/10 正确</span>
                     </div>
                   </td>
-                  <td><span class="badge badge-secondary">良好</span></td>
-                  <td>
-                    <button class="btn btn-ghost btn-sm">查看详情</button>
-                  </td>
+                  <td><strong style="color: var(--color-success);">95</strong></td>
+                  <td>李老师</td>
+                  <td><span class="badge badge-success">已批改</span></td>
+                  <td><button class="btn btn-ghost btn-sm">查看详情</button></td>
                 </tr>
                 <tr>
                   <td>
                     <div class="flex items-center gap-sm">
-                      <div class="avatar" style="background: #52C41A;">张</div>
-                      <div>
-                        <div class="font-medium">张小刚</div>
-                        <div class="text-small text-secondary">学号: 20250103</div>
-                      </div>
+                      <div class="avatar avatar-sm">赵</div>
+                      <span>赵小军</span>
                     </div>
                   </td>
                   <td>一年级1班</td>
-                  <td><span class="badge badge-gray">请假</span></td>
-                  <td><span class="badge badge-gray">请假</span></td>
-                  <td><span class="badge badge-gray">请假</span></td>
+                  <td><span class="badge badge-primary">数学</span></td>
                   <td>
-                    <div class="flex items-center gap-sm">
-                      <span class="text-secondary">—</span>
+                    <div class="flex items-center gap-xs">
+                      <span>🤖</span>
+                      <span style="color: var(--color-text-secondary);">识别中...</span>
                     </div>
                   </td>
-                  <td><span class="badge badge-gray">请假</span></td>
-                  <td>
-                    <button class="btn btn-ghost btn-sm">查看详情</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="flex items-center gap-sm">
-                      <div class="avatar" style="background: #722ED1;">刘</div>
-                      <div>
-                        <div class="font-medium">刘小美</div>
-                        <div class="text-small text-secondary">学号: 20250104</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>一年级1班</td>
-                  <td><span class="badge badge-success">✓ 已完成</span></td>
-                  <td><span class="badge badge-success">✓ 已完成</span></td>
-                  <td><span class="badge badge-success">✓ 已完成</span></td>
-                  <td>
-                    <div class="flex items-center gap-sm">
-                      <div class="progress" style="width: 80px;">
-                        <div class="progress-bar" style="width: 100%;"></div>
-                      </div>
-                      <span class="text-success">100%</span>
-                    </div>
-                  </td>
-                  <td><span class="badge badge-primary">优秀</span></td>
-                  <td>
-                    <button class="btn btn-ghost btn-sm">查看详情</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="flex items-center gap-sm">
-                      <div class="avatar" style="background: #13C2C2;">陈</div>
-                      <div>
-                        <div class="font-medium">陈小伟</div>
-                        <div class="text-small text-secondary">学号: 20250105</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>一年级1班</td>
-                  <td><span class="badge badge-error">未开始</span></td>
-                  <td><span class="badge badge-error">未开始</span></td>
-                  <td><span class="badge badge-error">未开始</span></td>
-                  <td>
-                    <div class="flex items-center gap-sm">
-                      <div class="progress" style="width: 80px;">
-                        <div class="progress-bar" style="width: 0%;"></div>
-                      </div>
-                      <span class="text-error">0%</span>
-                    </div>
-                  </td>
-                  <td><span class="badge badge-error">需关注</span></td>
-                  <td>
-                    <div class="flex gap-xs">
-                      <button class="btn btn-warning btn-sm">提醒</button>
-                      <button class="btn btn-ghost btn-sm">详情</button>
-                    </div>
-                  </td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td><span class="badge badge-warning">待批改</span></td>
+                  <td><button class="btn btn-primary btn-sm">批改</button></td>
                 </tr>
               </tbody>
             </table>
           </div>
+
           <div class="data-card-footer">
-            <div class="text-secondary">共 22 条记录</div>
+            <div class="pagination-info">共 156 条记录</div>
             <div class="pagination">
-              <button class="btn btn-ghost btn-sm" disabled>上一页</button>
-              <button class="btn btn-primary btn-sm">1</button>
-              <button class="btn btn-ghost btn-sm">2</button>
-              <button class="btn btn-ghost btn-sm">下一页</button>
+              <button class="pagination-btn" disabled>‹</button>
+              <button class="pagination-btn active">1</button>
+              <button class="pagination-btn">2</button>
+              <button class="pagination-btn">3</button>
+              <button class="pagination-btn">›</button>
             </div>
           </div>
         </div>
 
-        <!-- Class Summary -->
-        <div class="stats-grid mt-lg" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-          <div class="data-card">
-            <div class="data-card-header">
-              <h3 class="data-card-title">一年级1班</h3>
-              <span class="badge badge-success">完成率 82%</span>
-            </div>
-            <div class="data-card-body">
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">学生总数</span>
-                <span>22人</span>
-              </div>
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">已完成</span>
-                <span class="text-success">18人</span>
-              </div>
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">进行中</span>
-                <span class="text-warning">2人</span>
-              </div>
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">未开始</span>
-                <span class="text-error">1人</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-secondary">请假</span>
-                <span>1人</span>
-              </div>
-            </div>
+        <div class="data-card" style="margin-top: var(--spacing-lg);">
+          <div class="data-card-header">
+            <h3 class="data-card-title">AI批改流程说明</h3>
           </div>
-          <div class="data-card">
-            <div class="data-card-header">
-              <h3 class="data-card-title">一年级2班</h3>
-              <span class="badge badge-success">完成率 90%</span>
-            </div>
-            <div class="data-card-body">
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">学生总数</span>
-                <span>20人</span>
+          <div class="data-card-body" style="padding: var(--spacing-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
+              <div style="flex: 1;">
+                <div style="width: 64px; height: 64px; background: rgba(24, 144, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm); font-size: 28px;">📷</div>
+                <div class="font-medium">1. 教师拍照上传</div>
+                <div style="font-size: 12px; color: var(--color-text-secondary); margin-top: 4px;">拍摄学生作业照片</div>
               </div>
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">已完成</span>
-                <span class="text-success">18人</span>
+              <div style="color: var(--color-text-placeholder); font-size: 24px;">→</div>
+              <div style="flex: 1;">
+                <div style="width: 64px; height: 64px; background: rgba(82, 196, 26, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm); font-size: 28px;">🤖</div>
+                <div class="font-medium">2. AI智能识别</div>
+                <div style="font-size: 12px; color: var(--color-text-secondary); margin-top: 4px;">自动识别客观题对错</div>
               </div>
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">进行中</span>
-                <span class="text-warning">1人</span>
+              <div style="color: var(--color-text-placeholder); font-size: 24px;">→</div>
+              <div style="flex: 1;">
+                <div style="width: 64px; height: 64px; background: rgba(255, 122, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm); font-size: 28px;">✍️</div>
+                <div class="font-medium">3. 线下批改</div>
+                <div style="font-size: 12px; color: var(--color-text-secondary); margin-top: 4px;">教师确认并批改主观题</div>
               </div>
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">未开始</span>
-                <span class="text-error">1人</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-secondary">请假</span>
-                <span>0人</span>
-              </div>
-            </div>
-          </div>
-          <div class="data-card">
-            <div class="data-card-header">
-              <h3 class="data-card-title">二年级1班</h3>
-              <span class="badge badge-warning">完成率 75%</span>
-            </div>
-            <div class="data-card-body">
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">学生总数</span>
-                <span>24人</span>
-              </div>
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">已完成</span>
-                <span class="text-success">18人</span>
-              </div>
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">进行中</span>
-                <span class="text-warning">4人</span>
-              </div>
-              <div class="flex justify-between mb-sm">
-                <span class="text-secondary">未开始</span>
-                <span class="text-error">2人</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-secondary">请假</span>
-                <span>0人</span>
+              <div style="color: var(--color-text-placeholder); font-size: 24px;">→</div>
+              <div style="flex: 1;">
+                <div style="width: 64px; height: 64px; background: rgba(114, 46, 209, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm); font-size: 28px;">📊</div>
+                <div class="font-medium">4. 记录成绩</div>
+                <div style="font-size: 12px; color: var(--color-text-secondary); margin-top: 4px;">系统记录并生成报告</div>
               </div>
             </div>
           </div>
@@ -476,9 +323,9 @@
   </div>
 
   <script>
-    function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('collapsed');
-    }
+    document.querySelector('.toggle-sidebar').addEventListener('click', function() {
+      document.querySelector('.admin-sidebar').classList.toggle('collapsed');
+    });
   </script>
 </body>
 </html>

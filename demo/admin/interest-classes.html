@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>兴趣班管理 - 机构管理后台</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">🏫</div>
+        <span class="sidebar-title">精准托管</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="index.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-text">数据驾驶舱</span>
+          </a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">基础管理</div>
+          <a href="stores.html" class="nav-item">
+            <span class="nav-item-icon">🏪</span>
+            <span class="nav-item-text">门店管理</span>
+          </a>
+          <a href="classes.html" class="nav-item">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-text">班级管理</span>
+          </a>
+          <a href="teachers.html" class="nav-item">
+            <span class="nav-item-icon">👨‍🏫</span>
+            <span class="nav-item-text">教师管理</span>
+          </a>
+          <a href="students.html" class="nav-item">
+            <span class="nav-item-icon">👦</span>
+            <span class="nav-item-text">学生管理</span>
+          </a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">日常运营</div>
+          <a href="attendance.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-text">签到管理</span>
+          </a>
+          <a href="homework.html" class="nav-item">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-text">作业管理</span>
+          </a>
+          <a href="meals.html" class="nav-item">
+            <span class="nav-item-icon">🍱</span>
+            <span class="nav-item-text">餐谱管理</span>
+          </a>
+          <a href="interest-classes.html" class="nav-item active">
+            <span class="nav-item-icon">🎨</span>
+            <span class="nav-item-text">兴趣班管理</span>
+          </a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">成长追踪</div>
+          <a href="growth.html" class="nav-item">
+            <span class="nav-item-icon">📈</span>
+            <span class="nav-item-text">成长档案</span>
+          </a>
+          <a href="points.html" class="nav-item">
+            <span class="nav-item-icon">⭐</span>
+            <span class="nav-item-text">积分管理</span>
+          </a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">系统设置</div>
+          <a href="roles.html" class="nav-item">
+            <span class="nav-item-icon">🔐</span>
+            <span class="nav-item-text">权限管理</span>
+          </a>
+          <a href="branding.html" class="nav-item">
+            <span class="nav-item-icon">🎨</span>
+            <span class="nav-item-text">品牌定制</span>
+          </a>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-text">系统设置</span>
+          </a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <header class="admin-header">
+        <div class="header-left">
+          <div class="toggle-sidebar">☰</div>
+          <div class="breadcrumb">
+            <span class="breadcrumb-item">日常运营</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">兴趣班管理</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-action">🔔</div>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <div class="user-name">张管理</div>
+              <div class="user-role">超级管理员</div>
+            </div>
+            <div class="avatar avatar-sm">张</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-content">
+        <div class="page-header">
+          <h1 class="page-title">兴趣班管理</h1>
+          <p class="page-subtitle">管理兴趣班课程安排、签到记录和学习反馈</p>
+        </div>
+
+        <div class="alert alert-info" style="margin-bottom: var(--spacing-lg);">
+          <span>📝</span>
+          <div>
+            <strong>兴趣班反馈说明：</strong>每节兴趣班课程需要进行签到和学习反馈记录，教师可在课后提交学生的课堂表现、学习进度等反馈信息，家长可在小程序中查看。
+          </div>
+        </div>
+
+        <div class="stats-grid" style="margin-bottom: var(--spacing-lg);">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">兴趣班总数</span>
+              <div class="stat-icon blue">🎨</div>
+            </div>
+            <div class="stat-value">8</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">今日课程</span>
+              <div class="stat-icon green">📅</div>
+            </div>
+            <div class="stat-value">3</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">今日签到</span>
+              <div class="stat-icon orange">✅</div>
+            </div>
+            <div class="stat-value">42</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">待提交反馈</span>
+              <div class="stat-icon red">📝</div>
+            </div>
+            <div class="stat-value">1</div>
+          </div>
+        </div>
+
+        <!-- Today's Schedule -->
+        <div class="data-card" style="margin-bottom: var(--spacing-lg);">
+          <div class="data-card-header">
+            <h3 class="data-card-title">今日课程安排</h3>
+            <span style="font-size: 14px; color: var(--color-text-secondary);">2026年1月21日 星期二</span>
+          </div>
+          <div class="data-card-body" style="padding: 0;">
+            <div class="list">
+              <div class="list-item flex items-center gap-md">
+                <div style="width: 48px; height: 48px; background: rgba(24, 144, 255, 0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">🎨</div>
+                <div class="flex-1">
+                  <div class="font-medium">绘画班</div>
+                  <div style="font-size: 12px; color: var(--color-text-secondary);">16:00-17:00 · 陈老师 · 15名学生</div>
+                </div>
+                <span class="badge badge-success">已完成</span>
+                <button class="btn btn-ghost btn-sm">查看反馈</button>
+              </div>
+              <div class="list-item flex items-center gap-md">
+                <div style="width: 48px; height: 48px; background: rgba(255, 122, 69, 0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">✍️</div>
+                <div class="flex-1">
+                  <div class="font-medium">书法班</div>
+                  <div style="font-size: 12px; color: var(--color-text-secondary);">16:00-17:00 · 赵老师 · 12名学生</div>
+                </div>
+                <span class="badge badge-warning">待提交反馈</span>
+                <button class="btn btn-primary btn-sm">提交反馈</button>
+              </div>
+              <div class="list-item flex items-center gap-md">
+                <div style="width: 48px; height: 48px; background: rgba(82, 196, 26, 0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">🎵</div>
+                <div class="flex-1">
+                  <div class="font-medium">音乐班</div>
+                  <div style="font-size: 12px; color: var(--color-text-secondary);">17:00-18:00 · 林老师 · 10名学生</div>
+                </div>
+                <span class="badge badge-gray">未开始</span>
+                <button class="btn btn-secondary btn-sm" disabled>等待开课</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Feedback Records -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <h3 class="data-card-title">最近反馈记录</h3>
+            <button class="btn btn-secondary btn-sm">查看全部</button>
+          </div>
+          <div class="table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>兴趣班</th>
+                  <th>授课教师</th>
+                  <th>签到人数</th>
+                  <th>反馈状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2026-01-21</td>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <span>🎨</span>
+                      <span>绘画班</span>
+                    </div>
+                  </td>
+                  <td>陈老师</td>
+                  <td>15/15 (100%)</td>
+                  <td><span class="badge badge-success">已提交</span></td>
+                  <td><button class="btn btn-ghost btn-sm">查看</button></td>
+                </tr>
+                <tr>
+                  <td>2026-01-20</td>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <span>💃</span>
+                      <span>舞蹈班</span>
+                    </div>
+                  </td>
+                  <td>林老师</td>
+                  <td>10/10 (100%)</td>
+                  <td><span class="badge badge-success">已提交</span></td>
+                  <td><button class="btn btn-ghost btn-sm">查看</button></td>
+                </tr>
+                <tr>
+                  <td>2026-01-20</td>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <span>✍️</span>
+                      <span>书法班</span>
+                    </div>
+                  </td>
+                  <td>赵老师</td>
+                  <td>11/12 (92%)</td>
+                  <td><span class="badge badge-success">已提交</span></td>
+                  <td><button class="btn btn-ghost btn-sm">查看</button></td>
+                </tr>
+                <tr>
+                  <td>2026-01-19</td>
+                  <td>
+                    <div class="flex items-center gap-sm">
+                      <span>🎨</span>
+                      <span>绘画班</span>
+                    </div>
+                  </td>
+                  <td>陈老师</td>
+                  <td>14/15 (93%)</td>
+                  <td><span class="badge badge-success">已提交</span></td>
+                  <td><button class="btn btn-ghost btn-sm">查看</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.querySelector('.toggle-sidebar').addEventListener('click', function() {
+      document.querySelector('.admin-sidebar').classList.toggle('collapsed');
+    });
+  </script>
+</body>
+</html>

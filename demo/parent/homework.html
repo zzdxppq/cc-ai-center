@@ -30,6 +30,23 @@
       color: var(--color-primary);
       border-color: var(--color-primary);
     }
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      background: rgba(24, 144, 255, 0.1);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 11px;
+    }
+    .ai-result {
+      background: rgba(82, 196, 26, 0.1);
+      border-radius: var(--radius-sm);
+      padding: var(--spacing-sm);
+      margin-top: var(--spacing-sm);
+      font-size: 12px;
+    }
     .mistake-card {
       background: rgba(255, 77, 79, 0.05);
       border: 1px solid rgba(255, 77, 79, 0.2);
@@ -58,6 +75,17 @@
 
     <!-- Page Content -->
     <div class="mobile-page">
+      <!-- AI Feature Info -->
+      <div style="background: linear-gradient(135deg, #1890FF 0%, #40a9ff 100%); padding: var(--spacing-md); margin: var(--spacing-md); border-radius: var(--radius-md); color: white;">
+        <div class="flex items-center gap-sm mb-xs">
+          <span style="font-size: 18px;">🤖</span>
+          <span class="font-medium">AI智能批改</span>
+        </div>
+        <div style="font-size: 12px; opacity: 0.9;">
+          数学/英语客观题由AI自动识别对错，老师确认后记录成绩
+        </div>
+      </div>
+
       <!-- Subject Filter -->
       <div class="subject-filter">
         <div class="filter-chip active">全部</div>
@@ -68,17 +96,21 @@
       </div>
 
       <!-- Stats Summary -->
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-sm); padding: var(--spacing-md);">
-        <div class="card text-center">
-          <div style="font-size: 24px; font-weight: 600; color: var(--color-primary);">91.5</div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-sm); padding: var(--spacing-md);">
+        <div class="card text-center" style="padding: var(--spacing-sm);">
+          <div style="font-size: 20px; font-weight: 600; color: var(--color-primary);">91.5</div>
           <div class="text-small text-secondary">平均分</div>
         </div>
-        <div class="card text-center">
-          <div style="font-size: 24px; font-weight: 600; color: var(--color-success);">18</div>
+        <div class="card text-center" style="padding: var(--spacing-sm);">
+          <div style="font-size: 20px; font-weight: 600; color: var(--color-success);">18</div>
           <div class="text-small text-secondary">本月作业</div>
         </div>
-        <div class="card text-center">
-          <div style="font-size: 24px; font-weight: 600; color: var(--color-error);">5</div>
+        <div class="card text-center" style="padding: var(--spacing-sm);">
+          <div style="font-size: 20px; font-weight: 600; color: var(--color-primary);">94%</div>
+          <div class="text-small text-secondary">AI识别率</div>
+        </div>
+        <div class="card text-center" style="padding: var(--spacing-sm);">
+          <div style="font-size: 20px; font-weight: 600; color: var(--color-error);">5</div>
           <div class="text-small text-secondary">错题数</div>
         </div>
       </div>
@@ -89,20 +121,25 @@
           <h3 class="section-title">今日作业</h3>
         </div>
         <div class="homework-list" style="padding: 0;">
+          <!-- Homework 1 - AI Graded -->
           <div class="homework-card">
             <div class="homework-header">
               <div class="homework-subject">
                 <div class="subject-icon math">📐</div>
                 <div class="subject-info">
                   <h4>数学</h4>
-                  <span>李老师 · 已批改</span>
+                  <span class="flex items-center gap-xs">
+                    李老师 · 已批改
+                    <span class="ai-badge">🤖 AI已识别</span>
+                  </span>
                 </div>
               </div>
               <div class="homework-score">92</div>
             </div>
-            <div class="homework-preview">
-              <div style="padding: 20px; text-align: center; color: var(--color-text-secondary);">
-                📄 点击查看作业详情
+            <div class="ai-result">
+              <div class="flex items-center justify-between">
+                <span>🤖 AI识别结果：<strong style="color: var(--color-success);">8/10 正确</strong></span>
+                <span class="text-secondary">老师已确认</span>
               </div>
             </div>
             <div class="homework-footer">
@@ -111,6 +148,7 @@
             </div>
           </div>
 
+          <!-- Homework 2 - Pending -->
           <div class="homework-card">
             <div class="homework-header">
               <div class="homework-subject">
@@ -132,6 +170,33 @@
               <span class="homework-time">15:50 提交</span>
             </div>
           </div>
+
+          <!-- Homework 3 - AI Processing -->
+          <div class="homework-card">
+            <div class="homework-header">
+              <div class="homework-subject">
+                <div class="subject-icon english">🔤</div>
+                <div class="subject-info">
+                  <h4>英语</h4>
+                  <span class="flex items-center gap-xs">
+                    刘老师
+                    <span class="ai-badge" style="background: rgba(250, 173, 20, 0.1); color: var(--color-warning);">⏳ AI识别中</span>
+                  </span>
+                </div>
+              </div>
+              <div class="homework-score" style="color: var(--color-text-placeholder);">--</div>
+            </div>
+            <div style="background: rgba(250, 173, 20, 0.1); border-radius: var(--radius-sm); padding: var(--spacing-sm); margin-top: var(--spacing-sm); font-size: 12px;">
+              <div class="flex items-center gap-xs">
+                <span>⏳</span>
+                <span>AI正在识别作业中，请稍候...</span>
+              </div>
+            </div>
+            <div class="homework-footer">
+              <span class="homework-comment">刚刚提交</span>
+              <span class="homework-time">17:00 提交</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -145,6 +210,7 @@
           <div class="mistake-header">
             <span>❌</span>
             <span>今日新增错题</span>
+            <span class="ai-badge" style="margin-left: auto;">🤖 AI识别</span>
           </div>
           <div style="background: var(--color-white); border-radius: var(--radius-sm); padding: var(--spacing-md); margin-bottom: var(--spacing-sm);">
             <div class="flex justify-between mb-sm">
@@ -176,7 +242,10 @@
                 <div class="subject-icon english">🔤</div>
                 <div class="subject-info">
                   <h4>英语</h4>
-                  <span>刘老师 · 1月8日</span>
+                  <span class="flex items-center gap-xs">
+                    刘老师 · 1月20日
+                    <span class="ai-badge">🤖 AI</span>
+                  </span>
                 </div>
               </div>
               <div class="homework-score">95</div>
@@ -193,7 +262,10 @@
                 <div class="subject-icon math">📐</div>
                 <div class="subject-info">
                   <h4>数学</h4>
-                  <span>李老师 · 1月8日</span>
+                  <span class="flex items-center gap-xs">
+                    李老师 · 1月20日
+                    <span class="ai-badge">🤖 AI</span>
+                  </span>
                 </div>
               </div>
               <div class="homework-score">88</div>
@@ -210,7 +282,7 @@
                 <div class="subject-icon chinese">📖</div>
                 <div class="subject-info">
                   <h4>语文</h4>
-                  <span>王老师 · 1月7日</span>
+                  <span>王老师 · 1月19日</span>
                 </div>
               </div>
               <div class="homework-score">90</div>
@@ -234,13 +306,13 @@
         <span class="tabbar-icon">📝</span>
         <span class="tabbar-label">作业</span>
       </a>
+      <a href="interest-class.html" class="tabbar-item">
+        <span class="tabbar-icon">🎨</span>
+        <span class="tabbar-label">兴趣班</span>
+      </a>
       <a href="growth.html" class="tabbar-item">
         <span class="tabbar-icon">📊</span>
         <span class="tabbar-label">成长</span>
-      </a>
-      <a href="messages.html" class="tabbar-item">
-        <span class="tabbar-icon">💬</span>
-        <span class="tabbar-label">消息</span>
       </a>
       <a href="profile.html" class="tabbar-item">
         <span class="tabbar-icon">👤</span>

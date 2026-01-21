@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>兴趣班 - 家长端</title>
+  <link rel="stylesheet" href="../css/mobile.css">
+  <style>
+    .class-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--spacing-md);
+    }
+    .class-header {
+      padding: var(--spacing-md);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    .class-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .class-info h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .class-meta {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+    .class-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: var(--spacing-md);
+      background: var(--color-background-light);
+      text-align: center;
+    }
+    .class-stat-value {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .class-stat-label {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+    }
+    .feedback-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
+    }
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-sm);
+    }
+    .feedback-content {
+      background: var(--color-background-light);
+      border-radius: var(--radius-sm);
+      padding: var(--spacing-md);
+    }
+    .rating-stars {
+      display: flex;
+      gap: 2px;
+    }
+    .rating-star {
+      font-size: 14px;
+      color: var(--color-warning);
+    }
+    .rating-star.empty {
+      opacity: 0.3;
+    }
+  </style>
+</head>
+<body class="mobile-preview">
+  <div class="mobile-container">
+    <!-- Navbar -->
+    <nav class="mobile-navbar">
+      <a href="index.html" class="navbar-back">‹ 返回</a>
+      <span class="navbar-title">兴趣班</span>
+      <span class="navbar-action">📅</span>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="mobile-page">
+      <!-- Header Stats -->
+      <div style="background: linear-gradient(135deg, #FF7A45 0%, #FF9C6E 100%); padding: var(--spacing-lg); color: white;">
+        <div class="flex items-center justify-between mb-md">
+          <div>
+            <h3 style="color: white; margin-bottom: 4px;">小明的兴趣班</h3>
+            <p style="opacity: 0.8; font-size: 14px;">2026年春季学期</p>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 28px; font-weight: 600;">2</div>
+            <div style="font-size: 12px; opacity: 0.8;">已报名</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-sm);">
+          <div style="background: rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: var(--spacing-sm); text-align: center;">
+            <div style="font-size: 18px; font-weight: 600;">12</div>
+            <div style="font-size: 11px; opacity: 0.8;">已上课次</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: var(--spacing-sm); text-align: center;">
+            <div style="font-size: 18px; font-weight: 600;">100%</div>
+            <div style="font-size: 11px; opacity: 0.8;">出勤率</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: var(--spacing-sm); text-align: center;">
+            <div style="font-size: 18px; font-weight: 600;">1</div>
+            <div style="font-size: 11px; opacity: 0.8;">新反馈</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enrolled Classes -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">报名课程</h3>
+        </div>
+
+        <!-- Class Card 1 - Painting -->
+        <div class="class-card">
+          <div class="class-header">
+            <div class="class-icon" style="background: rgba(24, 144, 255, 0.1);">🎨</div>
+            <div class="class-info flex-1">
+              <h4>绘画班</h4>
+              <div class="class-meta">每周二/四 16:00-17:00 · 陈老师</div>
+            </div>
+            <span class="badge badge-success">进行中</span>
+          </div>
+          <div class="class-stats">
+            <div>
+              <div class="class-stat-value" style="color: var(--color-success);">6</div>
+              <div class="class-stat-label">已上课</div>
+            </div>
+            <div>
+              <div class="class-stat-value">16</div>
+              <div class="class-stat-label">总课次</div>
+            </div>
+            <div>
+              <div class="class-stat-value" style="color: var(--color-success);">100%</div>
+              <div class="class-stat-label">出勤率</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Class Card 2 - Music -->
+        <div class="class-card">
+          <div class="class-header">
+            <div class="class-icon" style="background: rgba(82, 196, 26, 0.1);">🎵</div>
+            <div class="class-info flex-1">
+              <h4>音乐班</h4>
+              <div class="class-meta">每周三/五 17:00-18:00 · 林老师</div>
+            </div>
+            <span class="badge badge-success">进行中</span>
+          </div>
+          <div class="class-stats">
+            <div>
+              <div class="class-stat-value" style="color: var(--color-success);">6</div>
+              <div class="class-stat-label">已上课</div>
+            </div>
+            <div>
+              <div class="class-stat-value">16</div>
+              <div class="class-stat-label">总课次</div>
+            </div>
+            <div>
+              <div class="class-stat-value" style="color: var(--color-success);">100%</div>
+              <div class="class-stat-label">出勤率</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Feedback -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">最近反馈</h3>
+          <span class="section-more">查看全部 ›</span>
+        </div>
+
+        <!-- Feedback 1 - Today -->
+        <div class="feedback-card">
+          <div class="feedback-header">
+            <div class="flex items-center gap-sm">
+              <span style="font-size: 20px;">🎨</span>
+              <div>
+                <div class="font-medium">绘画班</div>
+                <div class="text-small text-secondary">今天 16:00-17:00</div>
+              </div>
+            </div>
+            <span class="badge badge-success">新反馈</span>
+          </div>
+          <div class="feedback-content">
+            <div class="flex items-center justify-between mb-sm">
+              <span class="text-small text-secondary">陈老师评价</span>
+              <div class="rating-stars">
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+              </div>
+            </div>
+            <p class="m-0" style="font-size: 14px; line-height: 1.6;">
+              <strong>今日课程：</strong>水彩画基础技法<br><br>
+              小明今天学习水彩画的基本技法，色彩感觉很好，画面构图有创意。特别是在调色方面表现出色，能够大胆尝试不同的颜色搭配。建议回家后可以多练习水彩的晕染技法，继续加油！
+            </p>
+            <div style="margin-top: var(--spacing-sm); padding-top: var(--spacing-sm); border-top: 1px solid var(--color-border-light);">
+              <div class="text-small text-secondary mb-xs">今日作品</div>
+              <div style="background: var(--color-background); border-radius: var(--radius-sm); padding: 30px; text-align: center; color: var(--color-text-placeholder);">
+                🖼️ 点击查看作品照片
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback 2 - Yesterday -->
+        <div class="feedback-card">
+          <div class="feedback-header">
+            <div class="flex items-center gap-sm">
+              <span style="font-size: 20px;">🎵</span>
+              <div>
+                <div class="font-medium">音乐班</div>
+                <div class="text-small text-secondary">昨天 17:00-18:00</div>
+              </div>
+            </div>
+            <span class="badge badge-gray">已读</span>
+          </div>
+          <div class="feedback-content">
+            <div class="flex items-center justify-between mb-sm">
+              <span class="text-small text-secondary">林老师评价</span>
+              <div class="rating-stars">
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+                <span class="rating-star empty">⭐</span>
+              </div>
+            </div>
+            <p class="m-0" style="font-size: 14px; line-height: 1.6;">
+              <strong>今日课程：</strong>基础乐理与节奏练习<br><br>
+              小明对节奏的掌握有明显进步，能够准确拍出四分音符和八分音符的节奏。在识谱方面还需要多加练习，建议每天用10分钟复习音符的位置。
+            </p>
+          </div>
+        </div>
+
+        <!-- Feedback 3 -->
+        <div class="feedback-card">
+          <div class="feedback-header">
+            <div class="flex items-center gap-sm">
+              <span style="font-size: 20px;">🎨</span>
+              <div>
+                <div class="font-medium">绘画班</div>
+                <div class="text-small text-secondary">1月16日 16:00-17:00</div>
+              </div>
+            </div>
+            <span class="badge badge-gray">已读</span>
+          </div>
+          <div class="feedback-content">
+            <div class="flex items-center justify-between mb-sm">
+              <span class="text-small text-secondary">陈老师评价</span>
+              <div class="rating-stars">
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+                <span class="rating-star">⭐</span>
+              </div>
+            </div>
+            <p class="m-0" style="font-size: 14px; line-height: 1.6;">
+              <strong>今日课程：</strong>素描基础<br><br>
+              小明的线条控制能力有很大进步，能够画出流畅的线条。观察力很强，能够注意到物体的细节。继续保持！
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Schedule -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">本周课表</h3>
+        </div>
+        <div class="card" style="padding: 0;">
+          <div class="list">
+            <div class="list-item" style="opacity: 0.5;">
+              <div class="flex items-center gap-sm">
+                <span style="width: 60px; font-size: 12px; color: var(--color-text-secondary);">周一</span>
+                <span>-</span>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-sm">
+                  <span style="width: 60px; font-size: 12px; color: var(--color-text-secondary);">周二</span>
+                  <span>🎨 绘画班 16:00-17:00</span>
+                </div>
+                <span class="badge badge-success">今天</span>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="flex items-center gap-sm">
+                <span style="width: 60px; font-size: 12px; color: var(--color-text-secondary);">周三</span>
+                <span>🎵 音乐班 17:00-18:00</span>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="flex items-center gap-sm">
+                <span style="width: 60px; font-size: 12px; color: var(--color-text-secondary);">周四</span>
+                <span>🎨 绘画班 16:00-17:00</span>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="flex items-center gap-sm">
+                <span style="width: 60px; font-size: 12px; color: var(--color-text-secondary);">周五</span>
+                <span>🎵 音乐班 17:00-18:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <nav class="mobile-tabbar">
+      <a href="index.html" class="tabbar-item">
+        <span class="tabbar-icon">🏠</span>
+        <span class="tabbar-label">首页</span>
+      </a>
+      <a href="homework.html" class="tabbar-item">
+        <span class="tabbar-icon">📝</span>
+        <span class="tabbar-label">作业</span>
+      </a>
+      <a href="interest-class.html" class="tabbar-item active">
+        <span class="tabbar-icon">🎨</span>
+        <span class="tabbar-label">兴趣班</span>
+      </a>
+      <a href="growth.html" class="tabbar-item">
+        <span class="tabbar-icon">📊</span>
+        <span class="tabbar-label">成长</span>
+      </a>
+      <a href="profile.html" class="tabbar-item">
+        <span class="tabbar-icon">👤</span>
+        <span class="tabbar-label">我的</span>
+      </a>
+    </nav>
+  </div>
+</body>
+</html>

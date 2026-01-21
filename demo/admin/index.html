@@ -3,30 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数据驾驶舱 - 托管行业数字化管理系统</title>
+  <title>数据驾驶舱 - 机构管理后台</title>
   <link rel="stylesheet" href="../css/admin.css">
-  <style>
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-md);
-    }
-    @media (max-width: 1200px) {
-      .dashboard-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
   <div class="admin-layout">
     <!-- Sidebar -->
-    <aside class="admin-sidebar" id="sidebar">
+    <aside class="admin-sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo">托</div>
-        <span class="sidebar-title">精准托管平台</span>
+        <div class="sidebar-logo">🏫</div>
+        <span class="sidebar-title">精准托管</span>
       </div>
-
       <nav class="sidebar-nav">
         <div class="nav-group">
           <a href="index.html" class="nav-item active">
@@ -34,11 +21,10 @@
             <span class="nav-item-text">数据驾驶舱</span>
           </a>
         </div>
-
         <div class="nav-group">
           <div class="nav-group-title">基础管理</div>
           <a href="stores.html" class="nav-item">
-            <span class="nav-item-icon">🏢</span>
+            <span class="nav-item-icon">🏪</span>
             <span class="nav-item-text">门店管理</span>
           </a>
           <a href="classes.html" class="nav-item">
@@ -54,55 +40,53 @@
             <span class="nav-item-text">学生管理</span>
           </a>
         </div>
-
         <div class="nav-group">
           <div class="nav-group-title">日常运营</div>
           <a href="attendance.html" class="nav-item">
             <span class="nav-item-icon">✅</span>
             <span class="nav-item-text">签到管理</span>
-            <span class="nav-item-badge">3</span>
           </a>
           <a href="homework.html" class="nav-item">
             <span class="nav-item-icon">📝</span>
             <span class="nav-item-text">作业管理</span>
           </a>
-          <a href="#" class="nav-item">
+          <a href="meals.html" class="nav-item">
             <span class="nav-item-icon">🍱</span>
-            <span class="nav-item-text">生活管理</span>
+            <span class="nav-item-text">餐谱管理</span>
+          </a>
+          <a href="interest-classes.html" class="nav-item">
+            <span class="nav-item-icon">🎨</span>
+            <span class="nav-item-text">兴趣班管理</span>
           </a>
         </div>
-
         <div class="nav-group">
           <div class="nav-group-title">成长追踪</div>
-          <a href="#" class="nav-item">
+          <a href="growth.html" class="nav-item">
             <span class="nav-item-icon">📈</span>
             <span class="nav-item-text">成长档案</span>
           </a>
-          <a href="#" class="nav-item">
+          <a href="points.html" class="nav-item">
             <span class="nav-item-icon">⭐</span>
             <span class="nav-item-text">积分管理</span>
           </a>
         </div>
-
         <div class="nav-group">
           <div class="nav-group-title">系统设置</div>
-          <a href="#" class="nav-item">
-            <span class="nav-item-icon">👥</span>
+          <a href="roles.html" class="nav-item">
+            <span class="nav-item-icon">🔐</span>
             <span class="nav-item-text">权限管理</span>
           </a>
-          <a href="#" class="nav-item">
+          <a href="branding.html" class="nav-item">
+            <span class="nav-item-icon">🎨</span>
+            <span class="nav-item-text">品牌定制</span>
+            <span class="nav-item-badge" style="background: var(--color-secondary);">新</span>
+          </a>
+          <a href="settings.html" class="nav-item">
             <span class="nav-item-icon">⚙️</span>
-            <span class="nav-item-text">系统配置</span>
+            <span class="nav-item-text">系统设置</span>
           </a>
         </div>
       </nav>
-
-      <div class="sidebar-footer">
-        <div class="nav-item" onclick="window.location.href='../index.html'">
-          <span class="nav-item-icon">🏠</span>
-          <span class="nav-item-text">返回首页</span>
-        </div>
-      </div>
     </aside>
 
     <!-- Main Content -->
@@ -110,7 +94,7 @@
       <!-- Header -->
       <header class="admin-header">
         <div class="header-left">
-          <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
+          <div class="toggle-sidebar">☰</div>
           <div class="breadcrumb">
             <span class="breadcrumb-item">首页</span>
             <span class="breadcrumb-separator">/</span>
@@ -122,13 +106,12 @@
             🔔
             <span class="badge-dot"></span>
           </div>
-          <div class="header-action">💬</div>
           <div class="user-dropdown">
             <div class="user-info">
               <div class="user-name">张管理</div>
               <div class="user-role">超级管理员</div>
             </div>
-            <div class="avatar">张</div>
+            <div class="avatar avatar-sm">张</div>
           </div>
         </div>
       </header>
@@ -137,43 +120,20 @@
       <div class="admin-content">
         <div class="page-header">
           <h1 class="page-title">数据驾驶舱</h1>
-          <p class="page-subtitle">嵩山托管中心 · 运营数据总览</p>
+          <p class="page-subtitle">实时掌握机构运营核心指标</p>
         </div>
 
-        <!-- Stats Cards -->
+        <!-- Stats Grid -->
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-card-header">
               <span class="stat-label">在托学生数</span>
               <div class="stat-icon blue">👦</div>
             </div>
-            <div class="stat-value">256</div>
+            <div class="stat-value">268</div>
             <div class="stat-trend up">
               <span>↑ 12%</span>
-              <span class="text-secondary">较上月</span>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-card-header">
-              <span class="stat-label">班级总数</span>
-              <div class="stat-icon green">📚</div>
-            </div>
-            <div class="stat-value">12</div>
-            <div class="stat-trend up">
-              <span>↑ 2</span>
-              <span class="text-secondary">新增班级</span>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-card-header">
-              <span class="stat-label">教师人数</span>
-              <div class="stat-icon orange">👨‍🏫</div>
-            </div>
-            <div class="stat-value">18</div>
-            <div class="stat-trend">
-              <span class="text-secondary">师生比 1:14</span>
+              <span>较上月</span>
             </div>
           </div>
 
@@ -182,210 +142,197 @@
               <span class="stat-label">今日出勤率</span>
               <div class="stat-icon green">✅</div>
             </div>
-            <div class="stat-value">96.5%</div>
+            <div class="stat-value">96.2%</div>
             <div class="stat-trend up">
               <span>↑ 2.1%</span>
-              <span class="text-secondary">较昨日</span>
+              <span>较昨日</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">作业完成率</span>
+              <div class="stat-icon orange">📝</div>
+            </div>
+            <div class="stat-value">89.5%</div>
+            <div class="stat-trend down">
+              <span>↓ 1.3%</span>
+              <span>较昨日</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">续费率</span>
+              <div class="stat-icon red">💰</div>
+            </div>
+            <div class="stat-value">87.3%</div>
+            <div class="stat-trend up">
+              <span>↑ 5.2%</span>
+              <span>较上月</span>
             </div>
           </div>
         </div>
 
-        <!-- Dashboard Grid -->
-        <div class="dashboard-grid">
-          <!-- Attendance Trend -->
+        <!-- Quick Stats Row -->
+        <div class="stats-grid" style="margin-bottom: var(--spacing-lg);">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">托管班数量</span>
+              <div class="stat-icon blue">📚</div>
+            </div>
+            <div class="stat-value">12</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">兴趣班数量</span>
+              <div class="stat-icon orange">🎨</div>
+            </div>
+            <div class="stat-value">8</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">教师数量</span>
+              <div class="stat-icon green">👨‍🏫</div>
+            </div>
+            <div class="stat-value">24</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">门店数量</span>
+              <div class="stat-icon red">🏪</div>
+            </div>
+            <div class="stat-value">3</div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-lg); margin-bottom: var(--spacing-lg);">
           <div class="data-card">
             <div class="data-card-header">
-              <h3 class="data-card-title">出勤趋势</h3>
+              <h3 class="data-card-title">本月出勤趋势</h3>
               <div class="data-card-actions">
-                <select class="form-select" style="width: auto; padding: 4px 8px;">
-                  <option>近7天</option>
-                  <option>近30天</option>
+                <select class="form-select" style="width: auto; padding: var(--spacing-xs) var(--spacing-sm);">
+                  <option>本月</option>
+                  <option>上月</option>
+                  <option>近三月</option>
                 </select>
               </div>
             </div>
             <div class="data-card-body" style="padding: var(--spacing-md);">
-              <div class="chart-placeholder">
-                📈 出勤率趋势图<br>
-                <small style="margin-top: 8px; display: block;">96% → 97% → 95% → 96.5%</small>
+              <div class="chart-placeholder" style="height: 250px;">
+                <div style="text-align: center;">
+                  <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">📈</div>
+                  <div>出勤率趋势图</div>
+                  <div style="font-size: 12px; margin-top: var(--spacing-xs);">ECharts 图表区域</div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Class Distribution -->
           <div class="data-card">
             <div class="data-card-header">
               <h3 class="data-card-title">班级分布</h3>
             </div>
             <div class="data-card-body" style="padding: var(--spacing-md);">
-              <div class="chart-placeholder">
-                📊 班级学生分布饼图<br>
-                <small style="margin-top: 8px; display: block;">一年级: 45 | 二年级: 52 | 三年级: 48...</small>
-              </div>
-            </div>
-          </div>
-
-          <!-- Today's Attendance -->
-          <div class="data-card">
-            <div class="data-card-header">
-              <h3 class="data-card-title">今日签到状态</h3>
-              <div class="data-card-actions">
-                <a href="attendance.html" class="btn btn-ghost btn-sm">查看详情</a>
-              </div>
-            </div>
-            <div class="data-card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>班级</th>
-                    <th>应到</th>
-                    <th>实到</th>
-                    <th>出勤率</th>
-                    <th>状态</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>一年级1班</td>
-                    <td>22</td>
-                    <td>22</td>
-                    <td>100%</td>
-                    <td><span class="badge badge-success">全勤</span></td>
-                  </tr>
-                  <tr>
-                    <td>一年级2班</td>
-                    <td>24</td>
-                    <td>23</td>
-                    <td>95.8%</td>
-                    <td><span class="badge badge-warning">1人请假</span></td>
-                  </tr>
-                  <tr>
-                    <td>二年级1班</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>100%</td>
-                    <td><span class="badge badge-success">全勤</span></td>
-                  </tr>
-                  <tr>
-                    <td>二年级2班</td>
-                    <td>22</td>
-                    <td>20</td>
-                    <td>90.9%</td>
-                    <td><span class="badge badge-error">2人缺勤</span></td>
-                  </tr>
-                  <tr>
-                    <td>三年级1班</td>
-                    <td>21</td>
-                    <td>21</td>
-                    <td>100%</td>
-                    <td><span class="badge badge-success">全勤</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Alerts -->
-          <div class="data-card">
-            <div class="data-card-header">
-              <h3 class="data-card-title">异常预警</h3>
-              <span class="badge badge-error">3条</span>
-            </div>
-            <div class="data-card-body" style="padding: 0;">
-              <div class="list">
-                <div class="list-item flex items-center gap-md">
-                  <div class="stat-icon red" style="width: 36px; height: 36px; font-size: 16px;">⚠️</div>
-                  <div class="flex-1">
-                    <div class="font-medium">签到异常</div>
-                    <div class="text-secondary text-small">二年级2班 张小明 连续3天缺勤</div>
-                  </div>
-                  <span class="text-small text-placeholder">10分钟前</span>
-                </div>
-                <div class="list-item flex items-center gap-md">
-                  <div class="stat-icon orange" style="width: 36px; height: 36px; font-size: 16px;">💰</div>
-                  <div class="flex-1">
-                    <div class="font-medium">缴费提醒</div>
-                    <div class="text-secondary text-small">5名学生本月费用即将到期</div>
-                  </div>
-                  <span class="text-small text-placeholder">1小时前</span>
-                </div>
-                <div class="list-item flex items-center gap-md">
-                  <div class="stat-icon blue" style="width: 36px; height: 36px; font-size: 16px;">📝</div>
-                  <div class="flex-1">
-                    <div class="font-medium">作业未批</div>
-                    <div class="text-secondary text-small">一年级1班 昨日作业未完成批改</div>
-                  </div>
-                  <span class="text-small text-placeholder">2小时前</span>
+              <div class="chart-placeholder" style="height: 250px;">
+                <div style="text-align: center;">
+                  <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">🥧</div>
+                  <div>托管班 vs 兴趣班</div>
+                  <div style="font-size: 12px; margin-top: var(--spacing-xs);">ECharts 饼图区域</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Recent Homework -->
-        <div class="data-card mt-lg">
-          <div class="data-card-header">
-            <h3 class="data-card-title">近期作业批改情况</h3>
-            <div class="data-card-actions">
-              <a href="homework.html" class="btn btn-ghost btn-sm">全部作业</a>
+        <!-- Alerts and Recent Activity -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg);">
+          <!-- Alerts -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <h3 class="data-card-title">待办提醒</h3>
+              <span class="badge badge-error">4</span>
+            </div>
+            <div class="data-card-body" style="padding: 0;">
+              <div class="list">
+                <div class="list-item flex items-center gap-md">
+                  <div class="stat-icon orange" style="width: 36px; height: 36px; font-size: 16px;">⏰</div>
+                  <div class="flex-1">
+                    <div class="font-medium">签到异常</div>
+                    <div class="text-secondary" style="font-size: 12px;">3名学生下午未签到</div>
+                  </div>
+                  <span class="badge badge-warning">待处理</span>
+                </div>
+                <div class="list-item flex items-center gap-md">
+                  <div class="stat-icon red" style="width: 36px; height: 36px; font-size: 16px;">💰</div>
+                  <div class="flex-1">
+                    <div class="font-medium">续费提醒</div>
+                    <div class="text-secondary" style="font-size: 12px;">12名学生将于15天内到期</div>
+                  </div>
+                  <span class="badge badge-error">紧急</span>
+                </div>
+                <div class="list-item flex items-center gap-md">
+                  <div class="stat-icon blue" style="width: 36px; height: 36px; font-size: 16px;">📝</div>
+                  <div class="flex-1">
+                    <div class="font-medium">作业待批改</div>
+                    <div class="text-secondary" style="font-size: 12px;">今日还有18份作业未批改</div>
+                  </div>
+                  <span class="badge badge-primary">进行中</span>
+                </div>
+                <div class="list-item flex items-center gap-md">
+                  <div class="stat-icon green" style="width: 36px; height: 36px; font-size: 16px;">🎨</div>
+                  <div class="flex-1">
+                    <div class="font-medium">兴趣班反馈</div>
+                    <div class="text-secondary" style="font-size: 12px;">书法班今日课程反馈待提交</div>
+                  </div>
+                  <span class="badge badge-gray">待完成</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="data-card-body">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>日期</th>
-                  <th>班级</th>
-                  <th>科目</th>
-                  <th>提交数</th>
-                  <th>已批改</th>
-                  <th>平均分</th>
-                  <th>批改教师</th>
-                  <th>状态</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>2026-01-09</td>
-                  <td>一年级1班</td>
-                  <td>数学</td>
-                  <td>22</td>
-                  <td>22</td>
-                  <td>92.5</td>
-                  <td>李老师</td>
-                  <td><span class="badge badge-success">已完成</span></td>
-                </tr>
-                <tr>
-                  <td>2026-01-09</td>
-                  <td>一年级1班</td>
-                  <td>语文</td>
-                  <td>22</td>
-                  <td>18</td>
-                  <td>--</td>
-                  <td>王老师</td>
-                  <td><span class="badge badge-warning">批改中</span></td>
-                </tr>
-                <tr>
-                  <td>2026-01-09</td>
-                  <td>二年级1班</td>
-                  <td>数学</td>
-                  <td>20</td>
-                  <td>20</td>
-                  <td>88.0</td>
-                  <td>张老师</td>
-                  <td><span class="badge badge-success">已完成</span></td>
-                </tr>
-                <tr>
-                  <td>2026-01-08</td>
-                  <td>一年级2班</td>
-                  <td>英语</td>
-                  <td>24</td>
-                  <td>24</td>
-                  <td>95.2</td>
-                  <td>刘老师</td>
-                  <td><span class="badge badge-success">已完成</span></td>
-                </tr>
-              </tbody>
-            </table>
+
+          <!-- Recent Activity -->
+          <div class="data-card">
+            <div class="data-card-header">
+              <h3 class="data-card-title">最近动态</h3>
+              <a href="#" style="font-size: 14px;">查看全部 →</a>
+            </div>
+            <div class="data-card-body" style="padding: 0;">
+              <div class="list">
+                <div class="list-item">
+                  <div class="flex items-center gap-sm mb-xs">
+                    <span class="badge badge-success">签到</span>
+                    <span class="text-secondary" style="font-size: 12px;">10分钟前</span>
+                  </div>
+                  <div>一年级1班下午签到完成，出勤率100%</div>
+                </div>
+                <div class="list-item">
+                  <div class="flex items-center gap-sm mb-xs">
+                    <span class="badge badge-primary">作业</span>
+                    <span class="text-secondary" style="font-size: 12px;">30分钟前</span>
+                  </div>
+                  <div>李老师完成二年级2班数学作业AI批改</div>
+                </div>
+                <div class="list-item">
+                  <div class="flex items-center gap-sm mb-xs">
+                    <span class="badge badge-warning">兴趣班</span>
+                    <span class="text-secondary" style="font-size: 12px;">1小时前</span>
+                  </div>
+                  <div>绘画班课程反馈已提交，15名学生参与</div>
+                </div>
+                <div class="list-item">
+                  <div class="flex items-center gap-sm mb-xs">
+                    <span class="badge badge-gray">系统</span>
+                    <span class="text-secondary" style="font-size: 12px;">2小时前</span>
+                  </div>
+                  <div>新学生张小红入托登记完成</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -393,9 +340,10 @@
   </div>
 
   <script>
-    function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('collapsed');
-    }
+    // Toggle sidebar
+    document.querySelector('.toggle-sidebar').addEventListener('click', function() {
+      document.querySelector('.admin-sidebar').classList.toggle('collapsed');
+    });
   </script>
 </body>
 </html>

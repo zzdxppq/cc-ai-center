@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>兴趣班反馈 - 教师端</title>
+  <link rel="stylesheet" href="../css/mobile.css">
+  <style>
+    .class-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--spacing-md);
+    }
+    .class-header {
+      padding: var(--spacing-md);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    .class-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .class-info h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .class-meta {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+    .class-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: var(--spacing-md);
+      background: var(--color-background-light);
+      text-align: center;
+    }
+    .class-stat-value {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .class-stat-label {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+    }
+    .feedback-form {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+      margin: var(--spacing-md);
+    }
+    .student-feedback-item {
+      padding: var(--spacing-md);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .student-feedback-item:last-child {
+      border-bottom: none;
+    }
+    .rating-stars {
+      display: flex;
+      gap: 4px;
+    }
+    .rating-star {
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0.3;
+    }
+    .rating-star.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="mobile-preview">
+  <div class="mobile-container">
+    <!-- Navbar -->
+    <nav class="mobile-navbar">
+      <a href="index.html" class="navbar-back">‹ 返回</a>
+      <span class="navbar-title">兴趣班反馈</span>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="mobile-page">
+      <!-- Header Stats -->
+      <div style="background: linear-gradient(135deg, #FF7A45 0%, #FF9C6E 100%); padding: var(--spacing-lg); color: white;">
+        <div class="flex items-center justify-between mb-md">
+          <div>
+            <h3 style="color: white; margin-bottom: 4px;">今日兴趣班</h3>
+            <p style="opacity: 0.8; font-size: 14px;">2026年1月21日 星期二</p>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 28px; font-weight: 600;">3</div>
+            <div style="font-size: 12px; opacity: 0.8;">节课程</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-sm);">
+          <div style="background: rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: var(--spacing-sm); text-align: center;">
+            <div style="font-size: 18px; font-weight: 600;">1</div>
+            <div style="font-size: 11px; opacity: 0.8;">待反馈</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: var(--spacing-sm); text-align: center;">
+            <div style="font-size: 18px; font-weight: 600;">2</div>
+            <div style="font-size: 11px; opacity: 0.8;">已完成</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: var(--spacing-sm); text-align: center;">
+            <div style="font-size: 18px; font-weight: 600;">37</div>
+            <div style="font-size: 11px; opacity: 0.8;">学生数</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Today's Classes -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">今日课程</h3>
+        </div>
+
+        <!-- Class Card 1 - Needs Feedback -->
+        <div class="class-card">
+          <div class="class-header">
+            <div class="class-icon" style="background: rgba(24, 144, 255, 0.1);">🎨</div>
+            <div class="class-info flex-1">
+              <h4>绘画班</h4>
+              <div class="class-meta">16:00-17:00 · 陈老师</div>
+            </div>
+            <span class="badge badge-warning">待反馈</span>
+          </div>
+          <div class="class-stats">
+            <div>
+              <div class="class-stat-value" style="color: var(--color-success);">15</div>
+              <div class="class-stat-label">已签到</div>
+            </div>
+            <div>
+              <div class="class-stat-value">15</div>
+              <div class="class-stat-label">应到</div>
+            </div>
+            <div>
+              <div class="class-stat-value" style="color: var(--color-success);">100%</div>
+              <div class="class-stat-label">出勤率</div>
+            </div>
+          </div>
+          <div style="padding: var(--spacing-md);">
+            <button class="btn btn-primary btn-block">提交课程反馈</button>
+          </div>
+        </div>
+
+        <!-- Class Card 2 - Completed -->
+        <div class="class-card">
+          <div class="class-header">
+            <div class="class-icon" style="background: rgba(255, 122, 69, 0.1);">✍️</div>
+            <div class="class-info flex-1">
+              <h4>书法班</h4>
+              <div class="class-meta">16:00-17:00 · 赵老师</div>
+            </div>
+            <span class="badge badge-success">已完成</span>
+          </div>
+          <div class="class-stats">
+            <div>
+              <div class="class-stat-value" style="color: var(--color-success);">12</div>
+              <div class="class-stat-label">已签到</div>
+            </div>
+            <div>
+              <div class="class-stat-value">12</div>
+              <div class="class-stat-label">应到</div>
+            </div>
+            <div>
+              <div class="class-stat-value" style="color: var(--color-success);">100%</div>
+              <div class="class-stat-label">出勤率</div>
+            </div>
+          </div>
+          <div style="padding: var(--spacing-md);">
+            <button class="btn btn-secondary btn-block">查看反馈详情</button>
+          </div>
+        </div>
+
+        <!-- Class Card 3 - Not Started -->
+        <div class="class-card" style="opacity: 0.7;">
+          <div class="class-header">
+            <div class="class-icon" style="background: rgba(82, 196, 26, 0.1);">🎵</div>
+            <div class="class-info flex-1">
+              <h4>音乐班</h4>
+              <div class="class-meta">17:00-18:00 · 林老师</div>
+            </div>
+            <span class="badge badge-gray">未开始</span>
+          </div>
+          <div class="class-stats">
+            <div>
+              <div class="class-stat-value">-</div>
+              <div class="class-stat-label">已签到</div>
+            </div>
+            <div>
+              <div class="class-stat-value">10</div>
+              <div class="class-stat-label">应到</div>
+            </div>
+            <div>
+              <div class="class-stat-value">-</div>
+              <div class="class-stat-label">出勤率</div>
+            </div>
+          </div>
+          <div style="padding: var(--spacing-md);">
+            <button class="btn btn-secondary btn-block" disabled>等待开课</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Feedback -->
+      <div class="page-section">
+        <div class="section-header">
+          <h3 class="section-title">历史反馈</h3>
+          <span class="section-more">查看全部 ›</span>
+        </div>
+        <div class="card" style="padding: 0;">
+          <div class="list">
+            <div class="list-item">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-medium">绘画班</div>
+                  <div class="text-small text-secondary">2026-01-20 · 15名学生</div>
+                </div>
+                <span class="badge badge-success">已提交</span>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-medium">书法班</div>
+                  <div class="text-small text-secondary">2026-01-20 · 12名学生</div>
+                </div>
+                <span class="badge badge-success">已提交</span>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-medium">舞蹈班</div>
+                  <div class="text-small text-secondary">2026-01-19 · 10名学生</div>
+                </div>
+                <span class="badge badge-success">已提交</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <nav class="mobile-tabbar">
+      <a href="index.html" class="tabbar-item">
+        <span class="tabbar-icon">🏠</span>
+        <span class="tabbar-label">工作台</span>
+      </a>
+      <a href="attendance.html" class="tabbar-item">
+        <span class="tabbar-icon">✅</span>
+        <span class="tabbar-label">签到</span>
+      </a>
+      <a href="homework.html" class="tabbar-item">
+        <span class="tabbar-icon">📝</span>
+        <span class="tabbar-label">作业</span>
+      </a>
+      <a href="interest-class.html" class="tabbar-item active">
+        <span class="tabbar-icon">🎨</span>
+        <span class="tabbar-label">兴趣班</span>
+      </a>
+      <a href="profile.html" class="tabbar-item">
+        <span class="tabbar-icon">👤</span>
+        <span class="tabbar-label">我的</span>
+      </a>
+    </nav>
+  </div>
+</body>
+</html>

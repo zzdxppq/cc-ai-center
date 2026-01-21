@@ -46,9 +46,18 @@
     .demo-subtitle {
       font-size: 18px;
       opacity: 0.9;
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       line-height: 1.6;
+    }
+
+    .demo-version {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      margin-top: var(--spacing-md);
     }
 
     .demo-grid {
@@ -72,7 +81,7 @@
     }
 
     .card-preview {
-      height: 200px;
+      height: 180px;
       background: var(--color-background);
       display: flex;
       align-items: center;
@@ -124,6 +133,7 @@
       color: var(--color-text-secondary);
       margin-bottom: var(--spacing-md);
       line-height: 1.6;
+      font-size: 14px;
     }
 
     .card-features {
@@ -139,6 +149,11 @@
       padding: 4px 10px;
       border-radius: var(--radius-full);
       font-size: 12px;
+    }
+
+    .feature-tag.new {
+      background: rgba(255, 122, 69, 0.1);
+      color: var(--color-secondary);
     }
 
     .card-actions {
@@ -177,6 +192,49 @@
       font-size: 13px;
     }
 
+    .highlight-features {
+      background: rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      margin-top: var(--spacing-xl);
+      color: white;
+    }
+
+    .highlight-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: var(--spacing-md);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+    }
+
+    .highlight-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .highlight-text {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
     @media (max-width: 768px) {
       .demo-title {
         font-size: 28px;
@@ -201,14 +259,50 @@
         精准托管数字化平台演示站点<br>
         覆盖生活照料、学业辅导、素质拓展、成长追踪、家校共育、机构运营、政府监管七大场景
       </p>
+      <span class="demo-version">PRD v2.1 | 2026-01-20</span>
       <div class="tech-stack">
         <span class="tech-item">Vue 3</span>
         <span class="tech-item">微信小程序</span>
         <span class="tech-item">Spring Cloud</span>
-        <span class="tech-item">MySQL</span>
+        <span class="tech-item">MySQL 8.0</span>
         <span class="tech-item">Redis</span>
+        <span class="tech-item">AI批改</span>
       </div>
     </header>
+
+    <!-- v2.1 New Features Highlight -->
+    <div class="highlight-features">
+      <div class="highlight-title">
+        <span>✨</span>
+        <span>v2.1 新功能亮点</span>
+      </div>
+      <div class="highlight-grid">
+        <div class="highlight-item">
+          <span class="highlight-icon">🤖</span>
+          <span class="highlight-text">AI作业识别：自动识别数学/英语客观题对错</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🎨</span>
+          <span class="highlight-text">品牌定制：机构可自定义Logo和主题色</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">📚</span>
+          <span class="highlight-text">托管班+兴趣班：学生可多班级归属</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">⏰</span>
+          <span class="highlight-text">按年级签到：不同年级配置不同签到时间</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🎬</span>
+          <span class="highlight-text">餐谱视频：支持视频+图片展示每日餐谱</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">📝</span>
+          <span class="highlight-text">兴趣班反馈：每节课签到+学习反馈记录</span>
+        </div>
+      </div>
+    </div>
 
     <div class="demo-grid">
       <!-- Admin Web -->
@@ -220,14 +314,14 @@
         <div class="card-content">
           <h2 class="card-title">机构管理后台</h2>
           <p class="card-desc">
-            面向托管机构管理员，提供数据驾驶舱、基础管理、日常运营、成长追踪等功能模块。
+            面向托管机构管理员，提供数据驾驶舱、基础管理、日常运营、成长追踪、品牌定制等功能模块。
           </p>
           <div class="card-features">
             <span class="feature-tag">数据驾驶舱</span>
-            <span class="feature-tag">学生管理</span>
-            <span class="feature-tag">签到统计</span>
+            <span class="feature-tag">班级管理</span>
+            <span class="feature-tag">签到配置</span>
             <span class="feature-tag">作业管理</span>
-            <span class="feature-tag">报表导出</span>
+            <span class="feature-tag new">品牌定制</span>
           </div>
           <div class="card-actions">
             <a href="admin/index.html" class="btn btn-primary">进入演示</a>
@@ -244,14 +338,13 @@
         <div class="card-content">
           <h2 class="card-title">教师端小程序</h2>
           <p class="card-desc">
-            面向托管教师，提供签到点名、作业批改、成长记录、消息通知等日常工作功能。
+            面向托管教师，提供签到点名、AI作业批改、成长记录、兴趣班反馈等日常工作功能。
           </p>
           <div class="card-features">
             <span class="feature-tag">签到点名</span>
-            <span class="feature-tag">拍照点名</span>
-            <span class="feature-tag">AI批改</span>
+            <span class="feature-tag new">AI批改</span>
             <span class="feature-tag">成长记录</span>
-            <span class="feature-tag">消息通知</span>
+            <span class="feature-tag new">兴趣班反馈</span>
           </div>
           <div class="card-actions">
             <a href="teacher/index.html" class="btn btn-primary">进入演示</a>
@@ -268,14 +361,13 @@
         <div class="card-content">
           <h2 class="card-title">家长端小程序</h2>
           <p class="card-desc">
-            面向学生家长，实时查看孩子在托状态、作业情况、成长档案，与老师便捷沟通。
+            面向学生家长，实时查看孩子在托状态、作业情况、成长档案、兴趣班学习反馈。
           </p>
           <div class="card-features">
             <span class="feature-tag">实时状态</span>
             <span class="feature-tag">作业查看</span>
             <span class="feature-tag">成长档案</span>
-            <span class="feature-tag">错题本</span>
-            <span class="feature-tag">在线缴费</span>
+            <span class="feature-tag new">兴趣班反馈</span>
           </div>
           <div class="card-actions">
             <a href="parent/index.html" class="btn btn-primary">进入演示</a>
@@ -286,8 +378,8 @@
 
     <footer class="demo-footer">
       <p>
-        本演示基于 <a href="../docs/prd.md">PRD文档</a> 和
-        <a href="../docs/front-end-spec.md">UI/UX规格文档</a> 设计
+        本演示基于 <a href="../docs/prd.md">PRD文档 v2.1</a> 和
+        <a href="../docs/ui-architecture.md">前端架构文档</a> 设计
       </p>
       <p style="margin-top: var(--spacing-sm); opacity: 0.7;">
         cc-ai-center · 精准托管数字化平台 · 静态演示版本
