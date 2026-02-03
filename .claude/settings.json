@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".orchestrix-core/scripts/handoff-detector.sh"
+            "command": "bash -c 'cd \"$(git rev-parse --show-toplevel)\" && .orchestrix-core/scripts/acp-stop-hook.sh'"
           }
         ]
       }
